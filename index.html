@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-sv63RfTTVrQ2a3+frEnrC6Azhz3MDM1DHuGAjt/x3j8='; style-src 'unsafe-inline'; img-src data:; manifest-src data:; connect-src 'none'; media-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#12355b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LingoForge">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="referrer" content="no-referrer">
+<title>LingoForge</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzEyMzU1YiIvPjxyZWN0IHg9IjE1My42IiB5PSIxMDIuNCIgd2lkdGg9IjYxLjQiIGhlaWdodD0iMjg2LjciIHJ4PSIxMiIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjE1My42IiB5PSIzMjcuNyIgd2lkdGg9IjIwNC44IiBoZWlnaHQ9IjYxLjQiIHJ4PSIxMiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjMyNy43IiBjeT0iMTYzLjgiIHI9IjQ2LjEiIGZpbGw9IiNmZjlmMWMiLz48L3N2Zz4=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAC0klEQVR42u3cPU4CQRiAYc5gbUdHaChM6IzNUm1HsYnVJh6AHnoPQELLFfYAHsBwDwoLz4CJJBs1ivzsMjPwkPcARp8MOzvf2Lm5e5R+reNXIDgEh+AQHIJDcAgOwSE4BIcEh+AQHIJDcAgOwSE4BIfgkOAQHIJDcAgOwSE4BIfgEBwSHIJDcAgOwfHZ5rRP9fLqzwwHHHDAAQcccMABx3XgGOV5WWSLybCaDbaVRVYWGRzXi6P/MF5Mhut5d7O8/astFDiuCMeWxQ4TP1rPuwkRgeP4yiLbn8WPVaT/MIbjYnFUs8FxMuolJH4fcASQkYoPOA5u+nR/uozaBxyXg2OU503J2LaYDOG4EByr516zODbL21Gew5E8jga/UL62eu7BkTyONpaNmBcPOII9bcT/5AFH4O+UmLctcJz13caO4EgYx+5ztdOL8MwFjr1/jDZlwAEHHHDAAQcccJxptxLhCS0c+3bQxJetrDekjVXNBnCkfbbS3qsOZytOZRMb+YEj/OIR7Tw6HGeaOE9umAOOwHvayGeM4QjpI9oBQTgC31uJ/+obHAFeiyVxowmOBt6MHbp/ifkuAhytXJr9d/Z4Pe8uJsMkFgw4WrlxXxZZ/Z856qZP95E/eMIhOOCAAw444IADDjjggAMOOOCAAw444BAcggMOOOCAAw444IADDjjggAMOOOCAAw7BITjggAMOOOCAAw444IADDjjggAMOOOAQHIJDcMABBxxwwAEHHHDAAQcccMABBxxwwKErxLF+e69eXiMMjvA4ov3AAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMDxd3GOBxswlqsJEhyCQ3AIDsEhOASH4BAcgkOCQ3AIDsEhOASH4BAcgkNwSHAIDsEhOASH4BAcgkNwCA7BIcEhOASH4BAcgkNwCA7BITikb30Alz2WrDrDhT8AAAAASUVORK5CYII=">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiTGluZ29Gb3JnZSIsInNob3J0X25hbWUiOiJMaW5nb0ZvcmdlIiwibGFuZyI6ImRlIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzEyMzU1YiIsInRoZW1lX2NvbG9yIjoiIzEyMzU1YiIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUxRQUFBQzBDQUlBQUFDeXI1RmxBQUFDMGtsRVFWUjQydTNjUFU0Q1FSaUFZYzVnYlVkSGFDaE02SXpOVW0xSHNZblZKaDZBSG5vUFFFTExGZllBSHNCd0R3b0x6NENKSkJzMWl2enNNalB3a1BjQVJwOE1PenZmMkxtNWU1UityZU5YSURnRWgrQVFISUpEY0FnT3dTRTRCSWNFaCtBUUhJSkRjQWdPd1NFNEJJZmdrT0FRSElKRGNBZ093U0U0QklmZ0VCd1NISUpEY0FnT3dmSFo1clJQOWZMcXp3d0hISERBQVFjY2NNQUJ4M1hnR09WNVdXU0x5YkNhRGJhVlJWWVdHUnpYaTZQL01GNU1odXQ1ZDdPOC9hc3RGRGl1Q01lV3hRNFRQMXJQdXdrUmdlUDR5aUxibjhXUFZhVC9NSWJqWW5GVXM4RnhNdW9sSkg0ZmNBU1FrWW9QT0E1dStuUi91b3phQnh5WGcyT1U1MDNKMkxhWURPRzRFQnlyNTE2ek9EYkwyMUdldzVFOGpnYS9VTDYyZXU3QmtUeU9OcGFObUJjUE9JSTliY1QvNUFGSDRPK1VtTGN0Y0p6MTNjYU80RWdZeCs1enRkT0w4TXdGanIxL2pEWmx3QUVISEhEQUFRY2NjSnhwdHhMaENTMGMrM2JReEpldHJEZWtqVlhOQm5Da2ZiYlMzcXNPWnl0T1pSTWIrWUVqL09JUjdUdzZIR2VhT0U5dW1BT093SHZheUdlTTRRanBJOW9CUVRnQzMxdUovK29iSEFGZWl5Vnhvd21PQnQ2TUhicC9pZmt1QWh5dFhKcjlkL1o0UGU4dUpzTWtGZ3c0V3JseFh4WlovWjg1NnFaUDk1RS9lTUloT09DQUF3NDQ0SUFERGpqZ2dBTU9PT0NBQXc0NDRCQWNnZ01PT09DQUF3NDQ0SUFERGpqZ2dBTU9PT0NBQXc3QklUamdnQU1PT09DQUF3NDQ0SUFERGpqZ2dBTU9PT0FRSElKRGNNQUJCeHh3d0FFSEhIREFBUWNjY01BQkJ4eHd3S0VyeExGK2U2OWVYaU1NanZBNG92M0FBUWNjY01BQkJ4eHd3QUVISEhEQUFRY2NjTUFCQnh4d3dBRUhISERBQVFjY2NNQUJCeHh3d0FFSEhIREFBUWNjY01EeGQzR09CeHN3bHFzSkVoeUNRM0FJRHNFaE9BU0g0QkFjZ2tPQ1EzQUlEc0VoT0FTSDRCQWNna053U0hBSURzRWhPQVNINEJBY2drTndDQTdCSWNFaE9BU0g0QkFjZ2tOd0NBN0JJVGlrYjMwQWx6MldyRHJEaFQ4QUFBQUFTVVZPUks1Q1lJST0iLCJzaXplcyI6IjE4MHgxODAiLCJ0eXBlIjoiaW1hZ2UvcG5nIn0seyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQUlBQUFCN0drT3RBQUFMT0VsRVFWUjQydTNkTVc3YVlCaUE0WnloY3pkdmlNVkRKVGJFWW9iS0d3TlNKMWRlS3pGR3dsSkg5bGhpN1JWOGdCNmc0aDQrUnpwUVJWVkNReXJBc2YwOW41NFRrUGgvNGY5dHVQdnc2UXNBQWQxNUNRQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQUV3S3NBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBSUFCZUJRQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBRGV6L0xyOStibnJ5SHl0d01CNENMRi9jUGpNTWZmRGdRQUFRQUVBQUVBQkFBQkFBUUFBUUFFQUFFQUJBQUJBQVJBQUFRQUVBQUJFQUJBQUFSQUFBQUJFQUFCQUFSQUFBUUFCQUFCRUFBUUFBUkFBRUFBRUFBQkdOei93RHI3MjNTeDhwb2dBQUlnQUtNeVhheUtkYmJmekpvcVBld21qejgrdnE2dGs2WktteW90MXRreXo3MkFDSUFBQ01EdzN1QTNWZHJXeWRrVi82eW1TcmZsM0VjRUFmQXFDSUFBREdEZHYzelJQK213bXlpQkFDQUFBdEM3Zlo3OVpuYVY5L3R2L0V4Z2QwZ0FFQUFCNk1YUzM4MjYvL0lEZ1F3SUFBSWdBTEdXZmhrUUFBUkFBTjdOdHB4M3R1SHpGdnZOek5tQUFDQUFBbkR6Ti81dnVadXplMjJkRk92TUgwZ0FFQUFCdU5WTlBqMWMrcCtkRDd1K0JBQUJFSUFydTkzOW5WZi9LR0E3U0FBUUFBRVkrYmJQSzJ3SENRQUNJQUJYV1AxN2RkNnJBUUtBQUFpQTFmKzhiVGwzdVFrQUFpQUE0VmIvcHp0RVhYRUNnQUFJUUxqVjMxNlFBQ0FBQWhCMzlkY0FBVUFBQk9BL2pHejFQL0tORVFLQUFBakFTTzczOTN5QUFDQUFBaERyV2Q4THZ6bk8xU2NBQ0lBQW5ONzZIL0hxNzhaUUFVQUFCT0NmQnZlNHI4TUFBVUFBQk9BS3R1VTh3dXB2STBnQUVBQUJDTGY1WXlOSUFCQUFBVGloRDcvdDFmRWRRUzVEQVVBQUJDRGMyMzlmRVNFQUNJQUFqUHpHLzdNOEZpQUFDRURvQU1SOCsrOURnQUFnQUFJUWJ2ZmZTWUFBSUFBQzhFZlkxZC90UUFLQUFJUU9RSng3L3owVElBQUlnQUJFZlBUWFViQUFJQUFDNFBqWExwQUFJQUFDWVAvSExwQUFJQUJoQXhEMjluKzdRQUtBQUVRUGdIWGZEMFlLQUFJUU1RRExQTGZ1UDJtcTFGVXBBQWhBbEFBNEFIQU1JQUFJUU5BQU9BQjR4bFVwQUFoQWxBQjRBc0RQaEFrQUFoQTBBRlo4NThBQ2dBQUlBQUlnQUFoQW1BQzRCY2lOUUFLQUFBUU5RTEhPclBnQ0lBQUlnQUFnQUFLQUFBaUFBQ0FBQ0lBQUNBQUNnQUFJZ0FBZ0FBaUFBQWdBQW9BQUNJQUFJQUFJZ0FBSUFBS0FBQXlFSDROOGFiK1p1VEFGQUFId1ZSQytDZ0lCUUFBRVFBQVFBQVRBN3dINFdXQUVBQUVRQUQ4SWd3QWdBRzRFY2dzUUFvQUF1QkhJTFVBSUFBSXdERzJkV1BxZEFBc0FBaEF4QUk0QkhBQUlBQUlRTkFDT0FSd0FDQUFDRURRQW5nYXcveU1BQ0VEY0FOZ0ZzdjhqQUFoQTBBRDRkWGo3UHdLQUFBUU5nSHVCbG5udWVoUUFCQ0JvQUxibFBPenFmOWhOWEl3Q2dBREVEVURrbytCdE9YY3hDZ0FDRURvQSs4MHM0T3JmMW9rclVRQVFnT2dCbUM1V0FVOEN2UDBYQUFSQUFDS2VCTmo5RndBRVFBQ0MzZzdrNWg4QlFBQUVJT0l6QWI3N1V3QVFBQUdJZUJyYzFva2YveElBQkVBQUltNEUyZndSQUFSQUFDSnVCTm44RVFBRVFBQmUvZXVNOUd1aWZlMlBBQ0FBQW5EZStMNGwxTmEvQUNBQUFoQ3hBVlovQVVBQUJDQm9BNnorQW9BQUNFREVCdmpCTHdGQUFBUWdYQVBhT25IVHB3QWdBQUlRcmdIMi9RVUFBUkNBaUE4SkgzWVRxNzhBSUFBQ2NNM25Bd2J4bkxDbnZRUUFBUkNBNjVzdVZvZmRwTS9iUG81OEJRQUJFSUFiNnVlUEJ6UlZhdHRIQUJBQUFlamlvMEIvVG9iZDdTTUFDSUFBZEcyWjUrKzdJOVRXaVY5MkZBQUVRQUJpWmNEU0x3QUlnQUQwS0FQZDNDcDYyRTJjOUFvQUFpQUFQYjFiOUJiSEE0ZmRaRnZPSGZNS0FBSWdBTU1vd1g0enUyUjNxSzJUcGtxTGRXYmRSd0FFUUFBR3ZFRjA3RUZUcFVjbjEvcWpZcDNaNUVFQUJFQUFBQUVRQUFFQUFVQUFCQUFFQUFFUUFCQUFCRUFBUUFBUUFBRUFBVUFBQkFBRUFBRVFBQkFBQkVBQVFBQVFBQUVBQVVBQUJBQUVBQUVRQUJBQUJFQUFRQUFRQUFFQUFVQUFBQUZBQUFBQlFBQUFBVUFBQUFGQUFBQUJRQUFBQVJBQUFRQUVRQUFFQUJBQUFSQUFRQUFFUUFBQUFSQUFBUUFCOENvSWdBQ0FBQ0FBQWdBQ2dBQUlBQWdBQWlBQUlBQUlnQUNBQUNBQUFnQUNnQUFJQUFnQUFpQUFJQUFJZ0FDQUFDQUFBZ0FDZ0FBSUFBZ0FBaUFBSUFBSUFDQUFDQUFnQUFnQUlBQUlBQ0FBQ0FBZ0FBZ0FJQUFJQUNBQUFpQUFnQUFJZ0FBQUFpQUFBZ0FJZ0FBSUFDQUFBaUFBSUFBSWdBQ0FBQ0FBQWdBQ2dBQUlBQWdBQWlBQUlBQUlnQUNBQUNBQUFnQUNnQUFJQUFnQUFpQUFJQUFJZ0FDQUFDQUFBZ0FDZ0FBSUFBZ0FBaUFBSUFBSUFDQUFDQUFnQUFnQUlBQUlBQ0FBQ0FBZ0FBZ0FJQUFDSUFDQUFBaUFBQUFDSUFBQ0FBaUFBQWdBSUFBQ0lBQWdBRjRGQVJBQUVBQUVRQUJBQUJBQUFRQUJRQUFFQUFRQUFSQUFFQUFFUUFCQUFCQUFBUUFCUUFBRUFBUUFBUkFBRUFBRVFBQkFBQkFBQVFBQlFBQUVBQVFBQVFBRUFBRUFCQUFCQUFRQUFRQUVBQUVBQkFBQkFBUUFBUUFFUUFBRUFCQUFBUkFBUUFBRVFBQUFBUkFBQVFBRVFBQUVBQVFBQVJBQUVBQUVRQUJBQUJBQUFRQUJRQUFFQUFRQUFSQUFFQUFFUUFCQUFCQUFBUUFCUUFBRUFBUUFBUkFBRUFBRVFBQkFBQkFBQVFBQlFBRDg3VUFBRUFCQUFCQUFRQUFRQUVBQUVBQkFBQkFBUUFBUUFFQUFCRUFBQUFFUUFBRUFCRUFBQkFBUUFBSG80eFQzRHd6RjlQTTMxNW9BSUFBbTRoVDNENjQxQVVBQWpBQWdBQWlBRVFBRUFBRXdBb0FBSUFCR0FCQUFCTUFJQUFLQUFCZ0JRQUFRQUNNQUNBQUNZQVFBQVVBQWpBQWdBQWlBRVFBRUFBRXdBb0FBSUFCR0FCQUFCTUFJQUFLQUFCZ0JRQUFFd0JnQlFBQUV3QmdCUUFBRXdCZ0JRQUFFd0JnQlFBQUV3QmdCRUFBRXdCZ0JFQUFFd0JnQkVBQUV3QmdCRUFBRXdCZ0JFQUFFd0FnQUFvQUFHQUZBQUJBQUl3QUlBQUpnQkFBQlFBQ01BQ0FBQ0lBUkFBUUFBVEFDZ0FBZ0FFWUFFQUFFd0FnQUFvQUFHQUZBQUJBQUl3QUlBQUpnQkFBQlFBQ01BQ0FBQ0lBUkFBUkFBSXdSQUFSQUFJd1JBQVJBQUl3UkFBUkFBSXdSQUFSQUFJd1JBQUh3S2dpQU1RSWdBQWlBTVFJZ0FBaUFNUUlnQUFpQU1RSWdBQWlBRVFDWG13QWdBRVlBRUFBRXdBZ0FBb0FBR0FGQUFCQUFJd0FJQUFKZ0JBQUJRQUNNQUNBQUNJQVJBQVFBQVRBQ2dBQWdBRVlBRUFBRXdBZ0FBb0FBR0FGQUFCQUFJd0FJQUFKZ0JBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFnc3Q4SXNGK3hqampJZXdBQUFBQkpSVTVFcmtKZ2dnPT0iLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIiwicHVycG9zZSI6ImFueSJ9LHsic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhacFpYZENiM2c5SWpBZ01DQTFNVElnTlRFeUlqNDhjbVZqZENCM2FXUjBhRDBpTlRFeUlpQm9aV2xuYUhROUlqVXhNaUlnWm1sc2JEMGlJekV5TXpVMVlpSXZQanh5WldOMElIZzlJakUxTXk0MklpQjVQU0l4TURJdU5DSWdkMmxrZEdnOUlqWXhMalFpSUdobGFXZG9kRDBpTWpnMkxqY2lJSEo0UFNJeE1pSWdabWxzYkQwaUkyWm1aaUl2UGp4eVpXTjBJSGc5SWpFMU15NDJJaUI1UFNJek1qY3VOeUlnZDJsa2RHZzlJakl3TkM0NElpQm9aV2xuYUhROUlqWXhMalFpSUhKNFBTSXhNaUlnWm1sc2JEMGlJMlptWmlJdlBqeGphWEpqYkdVZ1kzZzlJak15Tnk0M0lpQmplVDBpTVRZekxqZ2lJSEk5SWpRMkxqRWlJR1pwYkd3OUlpTm1aamxtTVdNaUx6NDhMM04yWno0PSIsInNpemVzIjoiYW55IiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
+<style>:root {
+  --bg: #f4f6fb; --fg: #182033; --card: #ffffff; --mut: #5b6478; --pri: #2457d6; --pri-fg: #ffffff;
+  --ok: #167a47; --okbg: #e3f6ec; --bad: #b3261e; --badbg: #fde8e6; --line: #dfe3ee; --warnbg: #fff3d1; --infobg: #e6efff;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1220; --fg: #e8ecf6; --card: #171c2e; --mut: #9aa4bd; --pri: #7aa2ff; --pri-fg: #0b1020;
+    --ok: #5fd694; --okbg: #12301f; --bad: #ff8a80; --badbg: #3a1714; --line: #2a3250; --warnbg: #3a3010; --infobg: #172547;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1220; --fg: #e8ecf6; --card: #171c2e; --mut: #9aa4bd; --pri: #7aa2ff; --pri-fg: #0b1020;
+  --ok: #5fd694; --okbg: #12301f; --bad: #ff8a80; --badbg: #3a1714; --line: #2a3250; --warnbg: #3a3010; --infobg: #172547;
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 17px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+}
+#app { max-width: 640px; margin: 0 auto; padding: 12px 16px calc(84px + env(safe-area-inset-bottom)); }
+h1 { font-size: 26px; margin: 0; }
+h2 { font-size: 19px; margin: 20px 0 10px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+p { margin: 6px 0; }
+.sub { color: var(--mut); font-size: 15px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin: 12px 0; }
+.card h2:first-child { margin-top: 2px; }
+
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+:focus-visible { outline: 3px solid var(--pri); outline-offset: 2px; }
+
+.btn {
+  min-height: 48px; min-width: 48px; padding: 10px 18px; border-radius: 14px; border: 1px solid var(--line);
+  background: var(--card); font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn.primary { background: var(--pri); color: var(--pri-fg); border-color: var(--pri); }
+.btn.danger { background: var(--bad); color: #fff; border-color: var(--bad); }
+.btn.ghost { background: transparent; }
+.btn.big { width: 100%; min-height: 56px; font-size: 20px; margin: 8px 0; }
+.btn.small { min-height: 44px; padding: 6px 14px; }
+.btn.play { background: var(--infobg); border-color: var(--pri); }
+.filebtn { position: relative; overflow: hidden; }
+.file { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+.icon-btn {
+  min-width: 48px; min-height: 48px; border-radius: 50%; border: 1px solid var(--line); background: var(--card);
+  display: inline-flex; align-items: center; justify-content: center; padding: 0;
+}
+.row { display: flex; gap: 10px; align-items: center; margin: 12px 0; flex-wrap: wrap; }
+.row .btn { flex: 1 1 auto; }
+.row.wrap { flex-wrap: wrap; }
+
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); }
+.seg button { min-height: 44px; min-width: 48px; padding: 6px 14px; border: 0; background: transparent; font-weight: 600; }
+.seg button.on { background: var(--pri); color: var(--pri-fg); }
+.setting { margin: 14px 0; }
+.setting > label { display: block; font-weight: 600; margin-bottom: 6px; }
+.setting select { width: 100%; min-height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 0 10px; }
+.range { display: flex; align-items: center; gap: 12px; }
+.range input { flex: 1; min-height: 44px; }
+.range output { min-width: 56px; text-align: right; font-variant-numeric: tabular-nums; }
+.switch { display: flex; align-items: center; gap: 12px; min-height: 44px; }
+.switch input { width: 28px; height: 28px; }
+
+.note { background: var(--infobg); border-radius: 12px; padding: 10px 14px; margin: 10px 0; }
+.note:empty { display: none; }
+.note.bad { background: var(--badbg); color: var(--bad); }
+.banner { border-radius: 14px; padding: 10px 14px; margin: 8px 0; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; }
+.banner p { margin: 2px 0; flex-basis: 100%; }
+.banner.info { background: var(--infobg); }
+.banner.warn { background: var(--warnbg); }
+.banner.bad { background: var(--badbg); color: var(--fg); border: 1px solid var(--bad); }
+
+.hero { display: flex; align-items: center; gap: 16px; }
+.ring-bg { stroke: var(--line); }
+.ring-fg { stroke: var(--pri); }
+.ring-num { fill: var(--fg); font-weight: 700; }
+.ring-sub { fill: var(--mut); }
+.stats { display: flex; gap: 14px; flex: 1; justify-content: space-around; }
+.stat { text-align: center; min-width: 64px; }
+.stat-v { font-size: 24px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 4px; }
+.stat-l { color: var(--mut); font-size: 13px; }
+.stat-v svg { color: #e8710a; }
+
+.path { display: flex; flex-direction: column; gap: 10px; }
+.unit {
+  display: flex; align-items: center; gap: 14px; text-align: left; width: 100%; min-height: 72px; padding: 12px 14px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+}
+.unit.locked { opacity: .65; }
+.unit-n { width: 44px; height: 44px; border-radius: 50%; background: var(--pri); color: var(--pri-fg); display: flex; align-items: center; justify-content: center; font-weight: 700; flex: none; }
+.unit.locked .unit-n { background: var(--line); color: var(--mut); }
+.unit-b { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+.unit-t { font-weight: 700; }
+.unit-s { color: var(--mut); font-size: 14px; }
+.pbar { display: block; height: 10px; background: var(--line); border-radius: 6px; overflow: hidden; }
+.pbar.grow { flex: 1; }
+.pbar .fill { display: block; height: 100%; background: var(--pri); border-radius: 6px; transition: width .25s; width: 0; }
+
+.sess-head { display: flex; align-items: center; gap: 12px; padding: 6px 0 14px; }
+.stage { min-height: 60vh; }
+.ex { margin: 6px 0; }
+.lead { color: var(--mut); font-weight: 600; }
+.prompt { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
+.big { font-size: 24px; font-weight: 700; }
+.big2 { font-size: 20px; }
+.blank { display: inline-block; min-width: 64px; border-bottom: 3px solid var(--pri); text-align: center; }
+.blank.good { color: var(--ok); }
+.blank.bad { color: var(--bad); }
+.opts { display: grid; gap: 10px; margin: 14px 0; }
+.opt { min-height: 56px; padding: 10px 14px; text-align: left; border-radius: 14px; border: 2px solid var(--line); background: var(--card); font-size: 18px; }
+.opt.good { border-color: var(--ok); background: var(--okbg); }
+.opt.bad { border-color: var(--bad); background: var(--badbg); }
+.slots { min-height: 64px; border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; align-content: flex-start; }
+.slots.good { border-color: var(--ok); }
+.slots.bad { border-color: var(--bad); }
+.bank { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; min-height: 56px; }
+.tile { min-height: 48px; min-width: 48px; padding: 8px 14px; border-radius: 12px; border: 2px solid var(--line); background: var(--card); font-size: 18px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; }
+.tile.ghost { background: var(--line); color: transparent; border-color: transparent; }
+.tile.hint { border-color: var(--pri); box-shadow: 0 0 0 3px var(--infobg); }
+.tile.placed { background: var(--infobg); }
+.field { width: 100%; min-height: 52px; border-radius: 14px; border: 2px solid var(--line); background: var(--card); padding: 0 14px; font-size: 20px; margin: 12px 0 6px; }
+.keys { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.key { min-width: 44px; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); font-size: 18px; }
+.hintline:empty { display: none; }
+
+.feedback { position: sticky; bottom: calc(8px + env(safe-area-inset-bottom)); margin-top: 18px; border-radius: 16px; padding: 12px 16px; border: 2px solid var(--line); background: var(--card); }
+.feedback[hidden] { display: none; }
+.feedback.ok { background: var(--okbg); border-color: var(--ok); }
+.feedback.bad { background: var(--badbg); border-color: var(--bad); }
+.fb-t { font-size: 20px; font-weight: 700; }
+.xp { color: var(--ok); font-weight: 700; }
+
+#nav {
+  position: fixed; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; gap: 4px; background: var(--card);
+  border-top: 1px solid var(--line); padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+}
+#nav[hidden] { display: none; }
+.navlink { flex: 1; max-width: 200px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; color: var(--mut); font-size: 12px; border-radius: 12px; }
+.navlink.on { color: var(--pri); font-weight: 700; }
+
+.bar { fill: var(--pri); }
+.axis { fill: var(--mut); }
+.goal-line { stroke: var(--ok); stroke-width: 1.5; }
+.hm { fill: var(--pri); }
+.hm.e { fill: var(--line); }
+.import-box:empty, .wipe-box:empty { display: none; }
+.import-box { background: var(--infobg); border-radius: 12px; padding: 10px 14px; margin: 10px 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="banners"></div>
+<main id="view" tabindex="-1"></main>
+<nav id="nav" aria-label="Hauptnavigation"></nav>
+</div>
+<noscript><p style="padding:16px">LingoForge benötigt JavaScript.</p></noscript>
+<script>var LF = {};
+/* Norm: Normalisierung, Toleranzprüfung und Tokenisierung (rein, ohne DOM). */
+(function (root) {
+  'use strict';
+
+  var PUNCT = /[¿¡.,;:!?"“”„«»()\[\]…]/g;
+
+  // Kanonische Form: NFC, typografische Apostrophe -> ', Ligaturen aufgelöst,
+  // Satzzeichen (inkl. Spanisch-Zeichen) und Bindestriche -> Leerzeichen, klein, getrimmt.
+  function canon(s) {
+    s = String(s == null ? '' : s).normalize('NFC');
+    s = s.replace(/[‘’ʼ´`]/g, "'");
+    s = s.replace(/œ/g, 'oe').replace(/Œ/g, 'OE').replace(/æ/g, 'ae').replace(/Æ/g, 'AE');
+    s = s.replace(PUNCT, ' ').replace(/[‐-―-]/g, ' ');
+    return s.toLowerCase().replace(/\s+/g, ' ').trim();
+  }
+
+  // Akzente entfernen (NFD), ñ bleibt Buchstabe.
+  function fold(s) {
+    return String(s).replace(/ñ/g, '\u0001').normalize('NFD')
+      .replace(/[̀-ͯ]/g, '').replace(//g, 'ñ').normalize('NFC');
+  }
+
+  function lev(a, b) {
+    if (a === b) return 0;
+    var m = a.length, n = b.length;
+    if (!m) return n;
+    if (!n) return m;
+    var prev = new Array(n + 1), cur = new Array(n + 1), i, j;
+    for (j = 0; j <= n; j++) prev[j] = j;
+    for (i = 1; i <= m; i++) {
+      cur[0] = i;
+      for (j = 1; j <= n; j++) {
+        var c = a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1;
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + c);
+      }
+      var t = prev; prev = cur; cur = t;
+    }
+    return prev[n];
+  }
+
+  // Länge <=3: 0, <=7: 1, sonst 2 Tippfehler.
+  function maxTypos(len) { return len <= 3 ? 0 : (len <= 7 ? 1 : 2); }
+
+  // Ergebnis: 'exact' | 'accentOnly' | 'typo' | 'wrong'
+  // strict:true = keine Tippfehler und keine Akzentabweichung.
+  function check(input, item) {
+    var cands = [item.tgt].concat(item.alt || []);
+    var strict = !!item.strict;
+    var ci = canon(input);
+    if (!ci) return 'wrong';
+    var fi = fold(ci), best = 'wrong';
+    for (var k = 0; k < cands.length; k++) {
+      var cc = canon(cands[k]);
+      if (ci === cc) return 'exact';
+      if (strict) continue;
+      var fc = fold(cc);
+      if (fi === fc) best = 'accentOnly';
+      else if (best !== 'accentOnly' && lev(fi, fc) <= maxTypos(fc.length)) best = 'typo';
+    }
+    return best;
+  }
+
+  // Zielsatz in Wörter zerlegen (Rand-Satzzeichen weg, Apostrophe/Bindestriche bleiben).
+  function tokenize(s) {
+    return String(s).split(/\s+/).map(function (w) {
+      return w.replace(/^[¿¡"“«(]+/, '').replace(/[.,;:!?"”»)…]+$/, '');
+    }).filter(Boolean);
+  }
+
+  // Hinweis: erster Buchstabe je Wort, Rest als Unterstrich.
+  function hintMask(tgt) {
+    return tokenize(tgt).map(function (w) {
+      var out = '', first = true;
+      for (var i = 0; i < w.length; i++) {
+        var ch = w.charAt(i);
+        if (/[\p{L}\p{N}]/u.test(ch)) { out += first ? ch : '_'; first = false; } else out += ch;
+      }
+      return out;
+    }).join(' ');
+  }
+
+  var api = { canon: canon, fold: fold, lev: lev, maxTypos: maxTypos, check: check, tokenize: tokenize, hintMask: hintMask };
+  if (typeof module === 'object' && module.exports) module.exports = api; else root.LF.Norm = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Fsrs: FSRS-5 (Standardgewichte), rein, ohne DOM. */
+(function (root) {
+  'use strict';
+
+  var W = [0.40255, 1.18385, 3.173, 15.69105, 7.1949, 0.5345, 1.4604, 0.0046, 1.54575, 0.1192,
+    1.01925, 1.9395, 0.11, 0.29605, 2.2698, 0.2315, 2.9898, 0.51655, 0.6621];
+  var DECAY = -0.5, FACTOR = 19 / 81, MAX_INTERVAL = 36500, DAY = 86400000, MIN_S = 0.01;
+
+  function clamp(x, a, b) { return Math.min(b, Math.max(a, x)); }
+
+  function retrievability(t, s) { return Math.pow(1 + FACTOR * t / s, DECAY); }
+
+  // Intervall in Tagen für Ziel-Retention r (bei 0.9 gilt I = S).
+  function intervalFor(s, r) { return s / FACTOR * (Math.pow(r || 0.9, 1 / DECAY) - 1); }
+
+  function initS(g, w) { return Math.max(w[g - 1], MIN_S); }
+  function initD(g, w) { return clamp(w[4] - Math.exp(w[5] * (g - 1)) + 1, 1, 10); }
+
+  function nextD(d, g, w) {
+    var delta = -w[6] * (g - 3);
+    var damped = d + delta * (10 - d) / 9;
+    return clamp(w[7] * initD(4, w) + (1 - w[7]) * damped, 1, 10);
+  }
+
+  function recallS(s, d, r, g, w) {
+    var hard = g === 2 ? w[15] : 1, easy = g === 4 ? w[16] : 1;
+    return s * (1 + Math.exp(w[8]) * (11 - d) * Math.pow(s, -w[9]) * (Math.exp(w[10] * (1 - r)) - 1) * hard * easy);
+  }
+
+  function forgetS(s, d, r, w) {
+    var v = w[11] * Math.pow(d, -w[12]) * (Math.pow(s + 1, w[13]) - 1) * Math.exp(w[14] * (1 - r));
+    return Math.min(v, s);
+  }
+
+  // Kurzzeit-Stabilität (Wiederholung am selben Tag).
+  function shortS(s, g, w) { return s * Math.exp(w[17] * (g - 3 + w[18])); }
+
+  function dayStart(ts) { var d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+
+  function initCard(id, lang, unit, now) {
+    return { id: id, lang: lang, unit: unit, state: 0, due: now || 0, stability: 0, difficulty: 0,
+      lastReview: 0, reps: 0, lapses: 0, introducedAt: now || 0 };
+  }
+
+  function cardRetrievability(card, now) {
+    if (!card.stability || !card.lastReview) return 1;
+    return retrievability(Math.max(0, (now - card.lastReview) / DAY), card.stability);
+  }
+
+  // State: 0 neu, 1 lernen, 2 wiederholen, 3 neu lernen. Rating 1..4.
+  function review(card, rating, now, opts) {
+    opts = opts || {};
+    var w = opts.w || W, ret = opts.retention || 0.9;
+    var c = {}; for (var k in card) if (Object.prototype.hasOwnProperty.call(card, k)) c[k] = card[k];
+    var prevS = card.stability, prevD = card.difficulty;
+    var elapsed = card.lastReview ? Math.max(0, (now - card.lastReview) / DAY) : 0;
+    var s, d;
+    if (card.state === 0 || !card.stability) {
+      s = initS(rating, w); d = initD(rating, w);
+    } else {
+      var r = retrievability(elapsed, card.stability);
+      d = nextD(card.difficulty, rating, w);
+      if (elapsed < 1) s = shortS(card.stability, rating, w);
+      else if (rating === 1) s = forgetS(card.stability, card.difficulty, r, w);
+      else s = recallS(card.stability, card.difficulty, r, rating, w);
+    }
+    s = Math.max(s, MIN_S);
+    var interval;
+    if (rating === 1) {
+      c.due = now + 10 * 60000; interval = 0;
+    } else {
+      interval = clamp(Math.round(intervalFor(s, ret)), 1, MAX_INTERVAL);
+      c.due = dayStart(now + interval * DAY);
+    }
+    if (rating === 1 && card.state === 2) c.lapses = (card.lapses || 0) + 1;
+    c.state = rating === 1 ? (card.state === 0 ? 1 : 3) : 2;
+    c.stability = s; c.difficulty = d; c.lastReview = now; c.reps = (card.reps || 0) + 1;
+    return { card: c, interval: interval, log: { prevS: prevS, prevD: prevD, elapsedDays: elapsed } };
+  }
+
+  var api = { W: W, DECAY: DECAY, FACTOR: FACTOR, MAX_INTERVAL: MAX_INTERVAL, DAY: DAY,
+    retrievability: retrievability, intervalFor: intervalFor, initS: initS, initD: initD, nextD: nextD,
+    recallS: recallS, forgetS: forgetS, shortS: shortS, initCard: initCard, review: review,
+    cardRetrievability: cardRetrievability, dayStart: dayStart };
+  if (typeof module === 'object' && module.exports) module.exports = api; else root.LF.Fsrs = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Game: Bewertung, XP, Serie, Einheiten-Freischaltung, Statistik (rein). */
+(function (root) {
+  'use strict';
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function dateKey(ts) {
+    var d = new Date(ts);
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+  function addDays(key, n) {
+    var p = key.split('-');
+    return dateKey(new Date(+p[0], +p[1] - 1, +p[2] + n).getTime());
+  }
+
+  // Serie: ein Tag zählt bei goalMet (lokale Zeit). Heute offen -> ab gestern zählen.
+  function streak(daily, todayKey) {
+    var cur = 0, k = todayKey;
+    if (!(daily[k] && daily[k].goalMet)) k = addDays(k, -1);
+    while (daily[k] && daily[k].goalMet) { cur++; k = addDays(k, -1); }
+    var keys = Object.keys(daily).filter(function (x) { return daily[x].goalMet; }).sort();
+    var best = 0, run = 0, prev = null;
+    keys.forEach(function (x) {
+      run = prev && addDays(prev, 1) === x ? run + 1 : 1;
+      if (run > best) best = run;
+      prev = x;
+    });
+    return { current: cur, best: Math.max(best, cur) };
+  }
+
+  // Schwellen (ms): slow -> Hard, fast -> Easy (nur Produktion).
+  function thresholds(ex, item) {
+    var n = item.tokens ? item.tokens.length : 1, len = String(item.tgt).length;
+    if (ex === 'tiles') return { slow: 8000 + 3000 * n, fast: 2000 + 1500 * n };
+    if (ex === 'typing' || ex === 'dictation') {
+      return { slow: Math.min(60000, 10000 + 700 * len), fast: 2500 + 250 * len };
+    }
+    if (ex === 'shadow') return { slow: 120000, fast: 0 };
+    return { slow: 12000, fast: 0 };
+  }
+
+  // o: {ex,item,correct,check,hint,ms,easyBtn,selfRating}
+  function rating(o) {
+    if (o.selfRating) return o.selfRating;
+    if (!o.correct) return 1;
+    if (o.hint || o.check === 'typo' || o.check === 'accentOnly') return 2;
+    var t = thresholds(o.ex, o.item);
+    if (o.ms > t.slow) return 2;
+    if (o.easyBtn) return 4;
+    if (t.fast && o.ms < t.fast && o.check === 'exact') return 4;
+    return 3;
+  }
+
+  // XP: 10 je richtiger Erstantwort, +5 ab der 3. richtigen in Folge.
+  function xpForAnswer(correct, runAfter) { return correct ? 10 + (runAfter >= 3 ? 5 : 0) : 0; }
+  var SESSION_BONUS = 20;
+
+  function unitStats(unit, cards) {
+    var total = unit.items.length, introduced = 0, mastered = 0;
+    unit.items.forEach(function (it) {
+      var c = cards[it.id];
+      if (c && c.state > 0) {
+        introduced++;
+        if (c.state === 2 && c.stability >= 5) mastered++;
+      }
+    });
+    return { total: total, introduced: introduced, mastered: mastered, ratio: total ? mastered / total : 0 };
+  }
+
+  // Einheit n+1 frei ab 60 % gemeisterter Items von n (oder alles frei).
+  function unlocked(content, cards, unlockAll) {
+    return content.units.map(function (u, i) {
+      if (i === 0 || unlockAll) return true;
+      return unitStats(content.units[i - 1], cards).ratio >= 0.6;
+    });
+  }
+
+  // Anteil Erinnerung bei Wiederholungen (prevS > 0) in den letzten days Tagen.
+  function retention(log, now, days) {
+    var from = now - days * 86400000, n = 0, ok = 0;
+    log.forEach(function (r) {
+      if (r.ts >= from && r.prevS > 0) { n++; if (r.rating > 1) ok++; }
+    });
+    return n ? { n: n, value: ok / n } : { n: 0, value: null };
+  }
+
+  // Backup-Erinnerung: >=50 Reviews seit Backup oder >=7 Tage (mit >=1 Review).
+  function backupDue(meta, now) {
+    var since = (meta.totalReviews || 0) - (meta.reviewsAtBackup || 0);
+    var ref = meta.lastBackup || meta.firstUse || now;
+    if (since >= 50) return true;
+    return since >= 1 && now - ref >= 7 * 86400000;
+  }
+
+  var api = { dateKey: dateKey, addDays: addDays, streak: streak, thresholds: thresholds, rating: rating,
+    xpForAnswer: xpForAnswer, SESSION_BONUS: SESSION_BONUS, unitStats: unitStats, unlocked: unlocked,
+    retention: retention, backupDue: backupDue };
+  if (typeof module === 'object' && module.exports) module.exports = api; else root.LF.Game = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Sched: Sitzungsaufbau (rein). 15 Schritte, Mix Wiederholung/Neues, Interleaving. */
+(function (root) {
+  'use strict';
+  var isNode = typeof module === 'object' && module.exports;
+  var Fsrs = isNode ? require('./fsrs.js') : root.LF.Fsrs;
+  var Game = isNode ? require('./game.js') : root.LF.Game;
+
+  function newBudget(newPerDay, doneToday, backlog) {
+    var b = Math.max(0, newPerDay - doneToday);
+    if (backlog > 30) return 0;
+    if (backlog > 15) return Math.floor(b / 2);
+    return b;
+  }
+
+  function dueCount(cards, now) {
+    var n = 0;
+    for (var id in cards) if (cards[id].state > 0 && cards[id].due <= now) n++;
+    return n;
+  }
+
+  function tilesOk(item) { return item.tokens.length >= 2 && item.distractors.length >= 2; }
+
+  // Übungstypen nach Stabilität. card=null/State 0 -> Erkennen.
+  function exCandidates(item, card, voice) {
+    var s = card && card.state > 0 ? card.stability : 0, word = item.kind === 'word', list = [];
+    if (s < 2) {
+      list.push('choice');
+      if (tilesOk(item) && !word) list.push('tiles');
+      if (voice) list.push('listenChoice');
+    } else if (s <= 10) {
+      if (item.cloze) list.push('cloze');
+      if (tilesOk(item)) list.push('tiles');
+      if (voice && !word) list.push('shadow');
+      if (!list.length) list = ['typing', 'choice'];
+    } else {
+      list.push('typing');
+      if (voice) list.push('dictation');
+    }
+    return list;
+  }
+
+  function pickFrom(list, forbidden, prev, rng) {
+    var ok = list.filter(function (e) { return !forbidden(e); });
+    if (!ok.length) ok = ['typing', 'choice'].filter(function (e) { return !forbidden(e); });
+    var pref = ok.filter(function (e) { return e !== prev; });
+    var pool = pref.length ? pref : ok;
+    return pool[Math.floor(rng() * pool.length)];
+  }
+
+  function assignExercises(steps, o) {
+    var h1 = null, h2 = null, rng = o.rng || Math.random;
+    steps.forEach(function (st) {
+      if (st.type !== 'ex') return;
+      var item = o.content.byId[st.id], card = o.cards[st.id];
+      var list = exCandidates(item, st.retry ? null : card, o.hasVoice);
+      st.ex = pickFrom(list, function (e) { return h1 === e && h2 === e; }, h2, rng);
+      var s = card && card.state > 0 ? card.stability : 0;
+      st.dir = (st.retry || s < 1) ? 'tgt2de' : 'de2tgt';
+      h1 = h2; h2 = st.ex;
+    });
+    return steps;
+  }
+
+  // Fehler: Item 3-4 Positionen später erneut (ohne FSRS-Update). idx = aktuelle Position.
+  function insertRetry(steps, idx, item, o) {
+    var rng = o.rng || Math.random;
+    var pos = Math.min(steps.length, idx + 3 + (rng() < 0.5 ? 0 : 1));
+    var list = exCandidates(item, null, o.hasVoice);
+    function ex(i) { return steps[i] && steps[i].type === 'ex' ? steps[i].ex : null; }
+    function forbidden(e) {
+      return (ex(pos - 1) === e && ex(pos - 2) === e) || (ex(pos - 1) === e && ex(pos) === e) ||
+        (ex(pos) === e && ex(pos + 1) === e);
+    }
+    var step = { id: item.id, type: 'ex', retry: true, tries: (o.tries || 0) + 1, dir: 'tgt2de' };
+    step.ex = pickFrom(list, forbidden, ex(pos - 1), rng);
+    steps.splice(pos, 0, step);
+    return pos;
+  }
+
+  // Neue Items in Blöcken (>=3 je Block, Rest in den letzten Block): erst alle Intros, dann die Übungen
+  // in gleicher Reihenfolge -> Abstand = Blockgröße. Kleine Blöcke bekommen Wiederholungen als Füller.
+  // Übrige Wiederholungen werden gleichmäßig davor, dazwischen und danach verteilt.
+  function orderSteps(reviews, newIds, content) {
+    var rq = reviews.map(function (c) { return { id: c.id, type: 'ex', unit: content.byId[c.id].unit }; });
+    var out = [], lastUnit = null, groups = [];
+    function push(step) { lastUnit = content.byId[step.id].unit; delete step.unit; out.push(step); }
+    function takeReview() {
+      var lim = Math.min(4, rq.length);
+      for (var k = 0; k < lim; k++) if (rq[k].unit !== lastUnit) return rq.splice(k, 1)[0];
+      return rq.shift();
+    }
+    if (newIds.length < 3) { if (newIds.length) groups.push(newIds.slice()); }
+    else {
+      var k = Math.floor(newIds.length / 3), at = 0, g;
+      for (g = 0; g < k; g++) {
+        var size = g === k - 1 ? newIds.length - at : 3;
+        groups.push(newIds.slice(at, at + size)); at += size;
+      }
+    }
+    var fillers = 0;
+    groups.forEach(function (g) { fillers += Math.max(0, 3 - g.length); });
+    var rem = Math.max(0, rq.length - fillers), slots = groups.length + 1;
+    for (var s = 0; s < slots; s++) {
+      var n = Math.floor(rem / slots) + (s < rem % slots ? 1 : 0);
+      while (n-- > 0 && rq.length) push(takeReview());
+      if (s < groups.length) {
+        var grp = groups[s];
+        grp.forEach(function (id) { push({ id: id, type: 'intro' }); });
+        for (var f = Math.max(0, 3 - grp.length); f > 0 && rq.length; f--) push(takeReview());
+        grp.forEach(function (id) { push({ id: id, type: 'ex', isNew: true }); });
+      }
+    }
+    while (rq.length) push(takeReview());
+    return out;
+  }
+
+  // o: {content, cards, settings{newPerDay,unlockAll}, newToday, now, rng, hasVoice, size, onlyUnit}
+  function buildSession(o) {
+    var size = o.size || 15, now = o.now, C = o.content, rng = o.rng || Math.random, cards = o.cards;
+    function inUnit(id) { return !o.onlyUnit || C.byId[id].unit === o.onlyUnit; }
+    function rOf(c) { return Fsrs.cardRetrievability(c, now); }
+    var all = [];
+    for (var id in cards) if (C.byId[id] && cards[id].state > 0) all.push(cards[id]);
+    var due = all.filter(function (c) { return c.due <= now; }).sort(function (a, b) { return rOf(a) - rOf(b); });
+    var backlog = due.length;
+    var dueSel = due.filter(function (c) { return inUnit(c.id); });
+    var early = all.filter(function (c) { return c.due > now && inUnit(c.id); })
+      .sort(function (a, b) { return rOf(a) - rOf(b); });
+    var budget = newBudget(o.settings.newPerDay, o.newToday || 0, backlog);
+    var open = Game.unlocked(C, cards, !!o.settings.unlockAll);
+    var cand = [];
+    C.units.forEach(function (u, i) {
+      if (!open[i] || (o.onlyUnit && u.id !== o.onlyUnit)) return;
+      u.items.forEach(function (it) { if (!cards[it.id] || cards[it.id].state === 0) cand.push(it.id); });
+    });
+    var nNew = Math.min(budget, cand.length, 2);
+    var want = size - 2 * nNew;
+    var reviews = dueSel.slice(0, want);
+    if (reviews.length < want) reviews = reviews.concat(early.slice(0, want - reviews.length));
+    var slots = size - reviews.length - 2 * nNew;
+    if (slots >= 2) nNew += Math.max(0, Math.min(Math.floor(slots / 2), budget - nNew, cand.length - nNew));
+    var steps = orderSteps(reviews, cand.slice(0, nNew), C);
+    assignExercises(steps, { content: C, cards: cards, hasVoice: !!o.hasVoice, rng: rng });
+    return { steps: steps, stats: { due: backlog, reviews: reviews.length, newItems: nNew, budget: budget } };
+  }
+
+  var api = { newBudget: newBudget, dueCount: dueCount, exCandidates: exCandidates,
+    assignExercises: assignExercises, insertRetry: insertRetry, buildSession: buildSession, tilesOk: tilesOk };
+  if (isNode) module.exports = api; else root.LF.Sched = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* ContentLib: baut Items aus kompakten Zeilen und validiert Inhalte (rein). */
+(function (root) {
+  'use strict';
+  var isNode = typeof module === 'object' && module.exports;
+  var Norm = isNode ? require('./norm.js') : root.LF.Norm;
+
+  var LANGS = { en: { name: 'Englisch', tts: 'en-GB' }, es: { name: 'Spanisch', tts: 'es-ES' },
+    fr: { name: 'Französisch', tts: 'fr-FR' } };
+
+  // Zentrale Schalter: aktive Lernsprachen. Reaktivierung: 'en','fr' ergänzen (Quelldateien bleiben erhalten,
+  // build.mjs bindet die content-Dateien dieser Liste ein).
+  var ENABLED_LANGS = ['es'];
+
+  function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function makeCloze(tgt, ci, dis) {
+    var chunks = tgt.split(/\s+/), chunk = chunks[ci];
+    if (chunk === undefined) throw new Error('Cloze-Index außerhalb: ' + tgt);
+    var m = /^([¿¡"“«(]*)(.*?)([.,;:!?"”»)…]*)$/.exec(chunk);
+    var text = chunks.map(function (c, i) { return i === ci ? m[1] + '___' + m[3] : c; }).join(' ');
+    return { text: text, answer: m[2], options: [m[2]].concat(dis.slice(0, 2)) };
+  }
+
+  // Zeile: [tgt, de, distraktoren('a b'), clozeIndex, {alt:[], strict:true, audio:''}]
+  function build(lang, units) {
+    var out = { lang: lang, name: LANGS[lang].name, tts: LANGS[lang].tts, units: [], items: [], byId: {} };
+    units.forEach(function (u, ui) {
+      var unit = { id: ui + 1, title: u.title, items: [] };
+      u.rows.forEach(function (r, ri) {
+        var tgt = r[0], dis = r[2] ? r[2].split(' ') : [], ci = r[3] === undefined ? -1 : r[3], ex = r[4] || {};
+        var tokens = Norm.tokenize(tgt);
+        var item = { id: lang + '.u' + (ui + 1) + '.i' + pad2(ri + 1), unit: ui + 1,
+          kind: tokens.length === 1 ? 'word' : 'sentence', tgt: tgt, de: r[1], alt: ex.alt || [],
+          tokens: tokens, distractors: dis, cloze: ci >= 0 ? makeCloze(tgt, ci, dis) : null,
+          strict: !!ex.strict, audio: ex.audio || tgt };
+        unit.items.push(item); out.items.push(item); out.byId[item.id] = item;
+      });
+      out.units.push(unit);
+    });
+    return out;
+  }
+
+  // Liefert Liste von Fehlermeldungen (leer = gültig).
+  function validate(c) {
+    var errs = [], seen = {};
+    function bad(it, msg) { errs.push((it.id || '?') + ': ' + msg); }
+    if (c.units.length !== 6) errs.push(c.lang + ': erwartet 6 Einheiten, gefunden ' + c.units.length);
+    c.units.forEach(function (u) {
+      if (!u.title) errs.push(c.lang + ' Einheit ' + u.id + ': Titel fehlt');
+      if (u.items.length < 10 || u.items.length > 14) errs.push(c.lang + ' Einheit ' + u.id + ': ' + u.items.length + ' Items');
+    });
+    c.items.forEach(function (it) {
+      if (seen[it.id]) bad(it, 'doppelte ID'); seen[it.id] = 1;
+      if (!/^[a-z]{2}\.u\d+\.i\d{2}$/.test(it.id)) bad(it, 'ID-Format');
+      ['tgt', 'de', 'audio'].forEach(function (f) { if (typeof it[f] !== 'string' || !it[f].trim()) bad(it, 'Feld ' + f + ' fehlt'); });
+      if (['word', 'sentence'].indexOf(it.kind) < 0) bad(it, 'kind');
+      if (!Array.isArray(it.alt) || !Array.isArray(it.tokens) || !Array.isArray(it.distractors)) { bad(it, 'Arrays fehlen'); return; }
+      if (typeof it.strict !== 'boolean') bad(it, 'strict');
+      if (Norm.canon(it.tokens.join(' ')) !== Norm.canon(it.tgt)) bad(it, 'tokens passen nicht zu tgt');
+      if (it.tokens.length !== it.tgt.split(/\s+/).length) bad(it, 'Tokenzahl weicht von Wortzahl ab');
+      if (it.tgt.indexOf('’') >= 0) bad(it, 'typografischer Apostroph in tgt');
+      var tokCanon = it.tokens.map(Norm.canon);
+      it.distractors.forEach(function (d) {
+        if (tokCanon.indexOf(Norm.canon(d)) >= 0) bad(it, 'Distraktor "' + d + '" steckt im Satz');
+      });
+      if (new Set(it.distractors.map(Norm.canon)).size !== it.distractors.length) bad(it, 'doppelte Distraktoren');
+      it.alt.forEach(function (a) { if (Norm.canon(a) === Norm.canon(it.tgt)) bad(it, 'alt gleicht tgt'); });
+      if (it.tokens.length >= 3 && (it.distractors.length < 2 || !it.cloze)) bad(it, 'Satz braucht >=2 Distraktoren und Cloze');
+      if (it.cloze) {
+        var cl = it.cloze;
+        if (it.distractors.length < 2) bad(it, 'Cloze braucht >=2 Distraktoren');
+        if (cl.text.split('___').length !== 2) bad(it, 'Cloze: genau eine Lücke');
+        if (cl.options.indexOf(cl.answer) < 0) bad(it, 'Cloze-Antwort fehlt in Optionen');
+        if (new Set(cl.options.map(Norm.canon)).size !== cl.options.length || cl.options.length !== 3) bad(it, 'Cloze-Optionen');
+        if (Norm.canon(cl.text.replace('___', cl.answer)) !== Norm.canon(it.tgt)) bad(it, 'Cloze ergibt nicht den Zielsatz');
+      }
+    });
+    return errs;
+  }
+
+  var api = { ENABLED_LANGS: ENABLED_LANGS, LANGS: LANGS, build: build, validate: validate, makeCloze: makeCloze };
+  if (isNode) module.exports = api; else root.LF.Lib = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Backup: Export-Format, validierter Import (Whitelist, __proto__-Abwehr, Größenlimit), Merge. */
+(function (root) {
+  'use strict';
+  var Lib = typeof module === 'object' && module.exports ? require('./content-lib.js') : root.LF.Lib;
+
+  var MAX_BYTES = 8 * 1024 * 1024;
+  var LIMITS = { reviewLog: 100000 };
+  var LANGS = ['en', 'es', 'fr'];
+  var ID_RE = /^[a-z]{2}\.u\d{1,2}\.i\d{1,3}$/;
+  var DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+  var BAD = ['__proto__', 'constructor', 'prototype'];
+
+  function fail(msg) { throw new Error(msg); }
+
+  function scan(v, depth) {
+    if (depth > 8) fail('Datei zu tief verschachtelt.');
+    if (v && typeof v === 'object') {
+      var keys = Object.keys(v);
+      for (var i = 0; i < keys.length; i++) {
+        if (BAD.indexOf(keys[i]) >= 0) fail('Unzulässiger Schlüssel in der Datei.');
+        scan(v[keys[i]], depth + 1);
+      }
+    }
+  }
+
+  function num(v, min, max, what) {
+    if (typeof v !== 'number' || !isFinite(v) || v < min || v > max) fail('Ungültiger Wert: ' + what);
+    return v;
+  }
+  function int(v, min, max, what) { return Math.round(num(v, min, max, what)); }
+  function str(v, re, what) { if (typeof v !== 'string' || !re.test(v)) fail('Ungültiger Wert: ' + what); return v; }
+  function lang(v) { if (LANGS.indexOf(v) < 0) fail('Ungültige Sprache.'); return v; }
+  function arr(v, max, what) {
+    if (v === undefined) return [];
+    if (!Array.isArray(v) || v.length > max) fail('Ungültige oder zu große Liste: ' + what);
+    return v;
+  }
+  function obj(v, what) { if (!v || typeof v !== 'object' || Array.isArray(v)) fail('Ungültiger Eintrag: ' + what); return v; }
+
+  function enabled(l) { return Lib.ENABLED_LANGS.indexOf(l) >= 0; }
+  function idLang(id, l) { if (id.indexOf(l + '.') !== 0) fail('Karten-ID passt nicht zur Sprache.'); return id; }
+
+  function card(c) {
+    obj(c, 'Karte');
+    return { id: idLang(str(c.id, ID_RE, 'Karten-ID'), lang(c.lang)), lang: lang(c.lang), unit: int(c.unit, 1, 99, 'Einheit'),
+      state: int(c.state, 0, 3, 'Status'), due: num(c.due, 0, 4e12, 'due'),
+      stability: num(c.stability, 0, 36500, 'Stabilität'), difficulty: num(c.difficulty, 0, 10, 'Schwierigkeit'),
+      lastReview: num(c.lastReview, 0, 4e12, 'lastReview'), reps: int(c.reps, 0, 1e6, 'reps'),
+      lapses: int(c.lapses, 0, 1e6, 'lapses'), introducedAt: num(c.introducedAt, 0, 4e12, 'introducedAt') };
+  }
+
+  function logRec(r) {
+    obj(r, 'Log');
+    return { cardId: str(r.cardId, ID_RE, 'Log-Karte'), lang: lang(r.lang), ts: num(r.ts, 0, 4e12, 'ts'),
+      rating: int(r.rating, 1, 4, 'rating'), exType: str(r.exType, /^[a-zA-Z]{1,16}$/, 'exType'),
+      prevS: num(r.prevS, 0, 36500, 'prevS'), prevD: num(r.prevD, 0, 10, 'prevD'),
+      elapsedDays: num(r.elapsedDays, 0, 40000, 'elapsedDays'), ms: num(r.ms, 0, 3.6e6, 'ms'),
+      hintUsed: r.hintUsed === true };
+  }
+
+  function dailyRec(d) {
+    obj(d, 'Tag');
+    return { date: str(d.date, DATE_RE, 'Datum'), lang: lang(d.lang), xp: int(d.xp, 0, 1e7, 'xp'),
+      reviews: int(d.reviews, 0, 1e7, 'reviews'), newItems: int(d.newItems, 0, 1e7, 'newItems'),
+      correct: int(d.correct, 0, 1e7, 'correct'), wrong: int(d.wrong, 0, 1e7, 'wrong'),
+      goalMet: d.goalMet === true, seconds: num(d.seconds, 0, 1e8, 'seconds') };
+  }
+
+  function settings(s) {
+    if (s === undefined) return null;
+    obj(s, 'Einstellungen');
+    var voices = {};
+    if (s.voices !== undefined) {
+      obj(s.voices, 'Stimmen');
+      LANGS.forEach(function (l) {
+        var v = s.voices[l];
+        if (typeof v === 'string' && v.length <= 200) voices[l] = v;
+      });
+    }
+    if (['auto', 'light', 'dark'].indexOf(s.theme) < 0) fail('Ungültiges Theme.');
+    if ([20, 30, 50].indexOf(s.goal) < 0) fail('Ungültiges Tagesziel.');
+    return { k: 'main', lang: enabled(lang(s.lang)) ? s.lang : Lib.ENABLED_LANGS[0], goal: s.goal, newPerDay: int(s.newPerDay, 0, 50, 'newPerDay'),
+      retention: num(s.retention, 0.8, 0.97, 'retention'), rate: num(s.rate, 0.4, 1.5, 'rate'),
+      theme: s.theme, unlockAll: s.unlockAll === true, voices: voices };
+  }
+
+  function make(data, now) {
+    return { app: 'LingoForge', version: 1, exportedAt: now, settings: data.settings, cards: data.cards,
+      reviewLog: data.reviewLog, daily: data.daily };
+  }
+
+  // Wirft Error mit deutscher Meldung. Liefert bereinigte Kopien (nie Originalobjekte).
+  function parse(text) {
+    if (typeof text !== 'string') fail('Keine Textdatei.');
+    if (text.length > MAX_BYTES) fail('Datei zu groß (max. 8 MB).');
+    var raw;
+    try { raw = JSON.parse(text); } catch (e) { fail('Keine gültige JSON-Datei.'); }
+    obj(raw, 'Datei');
+    scan(raw, 0);
+    if (raw.app !== 'LingoForge' || raw.version !== 1) fail('Das ist kein LingoForge-Backup (Version 1).');
+    var all = {
+      cards: arr(raw.cards, 5000, 'Karten').map(card),
+      reviewLog: arr(raw.reviewLog, LIMITS.reviewLog, 'Verlauf').map(logRec),
+      daily: arr(raw.daily, 20000, 'Tage').map(dailyRec)
+    };
+    // Daten deaktivierter Sprachen werden verworfen (Kopplung an ENABLED_LANGS).
+    var out = { settings: settings(raw.settings), discarded: 0 };
+    ['cards', 'reviewLog', 'daily'].forEach(function (k) {
+      out[k] = all[k].filter(function (x) { return enabled(x.lang); });
+      out.discarded += all[k].length - out[k].length;
+    });
+    var seen = {};
+    out.cards.forEach(function (c) { if (seen[c.id]) fail('Doppelte Karten-ID.'); seen[c.id] = 1; });
+    return out;
+  }
+
+  // Merge: neuere Review gewinnt; Log dedupliziert (cardId+ts); Tage: Maximum je Feld.
+  function mergeCards(existing, imported) {
+    var put = [];
+    imported.forEach(function (c) {
+      var e = existing[c.id];
+      if (!e || c.lastReview > e.lastReview || (e.state === 0 && c.state > 0)) put.push(c);
+    });
+    return put;
+  }
+  function mergeLog(existingLog, imported) {
+    var seen = {};
+    existingLog.forEach(function (r) { seen[r.cardId + '|' + r.ts] = 1; });
+    return imported.filter(function (r) { return !seen[r.cardId + '|' + r.ts]; });
+  }
+  function mergeDaily(existing, imported) {
+    return imported.map(function (d) {
+      var e = existing[d.date];
+      if (!e) return d;
+      return { date: d.date, lang: e.lang, xp: Math.max(e.xp, d.xp), reviews: Math.max(e.reviews, d.reviews),
+        newItems: Math.max(e.newItems, d.newItems), correct: Math.max(e.correct, d.correct),
+        wrong: Math.max(e.wrong, d.wrong), goalMet: !!(e.goalMet || d.goalMet),
+        seconds: Math.max(e.seconds, d.seconds) };
+    });
+  }
+
+  var api = { MAX_BYTES: MAX_BYTES, LIMITS: LIMITS, make: make, parse: parse, mergeCards: mergeCards, mergeLog: mergeLog,
+    mergeDaily: mergeDaily };
+  if (typeof module === 'object' && module.exports) module.exports = api; else root.LF.Backup = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Inhalt Spanisch. Zeile: [Ziel, Deutsch, Distraktoren, Cloze-Index, {alt, strict}] */
+(function (root) {
+  'use strict';
+  var isNode = typeof module === 'object' && module.exports;
+  var Lib = isNode ? require('./content-lib.js') : root.LF.Lib;
+
+  var data = Lib.build('es', [
+    { title: 'Begrüßung', rows: [
+      ["Hola", "Hallo"],
+      ["Adiós", "Auf Wiedersehen"],
+      ["Gracias", "Danke"],
+      ["Buenos días", "Guten Morgen", "noches tardes", 1, { alt: ["Buen día"] }],
+      ["Por favor", "Bitte", "Para Con", 0],
+      ["Me llamo Ana", "Ich heiße Ana", "llamas llama", 1],
+      ["Mucho gusto", "Freut mich", "Poco Muy", 0, { alt: ["Encantado", "Encantada"] }],
+      ["¿Cómo estás?", "Wie geht es dir?", "estoy estamos", 1, { alt: ["¿Qué tal?"] }],
+      ["Estoy bien, gracias", "Mir geht es gut, danke", "mal cansado", 1],
+      ["Hasta mañana", "Bis morgen", "ayer luego", 1],
+      ["¿De dónde eres?", "Woher kommst du?", "estás soy", 2, { alt: ["¿De dónde vienes?"] }],
+      ["Soy de Alemania", "Ich komme aus Deutschland", "Estoy Eres", 0]
+    ] },
+    { title: 'Alltag & Essen', rows: [
+      ["el agua", "das Wasser", "la los"],
+      ["el pan", "das Brot", "la los"],
+      ["la leche", "die Milch", "el los"],
+      ["Quiero un café", "Ich möchte einen Kaffee", "Quieres Quiere", 0, { alt: ["Me gustaría un café"] }],
+      ["Como una manzana", "Ich esse einen Apfel", "Comes Come", 0],
+      ["Ella bebe té", "Sie trinkt Tee", "bebes bebo", 1],
+      ["¿Te gusta la pizza?", "Magst du Pizza?", "Me Nos", 0],
+      ["La sopa está caliente", "Die Suppe ist heiß", "fría frío", 3],
+      ["Tengo hambre", "Ich habe Hunger", "sed sueño", 1],
+      ["La cuenta, por favor", "Die Rechnung, bitte", "carta mesa", 1],
+      ["Cenamos en casa", "Wir essen zu Hause zu Abend", "Cenan Ceno", 0],
+      ["¿Dónde está el supermercado?", "Wo ist der Supermarkt?", "es son", 1]
+    ] },
+    { title: 'Zahlen & Zeit', rows: [
+      ["uno", "eins"],
+      ["cinco", "fünf"],
+      ["diez", "zehn"],
+      ["Tengo dos hermanos", "Ich habe zwei Brüder", "tres cuatro", 1],
+      ["Son las siete", "Es ist sieben Uhr", "seis ocho", 2],
+      ["¿Qué hora es?", "Wie spät ist es?", "día año", 1],
+      ["Hoy es lunes", "Heute ist Montag", "martes domingo", 2],
+      ["La tienda abre a las nueve", "Das Geschäft öffnet um neun", "cierra abren", 2],
+      ["Me despierto a las seis", "Ich wache um sechs auf", "siete diez", 4],
+      ["Mañana es sábado", "Morgen ist Samstag", "viernes domingo", 2],
+      ["Son las dos y media", "Es ist halb drei", "cuarto menos", 4],
+      ["Tengo veinte años", "Ich bin zwanzig Jahre alt", "treinta diez", 1]
+    ] },
+    { title: 'Reisen', rows: [
+      ["el billete", "die Fahrkarte", "la los", undefined, { alt: ["el boleto"] }],
+      ["el aeropuerto", "der Flughafen", "la los"],
+      ["el pasaporte", "der Reisepass", "la los"],
+      ["¿Dónde está la estación de tren?", "Wo ist der Bahnhof?", "es son", 1],
+      ["Necesito un billete para Londres", "Ich brauche eine Fahrkarte nach London", "por de", 3, { alt: ["Necesito un boleto para Londres"] }],
+      ["El tren sale a las doce", "Der Zug fährt um zwölf Uhr ab", "llega vive", 2],
+      ["Gire a la izquierda en la esquina", "Biegen Sie an der Ecke links ab", "derecha derecho", 3],
+      ["¿Cuánto cuesta la habitación?", "Wie viel kostet das Zimmer?", "Cuántos Cuántas", 0],
+      ["Tengo una reserva", "Ich habe eine Reservierung", "un el", 1],
+      ["El autobús llega tarde", "Der Bus hat Verspätung", "temprano ahora", 3],
+      ["¿Puede ayudarme, por favor?", "Können Sie mir bitte helfen?", "Puedo Pueden", 0, { alt: ["¿Me puede ayudar, por favor?"] }],
+      ["Vamos a la playa", "Wir fahren zum Strand", "Voy Van", 0]
+    ] },
+    { title: 'Familie & Menschen', rows: [
+      ["la madre", "die Mutter", "el los"],
+      ["el hermano", "der Bruder", "la los"],
+      ["él", "er", "", undefined, { strict: true }],
+      ["Este es mi padre", "Das ist mein Vater", "Esta Estos", 0],
+      ["Ella es mi hermana", "Sie ist meine Schwester", "hermano hermanas", 3],
+      ["Él tiene una familia grande", "Er hat eine große Familie", "pequeña grandes", 4],
+      ["Mis padres viven en Berlín", "Meine Eltern wohnen in Berlin", "vive vivo", 2],
+      ["¿Tienes hijos?", "Hast du Kinder?"],
+      ["Mi abuela es muy simpática", "Meine Großmutter ist sehr nett", "simpático simpáticas", 4],
+      ["Son mis vecinos", "Sie sind meine Nachbarn", "Es Está", 0, { alt: ["Ellos son mis vecinos", "Son mis vecinas"] }],
+      ["Mi tío es médico", "Mein Onkel ist Arzt", "tía abuelo", 1, { alt: ["Mi tío es doctor"] }],
+      ["El bebé duerme", "Das Baby schläft", "duermen dormir", 2, { alt: ["El bebé está durmiendo"] }]
+    ] },
+    { title: 'Arbeit & Verben', rows: [
+      ["el trabajo", "die Arbeit", "la los"],
+      ["la oficina", "das Büro", "el los"],
+      ["la reunión", "die Besprechung", "el las"],
+      ["Trabajo en una oficina", "Ich arbeite in einem Büro", "Trabajas Trabaja", 0],
+      ["Ella es profesora", "Sie ist Lehrerin", "profesor médica", 2],
+      ["Él trabaja desde casa", "Er arbeitet von zu Hause aus", "trabajo trabajan", 1],
+      ["Tenemos una reunión a las diez", "Wir haben um zehn eine Besprechung", "Tienen Tengo", 0],
+      ["Puedo hablar inglés", "Ich kann Englisch sprechen", "francés alemán", 2],
+      ["Por favor, envíame el correo", "Bitte schicke mir die E-Mail", "llámame escríbeme", 2, { alt: ["Por favor, mándame el correo", "Por favor, envíame el email"] }],
+      ["No entiendo", "Ich verstehe nicht", "Sí Nunca", 0],
+      ["¿A qué te dedicas?", "Was machst du beruflich?", "dedicamos dedico", 3, { alt: ["¿En qué trabajas?"] }],
+      ["El jefe está muy ocupado hoy", "Der Chef ist heute sehr beschäftigt", "es son", 2]
+    ] }
+  ]);
+
+  if (isNode) module.exports = data; else { root.LF.content = root.LF.content || {}; root.LF.content.es = data; }
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* DB: IndexedDB "lingo" v1 mit speicherinternem Fallback (Fehler werden sichtbar gemeldet). */
+(function (root) {
+  'use strict';
+
+  var NAME = 'lingo', VERSION = 1;
+  var STORES = ['meta', 'settings', 'cards', 'reviewLog', 'progress', 'daily'];
+  var db = null;
+  var DB = { mode: 'memory', error: null };
+  var mem = { meta: {}, settings: {}, cards: {}, reviewLog: [], progress: {}, daily: {}, seq: 0 };
+
+  function friendly(err) {
+    var n = err && err.name ? err.name : '';
+    if (n === 'QuotaExceededError') return 'Speicher voll: Es ist kein Platz mehr für Lernfortschritt. Exportiere ein Backup und gib Speicher frei.';
+    if (n === 'SecurityError' || n === 'InvalidStateError' || n === 'UnknownError') return 'Datenbank nicht verfügbar (z. B. privater Modus oder blockierter Speicher). Fortschritt wird nur im Arbeitsspeicher gehalten.';
+    if (n === 'VersionError') return 'Datenbank-Version passt nicht zu dieser App.';
+    return 'Datenbankfehler' + (n ? ' (' + n + ')' : '') + '.';
+  }
+
+  function fail(err) { var e = new Error(friendly(err)); e.name = (err && err.name) || 'Error'; return e; }
+
+  DB.friendly = friendly;
+
+  DB.open = function () {
+    return new Promise(function (resolve) {
+      function memory(err) { DB.mode = 'memory'; DB.error = friendly(err); resolve(false); }
+      if (!root.indexedDB) return memory({ name: 'SecurityError' });
+      var req;
+      try { req = root.indexedDB.open(NAME, VERSION); } catch (e) { return memory(e); }
+      req.onupgradeneeded = function () {
+        var d = req.result;
+        d.createObjectStore('meta', { keyPath: 'k' });
+        d.createObjectStore('settings', { keyPath: 'k' });
+        var cards = d.createObjectStore('cards', { keyPath: 'id' });
+        cards.createIndex('lang_due', ['lang', 'due']);
+        cards.createIndex('lang_state', ['lang', 'state']);
+        cards.createIndex('lang_unit', ['lang', 'unit']);
+        d.createObjectStore('reviewLog', { keyPath: 'n', autoIncrement: true });
+        d.createObjectStore('progress', { keyPath: ['lang', 'unitId'] });
+        d.createObjectStore('daily', { keyPath: 'date' });
+      };
+      req.onsuccess = function () {
+        db = req.result;
+        db.onversionchange = function () { db.close(); db = null; DB.mode = 'memory'; };
+        DB.mode = 'idb'; DB.error = null; resolve(true);
+      };
+      req.onerror = function () { memory(req.error); };
+      req.onblocked = function () { memory({ name: 'UnknownError' }); };
+    });
+  };
+
+  function run(names, mode, fn) {
+    return new Promise(function (resolve, reject) {
+      var tx, out;
+      try { tx = db.transaction(names, mode); } catch (e) { return reject(fail(e)); }
+      tx.oncomplete = function () { resolve(out); };
+      tx.onerror = function () { reject(fail(tx.error)); };
+      tx.onabort = function () { reject(fail(tx.error)); };
+      try { out = fn(tx); } catch (e) { try { tx.abort(); } catch (x) { /* bereits beendet */ } reject(fail(e)); }
+    });
+  }
+
+  function values(o) { return Object.keys(o).map(function (k) { return o[k]; }); }
+
+  DB.loadState = function () {
+    if (DB.mode !== 'idb') {
+      return Promise.resolve({ settings: mem.settings.main || null, meta: mem.meta.main || null,
+        cards: values(mem.cards), daily: values(mem.daily), progress: values(mem.progress) });
+    }
+    var res = {};
+    return run(STORES.filter(function (s) { return s !== 'reviewLog'; }), 'readonly', function (tx) {
+      tx.objectStore('settings').get('main').onsuccess = function (e) { res.settings = e.target.result || null; };
+      tx.objectStore('meta').get('main').onsuccess = function (e) { res.meta = e.target.result || null; };
+      tx.objectStore('cards').getAll().onsuccess = function (e) { res.cards = e.target.result; };
+      tx.objectStore('daily').getAll().onsuccess = function (e) { res.daily = e.target.result; };
+      tx.objectStore('progress').getAll().onsuccess = function (e) { res.progress = e.target.result; };
+    }).then(function () { return res; });
+  };
+
+  DB.loadLog = function () {
+    if (DB.mode !== 'idb') return Promise.resolve(mem.reviewLog.slice());
+    var out = [];
+    return run(['reviewLog'], 'readonly', function (tx) {
+      tx.objectStore('reviewLog').getAll().onsuccess = function (e) { out = e.target.result; };
+    }).then(function () { return out; });
+  };
+
+  // b: {cards:[], log:[], daily:[], progress:[], settings, meta}; Log-Einträge bekommen n.
+  DB.saveBatch = function (b) {
+    if (DB.mode !== 'idb') {
+      (b.cards || []).forEach(function (c) { mem.cards[c.id] = c; });
+      (b.log || []).forEach(function (r) { if (!r.n) r.n = ++mem.seq; var i = mem.reviewLog.findIndex(function (x) { return x.n === r.n; }); if (i >= 0) mem.reviewLog[i] = r; else mem.reviewLog.push(r); });
+      (b.daily || []).forEach(function (d) { mem.daily[d.date] = d; });
+      (b.progress || []).forEach(function (p) { mem.progress[p.lang + '|' + p.unitId] = p; });
+      if (b.settings) mem.settings.main = b.settings;
+      if (b.meta) mem.meta.main = b.meta;
+      return Promise.resolve();
+    }
+    var names = ['cards', 'reviewLog', 'daily', 'progress', 'settings', 'meta'];
+    return run(names, 'readwrite', function (tx) {
+      (b.cards || []).forEach(function (c) { tx.objectStore('cards').put(c); });
+      (b.log || []).forEach(function (r) {
+        var rq = tx.objectStore('reviewLog').put(r);
+        rq.onsuccess = function () { r.n = rq.result; };
+      });
+      (b.daily || []).forEach(function (d) { tx.objectStore('daily').put(d); });
+      (b.progress || []).forEach(function (p) { tx.objectStore('progress').put(p); });
+      if (b.settings) tx.objectStore('settings').put(b.settings);
+      if (b.meta) tx.objectStore('meta').put(b.meta);
+    });
+  };
+
+  DB.exportAll = function () {
+    return Promise.all([DB.loadState(), DB.loadLog()]).then(function (r) {
+      return { settings: r[0].settings, meta: r[0].meta, cards: r[0].cards, reviewLog: r[1], daily: r[0].daily };
+    });
+  };
+
+  // Ersetzen: alles in EINER Transaktion leeren und neu schreiben.
+  DB.replaceAll = function (data, meta) {
+    if (DB.mode !== 'idb') {
+      mem.cards = {}; mem.reviewLog = []; mem.daily = {}; mem.progress = {}; mem.settings = {}; mem.meta = {};
+      return DB.saveBatch({ cards: data.cards, log: data.reviewLog, daily: data.daily, settings: data.settings, meta: meta });
+    }
+    return run(STORES, 'readwrite', function (tx) {
+      STORES.forEach(function (s) { tx.objectStore(s).clear(); });
+      data.cards.forEach(function (c) { tx.objectStore('cards').put(c); });
+      data.reviewLog.forEach(function (r) { tx.objectStore('reviewLog').add(r); });
+      data.daily.forEach(function (d) { tx.objectStore('daily').put(d); });
+      if (data.settings) tx.objectStore('settings').put(data.settings);
+      if (meta) tx.objectStore('meta').put(meta);
+    });
+  };
+
+  // Zusammenführen: Lesen und Schreiben in EINER Transaktion. merge = Backup-Modul.
+  DB.mergeAll = function (data, Backup) {
+    if (DB.mode !== 'idb') {
+      var ec = mem.cards, ed = mem.daily;
+      return DB.saveBatch({ cards: Backup.mergeCards(ec, data.cards), log: Backup.mergeLog(mem.reviewLog, data.reviewLog).map(function (r) { return Object.assign({}, r); }),
+        daily: Backup.mergeDaily(ed, data.daily) });
+    }
+    return run(['cards', 'reviewLog', 'daily'], 'readwrite', function (tx) {
+      var ec = {}, ed = {}, el = [];
+      tx.objectStore('cards').getAll().onsuccess = function (e) {
+        e.target.result.forEach(function (c) { ec[c.id] = c; });
+        tx.objectStore('reviewLog').getAll().onsuccess = function (e2) {
+          el = e2.target.result;
+          tx.objectStore('daily').getAll().onsuccess = function (e3) {
+            e3.target.result.forEach(function (d) { ed[d.date] = d; });
+            Backup.mergeCards(ec, data.cards).forEach(function (c) { tx.objectStore('cards').put(c); });
+            Backup.mergeLog(el, data.reviewLog).forEach(function (r) { tx.objectStore('reviewLog').add(r); });
+            Backup.mergeDaily(ed, data.daily).forEach(function (d) { tx.objectStore('daily').put(d); });
+          };
+        };
+      };
+    });
+  };
+
+  // Alles löschen: DB, Caches, Service Worker. Lehnt bei Blockade/Fehler ab und prüft danach, dass alles weg ist.
+  DB.wipe = function () {
+    var steps = [], nav = root.navigator;
+    steps.push(new Promise(function (resolve, reject) {
+      if (db) { db.close(); db = null; }
+      if (!root.indexedDB) return resolve();
+      var rq = root.indexedDB.deleteDatabase(NAME);
+      rq.onsuccess = function () { resolve(); };
+      rq.onerror = function () { reject(new Error('Datenbank konnte nicht gelöscht werden.')); };
+      rq.onblocked = function () { reject(new Error('Löschen blockiert: Schließe andere Tabs oder Fenster dieser App und versuche es erneut.')); };
+    }).then(function () {
+      if (!root.indexedDB || typeof root.indexedDB.databases !== 'function') return;
+      return root.indexedDB.databases().then(function (list) {
+        if ((list || []).some(function (d) { return d.name === NAME; })) throw new Error('Datenbank ist nach dem Löschen noch vorhanden.');
+      });
+    }));
+    if (root.caches && root.caches.keys) {
+      steps.push(root.caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return root.caches.delete(k); })); })
+        .then(function () { return root.caches.keys(); })
+        .then(function (ks) { if (ks.length) throw new Error('Zwischenspeicher konnte nicht vollständig gelöscht werden.'); }));
+    }
+    if (nav && nav.serviceWorker && nav.serviceWorker.getRegistrations) {
+      steps.push(nav.serviceWorker.getRegistrations().then(function (rs) { return Promise.all(rs.map(function (r) { return r.unregister(); })); })
+        .then(function (res) { if (res.some(function (x) { return x === false; })) throw new Error('Service Worker konnte nicht entfernt werden.'); }));
+    }
+    return Promise.all(steps).then(function () {
+      mem = { meta: {}, settings: {}, cards: {}, reviewLog: [], progress: {}, daily: {}, seq: 0 };
+      DB.mode = 'memory';
+    }, function (e) { throw e instanceof Error ? e : new Error('Löschen fehlgeschlagen.'); });
+  };
+
+  root.LF.DB = DB;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Speech: speechSynthesis mit Voice-Discovery. Keine Spracherkennung (iOS sendet Audio an Apple). */
+(function (root) {
+  'use strict';
+
+  var supported = typeof root.speechSynthesis !== 'undefined' && typeof root.SpeechSynthesisUtterance !== 'undefined';
+  var Speech = { supported: supported, voices: [], listeners: [] };
+
+  function load() {
+    var vs = [];
+    try { vs = root.speechSynthesis.getVoices() || []; } catch (e) { vs = []; }
+    if (vs.length !== Speech.voices.length) {
+      Speech.voices = Array.prototype.slice.call(vs);
+      Speech.listeners.forEach(function (f) { try { f(); } catch (e) { /* Listener-Fehler ignorieren */ } });
+    }
+  }
+
+  // Polling 10 x 250 ms plus voiceschanged.
+  Speech.init = function () {
+    if (!supported) return;
+    load();
+    try { root.speechSynthesis.onvoiceschanged = load; } catch (e) { /* nicht unterstützt */ }
+    var n = 0, t = setInterval(function () {
+      load(); n++;
+      if (n >= 10) clearInterval(t);
+    }, 250);
+  };
+
+  function prefix(l) { return String(l || '').replace('_', '-').toLowerCase(); }
+
+  Speech.voicesFor = function (lang) {
+    return Speech.voices.filter(function (v) { return prefix(v.lang).indexOf(lang) === 0; });
+  };
+
+  function score(v) {
+    var s = 0, n = (v.name || '') + ' ' + (v.voiceURI || '');
+    if (/premium|enhanced|erweitert|verbessert/i.test(n)) s += 4;
+    if (/siri/i.test(n)) s += 2;
+    if (v.localService) s += 1;
+    return s;
+  }
+
+  Speech.best = function (lang, uri, tts) {
+    var list = Speech.voicesFor(lang);
+    if (!list.length) return null;
+    if (uri) { for (var i = 0; i < list.length; i++) if (list[i].voiceURI === uri) return list[i]; }
+    var want = prefix(tts);
+    return list.slice().sort(function (a, b) {
+      var sa = score(a) + (prefix(a.lang) === want ? 3 : 0), sb = score(b) + (prefix(b.lang) === want ? 3 : 0);
+      return sb - sa;
+    })[0];
+  };
+
+  Speech.has = function (lang) { return supported && Speech.voicesFor(lang).length > 0; };
+
+  // Nur aus einer Nutzergeste aufrufen. o: {voiceURI, rate, slow, tts}
+  Speech.speak = function (text, lang, o) {
+    o = o || {};
+    if (!supported) return false;
+    var v = Speech.best(lang, o.voiceURI, o.tts);
+    if (!v) return false;
+    try {
+      root.speechSynthesis.cancel();
+      var u = new root.SpeechSynthesisUtterance(text);
+      u.voice = v; u.lang = v.lang;
+      u.rate = Math.max(0.3, Math.min(1.5, (o.rate || 0.9) * (o.slow ? 0.6 : 1)));
+      root.speechSynthesis.speak(u);
+      return true;
+    } catch (e) { return false; }
+  };
+
+  Speech.cancel = function () { if (supported) { try { root.speechSynthesis.cancel(); } catch (e) { /* ignorieren */ } } };
+
+  root.LF.Speech = Speech;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* UI: DOM nur über h(tag, attrs, ...children) mit Attribut-Whitelist, Textknoten, nie HTML-Strings. */
+(function (root) {
+  'use strict';
+
+  var SV = 'http:' + '//www.w3.org/2000/svg';
+  function set(s) { return new Set(s.split(' ')); }
+  var TAGS = set('div span p h1 h2 h3 button input select option label ul li a nav main header section footer strong em small textarea output');
+  var SVGTAGS = set('svg g rect circle line path text title');
+  var ATTRS = set('class id type role title lang value min max step disabled checked selected placeholder for name autocomplete autocapitalize autocorrect spellcheck inputmode tabindex href accept hidden maxlength enterkeyhint');
+  var SVGATTRS = set('class role viewBox width height x y x1 y1 x2 y2 cx cy r rx d fill stroke stroke-width stroke-linecap stroke-linejoin stroke-dasharray stroke-dashoffset transform text-anchor font-size fill-opacity focusable preserveAspectRatio');
+  var BOOL = set('disabled checked selected hidden');
+  var STYLEOK = set('width height --p transform');
+
+  function add(el, c) {
+    if (c == null || c === false || c === true) return;
+    if (Array.isArray(c)) { c.forEach(function (x) { add(el, x); }); return; }
+    if (typeof c === 'object' && c.nodeType) { el.appendChild(c); return; }
+    el.appendChild(document.createTextNode(String(c)));
+  }
+
+  function h(tag, attrs) {
+    var svg = SVGTAGS.has(tag);
+    if (!svg && !TAGS.has(tag)) throw new Error('Tag nicht erlaubt: ' + tag);
+    var el = svg ? document.createElementNS(SV, tag) : document.createElement(tag);
+    var late = null, hasLate = false, k;
+    if (attrs) {
+      for (k in attrs) {
+        if (!Object.prototype.hasOwnProperty.call(attrs, k)) continue;
+        var v = attrs[k];
+        if (k === 'style') {
+          for (var sk in v) {
+            if (!STYLEOK.has(sk)) throw new Error('Style nicht erlaubt: ' + sk);
+            el.style.setProperty(sk, String(v[sk]));
+          }
+        } else if (k.indexOf('on') === 0) {
+          if (typeof v !== 'function') throw new Error('Handler muss Funktion sein: ' + k);
+          el.addEventListener(k.slice(2), v);
+        } else if (/^aria-[a-z]+$/.test(k)) {
+          el.setAttribute(k, String(v));
+        } else if (!(svg ? SVGATTRS : ATTRS).has(k)) {
+          throw new Error('Attribut nicht erlaubt: ' + k);
+        } else if (v == null || (v === false && BOOL.has(k))) {
+          continue;
+        } else if (k === 'href') {
+          if (typeof v !== 'string' || v.charAt(0) !== '#') throw new Error('href nur als Hash erlaubt');
+          el.setAttribute(k, v);
+        } else if (k === 'value') {
+          late = String(v); hasLate = true;
+        } else if (BOOL.has(k)) {
+          if (v) el.setAttribute(k, '');
+          if (k === 'checked') el.checked = !!v;
+        } else {
+          el.setAttribute(k, String(v));
+        }
+      }
+    }
+    for (var i = 2; i < arguments.length; i++) add(el, arguments[i]);
+    if (hasLate) { el.value = late; el.setAttribute('value', late); }
+    return el;
+  }
+
+  function mount(host) {
+    var kids = [];
+    for (var i = 1; i < arguments.length; i++) kids.push(arguments[i]);
+    var flat = [];
+    (function f(a) { a.forEach(function (x) { if (Array.isArray(x)) f(x); else if (x != null && x !== false) flat.push(x); }); })(kids);
+    host.replaceChildren.apply(host, flat);
+  }
+
+  function shuffle(a, rng) {
+    var r = a.slice(), i, j, t;
+    rng = rng || Math.random;
+    for (i = r.length - 1; i > 0; i--) { j = Math.floor(rng() * (i + 1)); t = r[i]; r[i] = r[j]; r[j] = t; }
+    return r;
+  }
+
+  var ICONS = {
+    speaker: ['M4 9v6h4l5 4V5L8 9H4z', 'M16.5 8.5a5 5 0 0 1 0 7', 'M19 6a9 9 0 0 1 0 12'],
+    close: ['M6 6l12 12', 'M18 6L6 18'],
+    home: ['M4 11l8-7 8 7', 'M6 10v9h12v-9'],
+    chart: ['M5 20V10', 'M12 20V4', 'M19 20v-7'],
+    gear: ['M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z', 'M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1'],
+    flame: ['M12 3c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-9z'],
+    lock: ['M7 11h10v9H7z', 'M9 11V8a3 3 0 0 1 6 0v3']
+  };
+
+  function icon(name, label) {
+    var attrs = { viewBox: '0 0 24 24', width: 24, height: 24, fill: 'none', stroke: 'currentColor',
+      'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', focusable: 'false' };
+    if (label) { attrs.role = 'img'; attrs['aria-label'] = label; } else attrs['aria-hidden'] = 'true';
+    return h.apply(null, ['svg', attrs].concat(ICONS[name].map(function (d) { return h('path', { d: d }); })));
+  }
+
+  root.LF.UI = { h: h, mount: mount, shuffle: shuffle, icon: icon };
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Core: App-Zustand (im Speicher) + Persistenz-Schicht. Schreibt nach jeder Antwort. */
+(function (root) {
+  'use strict';
+  var LF = root.LF, Fsrs = LF.Fsrs, Game = LF.Game, Backup = LF.Backup, DB = LF.DB, Speech = LF.Speech;
+
+  var DEFAULTS = { k: 'main', lang: LF.Lib.ENABLED_LANGS[0], goal: 30, newPerDay: 10, retention: 0.9, rate: 0.9, theme: 'auto',
+    unlockAll: false, voices: {} };
+
+  var App = {
+    S: { settings: null, meta: null, cards: {}, daily: {}, progress: {} },
+    dbError: null, session: null, updateWorker: null, handlers: {}
+  };
+
+  App.on = function (name, fn) { (App.handlers[name] = App.handlers[name] || []).push(fn); };
+  App.emit = function (name, arg) { (App.handlers[name] || []).forEach(function (f) { try { f(arg); } catch (e) { /* UI-Fehler isolieren */ } }); };
+
+  App.setDbError = function (msg) { App.dbError = msg; App.emit('banner'); };
+
+  function applyState(st) {
+    var s = Object.assign({}, DEFAULTS, st.settings || {});
+    s.voices = Object.assign({}, (st.settings && st.settings.voices) || {});
+    s.k = 'main';
+    if (LF.Lib.ENABLED_LANGS.indexOf(s.lang) < 0) s.lang = LF.Lib.ENABLED_LANGS[0];
+    App.S.settings = s;
+    App.S.meta = Object.assign({ k: 'main', firstUse: Date.now(), lastBackup: 0, reviewsAtBackup: 0, totalReviews: 0, sessions: 0 }, st.meta || {});
+    App.S.cards = {}; (st.cards || []).forEach(function (c) { App.S.cards[c.id] = c; });
+    App.S.daily = {}; (st.daily || []).forEach(function (d) { App.S.daily[d.date] = d; });
+    App.S.progress = {}; (st.progress || []).forEach(function (p) { App.S.progress[p.lang + '|' + p.unitId] = p; });
+  }
+
+  App.init = function () {
+    return DB.open().then(function () { return DB.loadState(); }).catch(function (e) {
+      App.setDbError(e.message);
+      return { settings: null, meta: null, cards: [], daily: [], progress: [] };
+    }).then(function (st) {
+      applyState(st);
+      if (DB.mode !== 'idb' && DB.error) App.dbError = DB.error;
+      App.applyTheme();
+      Speech.init();
+      if (!st.settings || !st.meta) App.persist({ settings: App.S.settings, meta: App.S.meta });
+    });
+  };
+
+  App.reloadState = function () {
+    return DB.loadState().then(function (st) { applyState(st); App.applyTheme(); });
+  };
+
+  App.persist = function (batch) {
+    return DB.saveBatch(batch).catch(function (e) { App.setDbError(e.message); });
+  };
+
+  App.settings = function () { return App.S.settings; };
+  App.saveSettings = function () { return App.persist({ settings: App.S.settings }); };
+  App.content = function (lang) { return LF.content[lang || App.S.settings.lang]; };
+  App.today = function () { return Game.dateKey(Date.now()); };
+
+  App.applyTheme = function () {
+    var t = App.S.settings.theme, el = document.documentElement;
+    if (t === 'light' || t === 'dark') el.setAttribute('data-theme', t); else el.removeAttribute('data-theme');
+  };
+
+  App.dailyRec = function (lang) {
+    var k = App.today(), d = App.S.daily[k];
+    if (!d) {
+      d = { date: k, lang: lang || App.S.settings.lang, xp: 0, reviews: 0, newItems: 0, correct: 0, wrong: 0, goalMet: false, seconds: 0 };
+      App.S.daily[k] = d;
+    }
+    return d;
+  };
+
+  App.newToday = function () { var d = App.S.daily[App.today()]; return d ? d.newItems : 0; };
+
+  App.cardsFor = function (lang) {
+    var out = {};
+    Object.keys(App.S.cards).forEach(function (id) { if (App.S.cards[id].lang === lang) out[id] = App.S.cards[id]; });
+    return out;
+  };
+
+  App.progressRec = function (lang, unitId) {
+    var c = App.content(lang), unit = c.units[unitId - 1], st = Game.unitStats(unit, App.S.cards);
+    var p = { lang: lang, unitId: unitId, introduced: st.introduced, mastered: st.mastered, total: st.total, updatedAt: Date.now() };
+    App.S.progress[lang + '|' + unitId] = p;
+    return p;
+  };
+
+  App.introduce = function (lang, item) {
+    if (App.S.cards[item.id]) return Promise.resolve();
+    var c = Fsrs.initCard(item.id, lang, item.unit, Date.now());
+    App.S.cards[item.id] = c;
+    return App.persist({ cards: [c] });
+  };
+
+  // info: {ex, ms, hint, correct}
+  App.recordAnswer = function (lang, item, rating, info) {
+    var now = Date.now(), S = App.S;
+    var pre = S.cards[item.id] || Fsrs.initCard(item.id, lang, item.unit, now);
+    var wasNew = pre.state === 0;
+    var r = Fsrs.review(pre, rating, now, { retention: S.settings.retention });
+    S.cards[item.id] = r.card;
+    var log = { cardId: item.id, lang: lang, ts: now, rating: rating, exType: info.ex, prevS: r.log.prevS || 0,
+      prevD: r.log.prevD || 0, elapsedDays: r.log.elapsedDays, ms: Math.round(info.ms), hintUsed: !!info.hint };
+    var d = App.dailyRec(lang);
+    d.lang = lang; d.reviews++; if (wasNew) d.newItems++;
+    if (info.correct) d.correct++; else d.wrong++;
+    d.seconds = Math.round(d.seconds + Math.min(60, info.ms / 1000));
+    S.meta.totalReviews = (S.meta.totalReviews || 0) + 1;
+    var rec = { pre: pre, card: r.card, log: log, lang: lang, item: item, wasNew: wasNew };
+    rec.saved = App.persist({ cards: [r.card], log: [log], daily: [d], progress: [App.progressRec(lang, item.unit)], meta: S.meta });
+    return rec;
+  };
+
+  // "Das war leicht": erneut mit Rating 4 aus dem Zustand vor der Antwort rechnen.
+  App.upgradeEasy = function (rec) {
+    return rec.saved.then(function () {
+      var r = Fsrs.review(rec.pre, 4, rec.log.ts, { retention: App.S.settings.retention });
+      App.S.cards[rec.item.id] = r.card; rec.card = r.card; rec.log.rating = 4;
+      var batch = { cards: [r.card], progress: [App.progressRec(rec.lang, rec.item.unit)] };
+      if (rec.log.n) batch.log = [rec.log];
+      return App.persist(batch);
+    });
+  };
+
+  App.addXp = function (n, lang) {
+    var d = App.dailyRec(lang);
+    d.xp += n;
+    if (d.xp >= App.S.settings.goal) d.goalMet = true;
+    App.persist({ daily: [d] });
+    return d;
+  };
+
+  App.sessionDone = function () {
+    App.S.meta.sessions = (App.S.meta.sessions || 0) + 1;
+    App.persist({ meta: App.S.meta });
+  };
+
+  App.streak = function () { return Game.streak(App.S.daily, App.today()); };
+  App.totalXp = function () { var t = 0; for (var k in App.S.daily) t += App.S.daily[k].xp; return t; };
+
+  App.hasVoice = function (lang) { return Speech.has(lang); };
+  App.speak = function (text, lang, slow) {
+    var s = App.S.settings;
+    return Speech.speak(text, lang, { voiceURI: s.voices[lang] || '', rate: s.rate, slow: !!slow, tts: App.content(lang).tts });
+  };
+
+  App.exportJson = function () {
+    return DB.exportAll().then(function (d) {
+      var data = Backup.make({ settings: App.S.settings, cards: d.cards, reviewLog: d.reviewLog, daily: d.daily }, Date.now());
+      return JSON.stringify(data);
+    });
+  };
+
+  App.markBackup = function () {
+    App.S.meta.lastBackup = Date.now();
+    App.S.meta.reviewsAtBackup = App.S.meta.totalReviews || 0;
+    return App.persist({ meta: App.S.meta });
+  };
+
+  App.importData = function (data, mode) {
+    var meta = Object.assign({}, App.S.meta);
+    var p;
+    if (mode === 'replace') {
+      if (data.settings) data.settings.k = 'main';
+      meta.totalReviews = data.reviewLog.length; meta.reviewsAtBackup = meta.totalReviews; meta.lastBackup = Date.now();
+      p = DB.replaceAll(data, meta);
+    } else {
+      p = DB.mergeAll(data, Backup);
+    }
+    return p.then(function () { return App.reloadState(); }).then(function () {
+      if (mode !== 'replace') {
+        return DB.loadLog().then(function (log) {
+          App.S.meta.totalReviews = log.length;
+          App.S.meta.reviewsAtBackup = Math.min(App.S.meta.reviewsAtBackup || 0, log.length);
+        });
+      }
+    }).then(function () {
+      var prog = [];
+      LF.Lib.ENABLED_LANGS.forEach(function (l) { App.content(l).units.forEach(function (u) { prog.push(App.progressRec(l, u.id)); }); });
+      return App.persist({ progress: prog, meta: App.S.meta });
+    });
+  };
+
+  App.wipeAll = function () {
+    return DB.wipe().catch(function (e) { return DB.open().then(function () { throw e; }); }).then(function () { return DB.open(); }).then(function () {
+      applyState({}); App.applyTheme(); App.dbError = DB.mode === 'idb' ? null : DB.error; App.session = null;
+      App.emit('banner');
+      return App.persist({ settings: App.S.settings, meta: App.S.meta });
+    });
+  };
+
+  LF.App = App;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Ex: Übungen (tiles, cloze, choice, listen, shadow, typing). Jede ruft ctx.submit(result) genau einmal. */
+(function (root) {
+  'use strict';
+  var LF = root.LF, Norm = LF.Norm, UI = LF.UI, h = UI.h, mount = UI.mount, shuffle = UI.shuffle, icon = UI.icon;
+
+  var SPECIAL = {
+    es: ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', '¿', '¡'],
+    fr: ['é', 'è', 'ê', 'à', 'â', 'ç', 'ô', 'î', 'û', 'ï', 'œ'],
+    en: []
+  };
+
+  // n Distraktoren aus anderen Items (gleiche Einheit/Art bevorzugt), eindeutige Texte.
+  function pickOthers(ctx, it, n, get) {
+    var C = ctx.content, seen = {}, out = [];
+    seen[Norm.canon(get(it))] = 1;
+    var others = C.items.filter(function (i) { return i.id !== it.id; });
+    var lists = [
+      others.filter(function (i) { return i.unit === it.unit && i.kind === it.kind; }),
+      others.filter(function (i) { return i.kind === it.kind; }),
+      others
+    ];
+    lists.forEach(function (list) {
+      shuffle(list, ctx.rng).forEach(function (i) {
+        if (out.length >= n) return;
+        var t = get(i), k = Norm.canon(t);
+        if (seen[k]) return;
+        seen[k] = 1; out.push(t);
+      });
+    });
+    return out;
+  }
+
+  function speakBtn(ctx, text, label) {
+    if (!ctx.hasVoice) return null;
+    return h('button', { class: 'icon-btn', type: 'button', 'aria-label': label || 'Vorlesen',
+      onclick: function () { ctx.speak(text, false); } }, icon('speaker'));
+  }
+
+  function optionList(ctx, options, correct, lang, label) {
+    var locked = false, btns = [];
+    var wrap = h('div', { class: 'opts', role: 'group', 'aria-label': label });
+    options.forEach(function (text) {
+      var b = h('button', { class: 'opt', type: 'button', lang: lang, onclick: function () {
+        if (locked) return;
+        locked = true;
+        var ok = text === correct;
+        b.classList.add(ok ? 'good' : 'bad');
+        btns.forEach(function (x) { x.btn.disabled = true; if (x.text === correct) x.btn.classList.add('good'); });
+        ctx.submit({ correct: ok, check: null, hint: false, answer: text });
+      } }, text);
+      btns.push({ btn: b, text: text });
+      wrap.appendChild(b);
+    });
+    return wrap;
+  }
+
+  function choice(step, ctx) {
+    var it = ctx.item, rev = step.dir === 'tgt2de', lang = ctx.bcp;
+    var get = rev ? function (i) { return i.de; } : function (i) { return i.tgt; };
+    var correct = get(it);
+    var opts = shuffle([correct].concat(pickOthers(ctx, it, 3, get)), ctx.rng);
+    var prompt = rev
+      ? h('div', { class: 'prompt' }, h('span', { class: 'big', lang: lang }, it.tgt), speakBtn(ctx, it.audio))
+      : h('div', { class: 'prompt' }, h('span', { class: 'big' }, it.de));
+    return { el: h('section', { class: 'ex' },
+      h('p', { class: 'lead' }, rev ? 'Was bedeutet das?' : 'Wähle die richtige Übersetzung'),
+      prompt, optionList(ctx, opts, correct, rev ? null : lang, 'Antworten')), focus: null };
+  }
+
+  function cloze(step, ctx) {
+    var it = ctx.item, cl = it.cloze, lang = ctx.bcp, parts = cl.text.split('___');
+    var blank = h('span', { class: 'blank', 'aria-label': 'Lücke' }, '___');
+    var sentence = h('p', { class: 'big', lang: lang }, parts[0], blank, parts[1]);
+    var wrapped = { submit: function (r) { blank.textContent = cl.answer; blank.classList.add(r.correct ? 'good' : 'bad'); ctx.submit(r); },
+      content: ctx.content, rng: ctx.rng };
+    var list = optionList(wrapped, shuffle(cl.options, ctx.rng), cl.answer, lang, 'Wörter zur Auswahl');
+    return { el: h('section', { class: 'ex' }, h('p', { class: 'lead' }, 'Ergänze die Lücke'), sentence,
+      h('p', { class: 'sub' }, it.de), speakBtn(ctx, it.audio), list), focus: null };
+  }
+
+  function tiles(step, ctx) {
+    var it = ctx.item, lang = ctx.bcp, done = false, hint = false, hintId = -1;
+    var pool = shuffle(it.tokens.concat(it.distractors.slice(0, 3)), ctx.rng).map(function (t, i) { return { t: t, id: i, used: false }; });
+    var placed = [];
+    var ans = h('div', { class: 'slots', role: 'group', 'aria-label': 'Deine Antwort', 'aria-live': 'polite' });
+    var bank = h('div', { class: 'bank', role: 'group', 'aria-label': 'Wörter zur Auswahl' });
+    var checkBtn = h('button', { class: 'btn primary', type: 'button', disabled: true, onclick: verify }, 'Prüfen');
+    var hintBtn = h('button', { class: 'btn ghost', type: 'button', onclick: function () {
+      if (done) return;
+      hint = true;
+      hintId = -1;
+      for (var i = 0; i < placed.length; i++) if (placed[i].t !== it.tokens[i]) { hintId = placed[i].id; break; }
+      if (hintId < 0) {
+        var want = it.tokens[placed.length];
+        pool.forEach(function (p) { if (hintId < 0 && !p.used && p.t === want) hintId = p.id; });
+      }
+      redraw();
+    } }, 'Hinweis');
+
+    function redraw() {
+      mount(ans, placed.map(function (p) {
+        return h('button', { class: 'tile placed' + (p.id === hintId ? ' hint' : ''), type: 'button', lang: lang,
+          'aria-label': p.t + ', zurück in die Auswahl', onclick: function () {
+            if (done) return;
+            p.used = false; placed.splice(placed.indexOf(p), 1); hintId = -1; redraw();
+          } }, p.t);
+      }));
+      mount(bank, pool.map(function (p) {
+        if (p.used) return h('span', { class: 'tile ghost', 'aria-hidden': 'true' }, p.t);
+        return h('button', { class: 'tile' + (p.id === hintId ? ' hint' : ''), type: 'button', lang: lang, onclick: function () {
+          if (done) return;
+          p.used = true; placed.push(p); hintId = -1; redraw();
+        } }, p.t);
+      }));
+      checkBtn.disabled = done || placed.length === 0;
+    }
+
+    function verify() {
+      if (done || !placed.length) return;
+      done = true;
+      var joined = placed.map(function (p) { return p.t; }).join(' ');
+      var ok = Norm.check(joined, { tgt: it.tgt, alt: it.alt, strict: true }) === 'exact';
+      checkBtn.disabled = true; hintBtn.disabled = true;
+      ans.classList.add(ok ? 'good' : 'bad');
+      ctx.submit({ correct: ok, check: ok ? 'exact' : 'wrong', hint: hint, answer: joined });
+    }
+
+    redraw();
+    return { el: h('section', { class: 'ex' }, h('p', { class: 'lead' }, 'Übersetze'),
+      h('div', { class: 'prompt' }, h('span', { class: 'big' }, it.de)), ans, bank,
+      h('div', { class: 'row' }, hintBtn, checkBtn)), focus: null };
+  }
+
+  function typing(step, ctx, dictation) {
+    var it = ctx.item, lang = ctx.bcp, done = false, hint = false;
+    var input = h('input', { type: 'text', class: 'field', lang: lang, autocapitalize: 'off', autocorrect: 'off',
+      autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'done', 'aria-label': 'Deine Antwort' });
+    var hintLine = h('p', { class: 'sub hintline', 'aria-live': 'polite' });
+    var shown = false;
+    var checkBtn = h('button', { class: 'btn primary', type: 'button', onclick: verify }, 'Prüfen');
+    var hintBtn = h('button', { class: 'btn ghost', type: 'button', onclick: function () {
+      if (done) return;
+      hint = true; hintLine.textContent = 'Hinweis: ' + Norm.hintMask(it.tgt);
+    } }, 'Hinweis');
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') verify(); });
+
+    function verify() {
+      if (done) return;
+      var val = input.value;
+      if (!val.trim()) return;
+      done = true;
+      var check = Norm.check(val, it);
+      input.disabled = true; checkBtn.disabled = true; hintBtn.disabled = true;
+      ctx.submit({ correct: check !== 'wrong', check: check, hint: hint, answer: val });
+    }
+
+    var special = (SPECIAL[ctx.langCode] || []).map(function (ch) {
+      return h('button', { class: 'key', type: 'button', 'aria-label': 'Zeichen ' + ch, onclick: function () {
+        if (done) return;
+        var v = input.value, s = typeof input.selectionStart === 'number' ? input.selectionStart : v.length;
+        var e = typeof input.selectionEnd === 'number' ? input.selectionEnd : s;
+        input.value = v.slice(0, s) + ch + v.slice(e);
+        if (input.setSelectionRange) input.setSelectionRange(s + 1, s + 1);
+        input.focus();
+      } }, ch);
+    });
+
+    var head;
+    if (dictation) {
+      var reveal = h('button', { class: 'btn ghost', type: 'button', onclick: function () {
+        if (done || shown) return;
+        shown = true; hint = true; hintLine.textContent = 'Text: ' + it.tgt;
+      } }, 'Text zeigen');
+      head = [h('p', { class: 'lead' }, 'Hör zu und schreibe auf, was du hörst'),
+        h('div', { class: 'row' }, h('button', { class: 'btn play', type: 'button', onclick: function () { ctx.speak(it.audio, false); } }, icon('speaker'), ' Anhören'),
+          h('button', { class: 'btn ghost', type: 'button', onclick: function () { ctx.speak(it.audio, true); } }, 'Langsam'), reveal),
+        h('p', { class: 'sub' }, 'Kein Ton? Prüfe Lautstärke und den Ton-an-Schalter.')];
+    } else {
+      head = [h('p', { class: 'lead' }, 'Schreibe auf ' + ctx.content.name), h('div', { class: 'prompt' }, h('span', { class: 'big' }, it.de))];
+    }
+    return { el: h('section', { class: 'ex' }, head, input, special.length ? h('div', { class: 'keys', role: 'group', 'aria-label': 'Sonderzeichen' }, special) : null,
+      hintLine, h('div', { class: 'row' }, hintBtn, checkBtn)), focus: function () { input.focus(); } };
+  }
+
+  function listenChoice(step, ctx) {
+    var it = ctx.item, lang = ctx.bcp, shown = false;
+    var opts = shuffle([it.tgt].concat(pickOthers(ctx, it, 3, function (i) { return i.tgt; })), ctx.rng);
+    var textLine = h('p', { class: 'sub', 'aria-live': 'polite' });
+    var wrapped = { submit: function (r) { r.hint = shown; ctx.submit(r); }, content: ctx.content, rng: ctx.rng };
+    return { el: h('section', { class: 'ex' }, h('p', { class: 'lead' }, 'Hör zu und wähle, was du hörst'),
+      h('div', { class: 'row' }, h('button', { class: 'btn play', type: 'button', onclick: function () { ctx.speak(it.audio, false); } }, icon('speaker'), ' Anhören'),
+        h('button', { class: 'btn ghost', type: 'button', onclick: function () { ctx.speak(it.audio, true); } }, 'Langsam'),
+        h('button', { class: 'btn ghost', type: 'button', onclick: function () { shown = true; textLine.textContent = 'Übersetzung: ' + it.de; } }, 'Übersetzung zeigen')),
+      textLine, h('p', { class: 'sub' }, 'Kein Ton? Prüfe Lautstärke und den Ton-an-Schalter.'),
+      optionList(wrapped, opts, it.tgt, lang, 'Antworten')), focus: null };
+  }
+
+  function shadow(step, ctx) {
+    var it = ctx.item, lang = ctx.bcp, done = false;
+    function rate(r) {
+      return h('button', { class: 'btn ' + (r === 3 ? 'primary' : 'ghost'), type: 'button', onclick: function () {
+        if (done) return;
+        done = true;
+        ctx.submit({ correct: r > 1, check: null, hint: false, selfRating: r, answer: '' });
+      } }, r === 1 ? 'Nochmal üben' : (r === 2 ? 'Fast richtig' : 'Gut gesprochen'));
+    }
+    return { el: h('section', { class: 'ex' }, h('p', { class: 'lead' }, 'Nachsprechen'),
+      h('div', { class: 'prompt' }, h('span', { class: 'big', lang: lang }, it.tgt)), h('p', { class: 'sub' }, it.de),
+      h('div', { class: 'row' }, h('button', { class: 'btn play', type: 'button', onclick: function () { ctx.speak(it.audio, false); } }, icon('speaker'), ' Anhören'),
+        h('button', { class: 'btn ghost', type: 'button', onclick: function () { ctx.speak(it.audio, true); } }, 'Langsam')),
+      h('p', { class: 'sub' }, 'Sprich den Satz laut nach und bewerte dich selbst. Es wird nichts aufgezeichnet und es gibt keine Spracherkennung.'),
+      h('div', { class: 'row wrap' }, rate(1), rate(2), rate(3))), focus: null };
+  }
+
+  function render(step, ctx) {
+    switch (step.ex) {
+      case 'choice': return choice(step, ctx);
+      case 'cloze': return cloze(step, ctx);
+      case 'tiles': return tiles(step, ctx);
+      case 'typing': return typing(step, ctx, false);
+      case 'dictation': return typing(step, ctx, true);
+      case 'listenChoice': return listenChoice(step, ctx);
+      case 'shadow': return shadow(step, ctx);
+      default: throw new Error('Unbekannte Übung: ' + step.ex);
+    }
+  }
+
+  LF.Ex = { render: render, pickOthers: pickOthers, SPECIAL: SPECIAL };
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Views: Home, Session, Statistik, Einstellungen (Hash-Router). Nur h()/textContent. */
+(function (root) {
+  'use strict';
+  var LF = root.LF, App = LF.App, Game = LF.Game, Sched = LF.Sched, Backup = LF.Backup, Speech = LF.Speech;
+  var DB = LF.DB, UI = LF.UI, Ex = LF.Ex, h = UI.h, mount = UI.mount, icon = UI.icon;
+  var Views = { flash: '', voiceDismissed: false };
+  var LANG_NAMES = { en: 'Englisch', es: 'Spanisch', fr: 'Französisch' };
+  var LANG_OPTS = LF.Lib.ENABLED_LANGS.map(function (l) { return { v: l, t: LANG_NAMES[l] }; });
+
+  function go(hash) { if (root.location.hash === hash) Views.render(); else root.location.hash = hash; }
+  Views.go = go;
+
+  function seg(label, options, current, onPick) {
+    var wrap = h('div', { class: 'seg', role: 'group', 'aria-label': label });
+    options.forEach(function (o) {
+      wrap.appendChild(h('button', { type: 'button', class: o.v === current ? 'on' : '', 'aria-pressed': o.v === current ? 'true' : 'false',
+        onclick: function () { onPick(o.v); } }, o.t));
+    });
+    return wrap;
+  }
+
+  function note(text, cls) { return h('p', { class: 'note ' + (cls || ''), role: 'status' }, text); }
+
+  // ---------- Banner ----------
+  Views.renderBanners = function () {
+    var host = root.document.getElementById('banners');
+    if (!host) return;
+    var items = [], s = App.S.settings, lang = s.lang, route = (root.location.hash || '#/home');
+    if (App.dbError) items.push(h('div', { class: 'banner bad', role: 'alert' }, h('strong', null, 'Problem: '), App.dbError));
+    if (App.updateWorker) {
+      items.push(h('div', { class: 'banner info', role: 'status' }, h('span', null, 'Neue Version verfügbar.'),
+        h('button', { class: 'btn small', type: 'button', onclick: function () { App.emit('applyUpdate'); } }, 'Jetzt aktualisieren')));
+    }
+    if (route.indexOf('#/session') !== 0 && !Views.voiceDismissed && !App.hasVoice(lang) && App.S.settings) {
+      items.push(h('div', { class: 'banner warn', role: 'status' },
+        h('p', null, Speech.supported
+          ? 'Keine ' + LANG_NAMES[lang] + '-Stimme gefunden. Hör- und Nachsprech-Übungen werden durch Lese- und Tippübungen ersetzt.'
+          : 'Dieser Browser hat keine Sprachausgabe. Hör- und Nachsprech-Übungen werden durch Lese- und Tippübungen ersetzt.'),
+        Speech.supported ? h('p', { class: 'sub' }, 'Bessere Stimmen laden: iPhone-Einstellungen > Bedienungshilfen > Gesprochene Inhalte > Stimmen > ' + LANG_NAMES[lang] + ' > Stimme mit "Erweitert" oder "Premium" laden. Danach die App neu öffnen.') : null,
+        h('button', { class: 'btn small ghost', type: 'button', onclick: function () { Views.voiceDismissed = true; Views.renderBanners(); } }, 'Ausblenden')));
+    }
+    if (route.indexOf('#/home') === 0 || route === '' || route === '#') {
+      if (Game.backupDue(App.S.meta, Date.now())) {
+        items.push(h('div', { class: 'banner info', role: 'status' }, h('span', null, 'Backup fällig: Sichere deinen Fortschritt als Datei.'),
+          h('button', { class: 'btn small', type: 'button', onclick: function () { go('#/settings'); } }, 'Zu den Einstellungen')));
+      }
+    }
+    mount(host, items);
+  };
+
+  // ---------- Home ----------
+  function ring(xp, goal) {
+    var R = 52, C = 2 * Math.PI * R, frac = Math.min(1, xp / goal);
+    return h('svg', { class: 'ring', viewBox: '0 0 120 120', width: 120, height: 120, role: 'img',
+      'aria-label': 'Tagesziel: ' + xp + ' von ' + goal + ' XP' },
+      h('circle', { class: 'ring-bg', cx: 60, cy: 60, r: R, fill: 'none', 'stroke-width': 10 }),
+      h('circle', { class: 'ring-fg', cx: 60, cy: 60, r: R, fill: 'none', 'stroke-width': 10, 'stroke-linecap': 'round',
+        'stroke-dasharray': C.toFixed(2), 'stroke-dashoffset': (C * (1 - frac)).toFixed(2), transform: 'rotate(-90 60 60)' }),
+      h('text', { x: 60, y: 58, 'text-anchor': 'middle', class: 'ring-num', 'font-size': 24 }, String(xp)),
+      h('text', { x: 60, y: 78, 'text-anchor': 'middle', class: 'ring-sub', 'font-size': 12 }, 'von ' + goal + ' XP'));
+  }
+
+  function stat(iconName, value, label) {
+    return h('div', { class: 'stat' }, h('div', { class: 'stat-v' }, iconName ? icon(iconName) : null, h('span', null, String(value))), h('div', { class: 'stat-l' }, label));
+  }
+
+  function homeView(host) {
+    var s = App.S.settings, lang = s.lang, C = App.content(lang), cards = App.cardsFor(lang), now = Date.now();
+    var d = App.S.daily[App.today()], xp = d ? d.xp : 0, st = App.streak();
+    var due = Sched.dueCount(cards, now), open = Game.unlocked(C, cards, s.unlockAll);
+    var units = C.units.map(function (u, i) {
+      var us = Game.unitStats(u, cards), pct = Math.round(us.ratio * 100);
+      var prev = i > 0 ? Math.round(Game.unitStats(C.units[i - 1], cards).ratio * 100) : 0;
+      var label = 'Einheit ' + u.id + ': ' + u.title + '. ' + us.introduced + ' von ' + us.total + ' gelernt, ' + us.mastered + ' gemeistert.' + (open[i] ? '' : ' Gesperrt.');
+      return h('button', { type: 'button', class: 'unit' + (open[i] ? '' : ' locked'), disabled: !open[i], 'aria-label': label,
+        onclick: function () { Views.startSession({ onlyUnit: u.id }); } },
+        h('span', { class: 'unit-n' }, open[i] ? String(u.id) : icon('lock')),
+        h('span', { class: 'unit-b' },
+          h('span', { class: 'unit-t' }, u.title),
+          h('span', { class: 'pbar', 'aria-hidden': 'true' }, h('span', { class: 'fill', style: { width: pct + '%' } })),
+          h('span', { class: 'unit-s' }, open[i] ? us.introduced + '/' + us.total + ' gelernt, ' + us.mastered + ' gemeistert'
+            : 'Gesperrt: Meistere Einheit ' + (u.id - 1) + ' zu 60 % (aktuell ' + prev + ' %)')));
+    });
+    mount(host,
+      h('header', { class: 'top' }, h('h1', null, 'LingoForge'),
+        LANG_OPTS.length > 1 ? seg('Lernsprache', LANG_OPTS.map(function (o) { return { v: o.v, t: o.v.toUpperCase() }; }), lang, function (v) {
+          s.lang = v; App.saveSettings(); Views.render();
+        }) : null),
+      Views.flash ? note(Views.flash) : null,
+      h('section', { class: 'card hero' }, ring(xp, s.goal),
+        h('div', { class: 'stats' },
+          stat('flame', st.current, st.current === 1 ? 'Tag Serie' : 'Tage Serie'),
+          stat(null, App.totalXp(), 'XP gesamt'),
+          stat(null, due, 'fällig'))),
+      h('button', { class: 'btn primary big', type: 'button', onclick: function () { Views.startSession({}); } }, 'Üben'),
+      h('h2', null, 'Pfad ' + LANG_NAMES[lang]),
+      h('div', { class: 'path' }, units));
+    Views.flash = '';
+  }
+
+  // ---------- Session ----------
+  Views.startSession = function (opts) {
+    var s = App.S.settings, lang = s.lang, C = App.content(lang);
+    var res = Sched.buildSession({ content: C, cards: App.cardsFor(lang), settings: s, newToday: App.newToday(),
+      now: Date.now(), rng: Math.random, hasVoice: App.hasVoice(lang), size: 15, onlyUnit: opts && opts.onlyUnit });
+    if (!res.steps.length) {
+      Views.flash = 'Gerade ist nichts zu üben. Tippe eine Einheit an oder erhöhe die neuen Items pro Tag in den Einstellungen.';
+      Views.render();
+      return;
+    }
+    App.session = { lang: lang, steps: res.steps, i: 0, xp: 0, run: 0, right: 0, wrong: 0, newItems: 0, startedAt: Date.now(), done: false };
+    go('#/session');
+  };
+
+  function sessionView(host) {
+    var S = App.session;
+    if (!S) { go('#/home'); return; }
+    var lang = S.lang, C = App.content(lang), s = App.S.settings;
+    var bar = h('span', { class: 'fill' });
+    var stage = h('div', { class: 'stage' });
+    mount(host,
+      h('header', { class: 'sess-head' },
+        h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Sitzung beenden', onclick: function () { Speech.cancel(); App.session = null; go('#/home'); } }, icon('close')),
+        h('div', { class: 'pbar grow', role: 'progressbar', 'aria-label': 'Fortschritt', 'aria-valuemin': 0, 'aria-valuemax': 100 }, bar)),
+      stage);
+
+    function progress() {
+      var pct = Math.min(100, Math.round(100 * S.i / S.steps.length));
+      bar.style.width = pct + '%';
+      bar.parentNode.setAttribute('aria-valuenow', String(pct));
+    }
+    function next() { S.i++; root.scrollTo(0, 0); show(); }
+
+    function show() {
+      if (S.i >= S.steps.length) { finish(); return; }
+      progress();
+      var st = S.steps[S.i], item = C.byId[st.id];
+      if (st.type === 'intro') showIntro(st, item); else showEx(st, item);
+    }
+
+    function showIntro(st, item) {
+      var sp = App.hasVoice(lang) ? h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Vorlesen', onclick: function () { App.speak(item.audio, lang, false); } }, icon('speaker')) : null;
+      var go1 = h('button', { class: 'btn primary big', type: 'button', onclick: function () { App.introduce(lang, item); next(); } }, 'Verstanden');
+      mount(stage, h('section', { class: 'ex intro' }, h('p', { class: 'lead' }, 'Neu: Lerne ' + (item.kind === 'word' ? 'diesen Ausdruck' : 'diesen Satz')),
+        h('div', { class: 'prompt' }, h('span', { class: 'big', lang: C.tts }, item.tgt), sp),
+        h('p', { class: 'sub big2' }, item.de), go1));
+      go1.focus();
+    }
+
+    function showEx(st, item) {
+      var t0 = Date.now(), submitted = false;
+      var fb = h('div', { class: 'feedback', hidden: true, 'aria-live': 'polite' });
+      var ctx = { item: item, content: C, langCode: lang, bcp: C.tts, rng: Math.random, hasVoice: App.hasVoice(lang),
+        speak: function (text, slow) { return App.speak(text, lang, slow); }, card: App.S.cards[item.id],
+        submit: function (res) { if (submitted) return; submitted = true; onAnswer(st, item, res, Date.now() - t0, fb); } };
+      var ex = Ex.render(st, ctx);
+      mount(stage, ex.el, fb);
+      if (ex.focus) ex.focus();
+    }
+
+    function onAnswer(st, item, res, ms, fb) {
+      var scored = !st.retry, rating = 0, rec = null, gained = 0;
+      if (scored) {
+        rating = Game.rating({ ex: st.ex, item: item, correct: res.correct, check: res.check, hint: res.hint, ms: ms, selfRating: res.selfRating });
+        rec = App.recordAnswer(lang, item, rating, { ex: st.ex, ms: ms, hint: res.hint, correct: res.correct });
+        S.run = res.correct ? S.run + 1 : 0;
+        if (res.correct) S.right++; else S.wrong++;
+        if (rec.wasNew) S.newItems++;
+        gained = Game.xpForAnswer(res.correct, S.run);
+        if (gained) { S.xp += gained; App.addXp(gained, lang); }
+      }
+      if (!res.correct && (st.tries || 0) < 2) Sched.insertRetry(S.steps, S.i, item, { rng: Math.random, hasVoice: App.hasVoice(lang), tries: st.tries || 0 });
+      showFeedback(st, item, res, rec, rating, gained, fb);
+    }
+
+    function showFeedback(st, item, res, rec, rating, gained, fb) {
+      var near = res.correct && (res.check === 'typo' || res.check === 'accentOnly');
+      var title = !res.correct ? 'Nicht ganz' : (near ? 'Fast richtig' : 'Richtig!');
+      var last = S.i + 1 >= S.steps.length;
+      var easy = null;
+      if (rec && res.correct && rating === 3) {
+        easy = h('button', { class: 'btn ghost', type: 'button', onclick: function () {
+          App.upgradeEasy(rec); easy.disabled = true; easy.textContent = 'Als leicht gemerkt';
+        } }, 'Das war leicht');
+      }
+      var sp = App.hasVoice(lang) ? h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Vorlesen', onclick: function () { App.speak(item.audio, lang, false); } }, icon('speaker')) : null;
+      var nextBtn = h('button', { class: 'btn primary', type: 'button', onclick: next }, last ? 'Fertig' : 'Weiter');
+      fb.classList.add(res.correct ? 'ok' : 'bad');
+      mount(fb, h('p', { class: 'fb-t' }, title, gained ? h('span', { class: 'xp' }, ' +' + gained + ' XP') : null),
+        !res.correct || near ? h('p', { class: 'fb-a' }, 'Richtig: ', h('strong', { lang: C.tts }, item.tgt)) : null,
+        h('p', { class: 'sub' }, item.tgt + ' = ' + item.de), st.retry ? h('p', { class: 'sub' }, 'Wiederholung ohne Wertung.') : null,
+        h('div', { class: 'row' }, sp, easy, nextBtn));
+      fb.hidden = false; fb.removeAttribute('hidden');
+      nextBtn.focus();
+    }
+
+    function finish() {
+      S.done = true; progress();
+      var bonus = Game.SESSION_BONUS;
+      S.xp += bonus; App.addXp(bonus, lang); App.sessionDone();
+      var total = S.right + S.wrong, acc = total ? Math.round(100 * S.right / total) : 100;
+      var d = App.S.daily[App.today()], st = App.streak();
+      mount(stage, h('section', { class: 'ex summary' }, h('h2', null, 'Geschafft!'),
+        h('div', { class: 'stats' }, stat(null, '+' + S.xp, 'XP'), stat(null, acc + ' %', 'richtig'), stat(null, S.newItems, 'neu gelernt')),
+        h('p', { class: 'sub' }, S.right + ' richtig, ' + S.wrong + ' falsch. Sitzungsbonus: +' + bonus + ' XP.'),
+        h('p', { class: 'sub' }, d && d.goalMet ? 'Tagesziel erreicht. Serie: ' + st.current + ' ' + (st.current === 1 ? 'Tag' : 'Tage') + '.' : 'Tagesziel: ' + (d ? d.xp : 0) + ' von ' + s.goal + ' XP.'),
+        h('div', { class: 'row wrap' },
+          h('button', { class: 'btn ghost', type: 'button', onclick: function () { App.session = null; go('#/home'); } }, 'Zur Startseite'),
+          h('button', { class: 'btn primary', type: 'button', onclick: function () { App.session = null; Views.startSession({}); } }, 'Noch eine Runde'))));
+    }
+
+    show();
+  }
+
+  // ---------- Statistik ----------
+  var WD = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+
+  function weekBars(goal) {
+    var today = App.today(), days = [], max = goal, i, k;
+    for (i = 6; i >= 0; i--) {
+      k = Game.addDays(today, -i);
+      var d = App.S.daily[k], p = k.split('-');
+      days.push({ k: k, xp: d ? d.xp : 0, wd: WD[new Date(+p[0], +p[1] - 1, +p[2]).getDay()] });
+      if (d && d.xp > max) max = d.xp;
+    }
+    var W = 308, H = 150, base = 120, kids = [];
+    days.forEach(function (x, idx) {
+      var bh = Math.round(100 * x.xp / max), bx = 8 + idx * 43;
+      kids.push(h('rect', { class: 'bar', x: bx, y: base - bh, width: 32, height: Math.max(bh, x.xp ? 2 : 0), rx: 4 }));
+      kids.push(h('text', { x: bx + 16, y: 138, 'text-anchor': 'middle', class: 'axis', 'font-size': 11 }, x.wd));
+      if (x.xp) kids.push(h('text', { x: bx + 16, y: base - bh - 4, 'text-anchor': 'middle', class: 'axis', 'font-size': 10 }, String(x.xp)));
+    });
+    var gy = base - Math.round(100 * goal / max);
+    kids.push(h('line', { class: 'goal-line', x1: 0, x2: W, y1: gy, y2: gy, 'stroke-dasharray': '4 4' }));
+    return h.apply(null, ['svg', { viewBox: '0 0 ' + W + ' ' + H, width: '100%', role: 'img',
+      'aria-label': 'XP der letzten 7 Tage: ' + days.map(function (x) { return x.wd + ' ' + x.xp; }).join(', ') }].concat(kids));
+  }
+
+  function heatmap() {
+    var today = App.today(), p = today.split('-');
+    var dow = (new Date(+p[0], +p[1] - 1, +p[2]).getDay() + 6) % 7, start = Game.addDays(today, -(dow + 77)), max = 1, c, r, k, total = 0;
+    for (k in App.S.daily) if (App.S.daily[k].reviews > max) max = App.S.daily[k].reviews;
+    var cells = [];
+    for (c = 0; c < 12; c++) {
+      for (r = 0; r < 7; r++) {
+        k = Game.addDays(start, c * 7 + r);
+        if (k > today) continue;
+        var d = App.S.daily[k], n = d ? d.reviews : 0;
+        total += n;
+        var a = { x: c * 21, y: r * 21, width: 18, height: 18, rx: 3, class: n ? 'hm' : 'hm e' };
+        if (n) a['fill-opacity'] = (0.25 + 0.75 * n / max).toFixed(2);
+        cells.push(h('rect', a));
+      }
+    }
+    return h.apply(null, ['svg', { viewBox: '0 0 252 147', width: '100%', role: 'img',
+      'aria-label': 'Aktivität der letzten 12 Wochen: ' + total + ' Wiederholungen' }].concat(cells));
+  }
+
+  function statsView(host) {
+    var s = App.S.settings, lang = s.lang, C = App.content(lang), cards = App.cardsFor(lang), now = Date.now();
+    var learning = 0, young = 0, mastered = 0, seen = 0, k;
+    for (k in cards) {
+      var c = cards[k];
+      if (c.state === 0) continue;
+      seen++;
+      if (c.state === 1 || c.state === 3) learning++; else if (c.stability >= 5) mastered++; else young++;
+    }
+    var rev7 = 0, revAll = 0, d;
+    for (k in App.S.daily) {
+      d = App.S.daily[k]; revAll += d.reviews;
+      if (k >= Game.addDays(App.today(), -6)) rev7 += d.reviews;
+    }
+    var st = App.streak();
+    var ret = h('strong', null, '...');
+    DB.loadLog().then(function (log) {
+      var r = Game.retention(log, now, 30);
+      ret.textContent = r.value === null ? 'noch keine Daten' : Math.round(r.value * 100) + ' % (' + r.n + ' Wiederholungen, 30 Tage)';
+    }).catch(function () { ret.textContent = 'nicht lesbar'; });
+    mount(host, h('header', { class: 'top' }, h('h1', null, 'Statistik')),
+      h('p', { class: 'sub' }, 'Sprache: ' + LANG_NAMES[lang] + ' (Wechsel auf der Startseite)'),
+      h('section', { class: 'card' }, h('div', { class: 'stats' }, stat(null, revAll, 'Wiederholungen'), stat(null, rev7, 'letzte 7 Tage'), stat('flame', st.best, 'beste Serie'))),
+      h('section', { class: 'card' }, h('h2', null, 'Behalten'), h('p', null, 'Retention: ', ret),
+        h('p', { class: 'sub' }, 'Anteil richtiger Antworten bei Karten, die schon einmal geübt wurden.')),
+      h('section', { class: 'card' }, h('h2', null, 'Karten'),
+        h('p', null, seen + ' von ' + C.items.length + ' Items gelernt: ' + learning + ' in Lernphase, ' + young + ' jung, ' + mastered + ' gemeistert.')),
+      h('section', { class: 'card' }, h('h2', null, 'Diese Woche (XP)'), weekBars(s.goal)),
+      h('section', { class: 'card' }, h('h2', null, 'Aktivität (12 Wochen)'), heatmap()));
+  }
+
+  // ---------- Einstellungen ----------
+  function field(label, control, help) {
+    return h('div', { class: 'setting' }, h('label', null, label), control, help ? h('p', { class: 'sub' }, help) : null);
+  }
+
+  function range(label, min, max, step, value, fmt, onSave) {
+    var out = h('output', null, fmt(value));
+    var input = h('input', { type: 'range', min: min, max: max, step: step, value: value, 'aria-label': label });
+    input.addEventListener('input', function () { out.textContent = fmt(+input.value); });
+    input.addEventListener('change', function () { onSave(+input.value); });
+    return h('div', { class: 'range' }, input, out);
+  }
+
+  function download(file) {
+    var url = root.URL.createObjectURL(file), a = root.document.createElement('a');
+    a.href = url; a.download = file.name; root.document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { root.URL.revokeObjectURL(url); }, 10000);
+  }
+
+  function settingsView(host) {
+    var s = App.S.settings, lang = s.lang, C = App.content(lang);
+    var status = h('p', { class: 'note', role: 'status', 'aria-live': 'polite' });
+    var importBox = h('div', { class: 'import-box' });
+    var wipeBox = h('div', { class: 'wipe-box' });
+    var persistTxt = h('p', { class: 'sub' }, 'Speicherstatus wird geprüft ...');
+    var estimateTxt = h('p', { class: 'sub' });
+    function say(t, bad) { status.textContent = t; status.className = 'note' + (bad ? ' bad' : ''); }
+    function save() { App.saveSettings(); }
+
+    var voices = Speech.voicesFor(lang);
+    var voiceSel = h('select', { 'aria-label': 'Stimme', disabled: !voices.length, value: s.voices[lang] || '' },
+      h('option', { value: '' }, voices.length ? 'Automatisch (beste verfügbare)' : 'Keine Stimme gefunden'),
+      voices.map(function (v) { return h('option', { value: v.voiceURI }, v.name + ' (' + v.lang + ')'); }));
+    voiceSel.addEventListener('change', function () { s.voices[lang] = voiceSel.value; save(); });
+
+    function doExport() {
+      say('Backup wird erstellt ...');
+      App.exportJson().then(function (json) {
+        var file = new root.File([json], 'lingoforge-backup-' + App.today() + '.json', { type: 'application/json' });
+        var nav = root.navigator;
+        function ok() { App.markBackup().then(function () { say('Backup erstellt.'); }); }
+        if (nav.canShare && nav.share && nav.canShare({ files: [file] })) {
+          return nav.share({ files: [file], title: 'LingoForge-Backup' }).then(ok, function (err) {
+            if (err && err.name === 'AbortError') { say('Teilen abgebrochen. Es wurde kein Backup markiert.'); return; }
+            download(file); ok();
+          });
+        }
+        download(file); ok();
+      }).catch(function (e) { say('Export fehlgeschlagen: ' + e.message, true); });
+    }
+
+    function onFile(ev) {
+      var f = ev.target.files && ev.target.files[0];
+      if (!f) return;
+      if (f.size > Backup.MAX_BYTES) { say('Datei zu groß (max. 8 MB).', true); return; }
+      f.text().then(function (text) {
+        var data = Backup.parse(text);
+        function apply(mode) {
+          mount(importBox);
+          say('Import läuft ...');
+          App.importData(data, mode).then(function () { say('Import abgeschlossen (' + (mode === 'replace' ? 'ersetzt' : 'zusammengeführt') + ').'); Views.render(); })
+            .catch(function (e) { say('Import fehlgeschlagen, nichts geändert: ' + e.message, true); });
+        }
+        mount(importBox, h('p', null, 'Gefunden: ' + data.cards.length + ' Karten, ' + data.reviewLog.length + ' Verlaufseinträge, ' + data.daily.length + ' Tage.' + (data.discarded ? ' Verworfen (deaktivierte Sprache): ' + data.discarded + '.' : '')),
+          h('div', { class: 'row wrap' },
+            h('button', { class: 'btn danger', type: 'button', onclick: function () { apply('replace'); } }, 'Ersetzen'),
+            h('button', { class: 'btn primary', type: 'button', onclick: function () { apply('merge'); } }, 'Zusammenführen'),
+            h('button', { class: 'btn ghost', type: 'button', onclick: function () { mount(importBox); say('Import abgebrochen.'); } }, 'Abbrechen')),
+          h('p', { class: 'sub' }, 'Ersetzen löscht den aktuellen Fortschritt. Beides läuft in einer Transaktion: bei einem Fehler bleibt alles unverändert.'));
+        say('');
+      }).catch(function (e) { mount(importBox); say(e.message, true); });
+      ev.target.value = '';
+    }
+
+    function armWipe() {
+      mount(wipeBox, h('div', { class: 'banner bad' },
+        h('p', null, 'Wirklich alles löschen? Fortschritt, Einstellungen, Zwischenspeicher und Service Worker werden entfernt. Danach brauchst du einmal Internet, um die App neu zu laden.'),
+        h('div', { class: 'row wrap' },
+          h('button', { class: 'btn danger', type: 'button', onclick: function () {
+            say('Lösche ...');
+            App.wipeAll().then(function () { mount(wipeBox); say('Alles gelöscht.'); go('#/home'); })
+              .catch(function (e) { say('Löschen fehlgeschlagen: ' + e.message, true); });
+          } }, 'Ja, endgültig löschen'),
+          h('button', { class: 'btn ghost', type: 'button', onclick: function () { mount(wipeBox); } }, 'Abbrechen'))));
+    }
+
+    var nav = root.navigator;
+    if (nav.storage && nav.storage.persisted) {
+      nav.storage.persisted().then(function (p) {
+        persistTxt.textContent = p ? 'Dauerhafter Speicher: gewährt. Der Browser löscht deine Daten nicht automatisch bei Speicherknappheit.'
+          : 'Dauerhafter Speicher: nicht gewährt. Safari kann Daten von lange nicht geöffneten Webseiten löschen. Zum Home-Bildschirm hinzugefügte Apps sind meist ausgenommen, garantiert ist das nicht. Erstelle regelmäßig ein Backup.';
+      }).catch(function () { persistTxt.textContent = 'Speicherstatus nicht abfragbar.'; });
+    } else persistTxt.textContent = 'Dieser Browser meldet keinen Speicherstatus. Erstelle regelmäßig ein Backup.';
+    if (nav.storage && nav.storage.estimate) {
+      nav.storage.estimate().then(function (e) {
+        estimateTxt.textContent = 'Belegt: ' + ((e.usage || 0) / 1048576).toFixed(2) + ' MB von etwa ' + Math.round((e.quota || 0) / 1048576) + ' MB Kontingent.';
+      }).catch(function () { /* optional */ });
+    }
+
+    var lb = App.S.meta.lastBackup;
+    mount(host, h('header', { class: 'top' }, h('h1', null, 'Einstellungen')), status,
+      h('section', { class: 'card' }, h('h2', null, 'Lernen'),
+        LANG_OPTS.length > 1 ? field('Lernsprache', seg('Lernsprache', LANG_OPTS, lang, function (v) { s.lang = v; save(); Views.render(); })) : null,
+        field('Tagesziel', seg('Tagesziel', [{ v: 20, t: '20 XP' }, { v: 30, t: '30 XP' }, { v: 50, t: '50 XP' }], s.goal, function (v) { s.goal = v; save(); Views.render(); })),
+        field('Neue Items pro Tag', range('Neue Items pro Tag', 0, 30, 1, s.newPerDay, String, function (v) { s.newPerDay = v; save(); }),
+          'Bei vielen fälligen Wiederholungen wird die Zahl automatisch gesenkt.'),
+        field('Ziel-Retention', range('Ziel-Retention', 80, 97, 1, Math.round(s.retention * 100), function (v) { return v + ' %'; }, function (v) { s.retention = v / 100; save(); }),
+          'Höher heißt kürzere Abstände und mehr Wiederholungen.'),
+        field('Alle Einheiten freischalten', h('label', { class: 'switch' }, h('input', { type: 'checkbox', checked: s.unlockAll, 'aria-label': 'Alle Einheiten freischalten',
+          onchange: function (e) { s.unlockAll = e.target.checked; save(); } }), h('span', null, s.unlockAll ? 'Aktiv' : 'Aus (Einheit n+1 ab 60 % von n)')))),
+      h('section', { class: 'card' }, h('h2', null, 'Sprachausgabe'),
+        field('Stimme (' + LANG_NAMES[lang] + ')', voiceSel),
+        field('Tempo', range('Tempo', 0.5, 1.2, 0.05, s.rate, function (v) { return v.toFixed(2) + 'x'; }, function (v) { s.rate = v; save(); })),
+        h('button', { class: 'btn ghost', type: 'button', disabled: !App.hasVoice(lang), onclick: function () { App.speak(C.units[0].items[3].audio, lang, false); } }, 'Stimme testen'),
+        App.hasVoice(lang) ? null : h('p', { class: 'sub' }, 'Ohne Stimme werden Hör- und Nachsprech-Übungen durch Lese- und Tippübungen ersetzt.')),
+      h('section', { class: 'card' }, h('h2', null, 'Darstellung'),
+        field('Theme', seg('Theme', [{ v: 'auto', t: 'Automatisch' }, { v: 'light', t: 'Hell' }, { v: 'dark', t: 'Dunkel' }], s.theme, function (v) { s.theme = v; save(); App.applyTheme(); Views.render(); }))),
+      h('section', { class: 'card' }, h('h2', null, 'Daten'),
+        h('p', { class: 'sub' }, lb ? 'Letztes Backup: ' + new Date(lb).toLocaleString('de-DE') : 'Noch kein Backup erstellt.'),
+        h('div', { class: 'row wrap' },
+          h('button', { class: 'btn primary', type: 'button', onclick: doExport }, 'Backup exportieren (JSON)'),
+          h('label', { class: 'btn ghost filebtn' }, 'Backup importieren', h('input', { type: 'file', accept: 'application/json,.json', class: 'file', 'aria-label': 'Backup-Datei wählen', onchange: onFile }))),
+        importBox,
+        h('h3', null, 'Speicher'), persistTxt, estimateTxt,
+        h('button', { class: 'btn ghost', type: 'button', onclick: function () {
+          if (!nav.storage || !nav.storage.persist) { say('Dieser Browser unterstützt keine Anfrage für dauerhaften Speicher.', true); return; }
+          nav.storage.persist().then(function (g) { say(g ? 'Dauerhafter Speicher gewährt.' : 'Nicht gewährt. Safari entscheidet selbst; ein Backup bleibt die sichere Variante.'); Views.render(); });
+        } }, 'Dauerhaften Speicher anfragen')),
+      h('section', { class: 'card' }, h('h2', null, 'Gefahrenbereich'),
+        h('button', { class: 'btn danger', type: 'button', onclick: armWipe }, 'Alles löschen ...'), wipeBox),
+      h('section', { class: 'card' }, h('h2', null, 'Über LingoForge'),
+        h('p', { class: 'sub' }, 'Alles läuft lokal auf diesem Gerät. Keine Konten, keine Analyse, keine Telemetrie, keine Fremdserver. Spaced Repetition nach FSRS-5 mit Standardgewichten. Lizenz MIT.')));
+  }
+
+  // ---------- Router ----------
+  var NAV = [{ h: '#/home', t: 'Lernen', i: 'home' }, { h: '#/stats', t: 'Statistik', i: 'chart' }, { h: '#/settings', t: 'Einstellungen', i: 'gear' }];
+
+  Views.render = function () {
+    var host = root.document.getElementById('view'), nav = root.document.getElementById('nav');
+    var hash = root.location.hash || '#/home', inSession = hash.indexOf('#/session') === 0;
+    if (!App.S.settings) return;
+    try {
+      if (inSession) sessionView(host);
+      else if (hash.indexOf('#/stats') === 0) statsView(host);
+      else if (hash.indexOf('#/settings') === 0) settingsView(host);
+      else homeView(host);
+    } catch (e) {
+      mount(host, h('div', { class: 'banner bad', role: 'alert' }, 'Anzeigefehler: ' + e.message));
+    }
+    nav.hidden = inSession;
+    if (inSession) nav.setAttribute('hidden', ''); else nav.removeAttribute('hidden');
+    mount(nav, NAV.map(function (n) {
+      var on = hash.indexOf(n.h) === 0 || (n.h === '#/home' && !/^#\/(stats|settings|session)/.test(hash));
+      return h('a', { href: n.h, class: 'navlink' + (on ? ' on' : ''), 'aria-current': on ? 'page' : 'false' }, icon(n.i), h('span', null, n.t));
+    }));
+    Views.renderBanners();
+    if (!inSession) root.scrollTo(0, 0);
+  };
+
+  LF.Views = Views;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* Main: Start, Router, Service-Worker-Update (ohne Zwangsreload), Fehleranzeige. */
+(function (root) {
+  'use strict';
+  var LF = root.LF, App = LF.App, Views = LF.Views;
+  var nav = root.navigator;
+
+  function offer(worker) { App.updateWorker = worker; App.emit('banner'); }
+
+  function registerSW() {
+    if (!nav.serviceWorker) return;
+    var asked = false;
+    App.on('applyUpdate', function () {
+      asked = true;
+      if (App.updateWorker) App.updateWorker.postMessage({ type: 'SKIP_WAITING' });
+    });
+    nav.serviceWorker.addEventListener('controllerchange', function () { if (asked) root.location.reload(); });
+    nav.serviceWorker.register('sw.js').then(function (reg) {
+      if (reg.waiting && nav.serviceWorker.controller) offer(reg.waiting);
+      reg.addEventListener('updatefound', function () {
+        var w = reg.installing;
+        if (!w) return;
+        w.addEventListener('statechange', function () { if (w.state === 'installed' && nav.serviceWorker.controller) offer(w); });
+      });
+      function check() { reg.update().catch(function () { /* offline: kein Update */ }); }
+      check();
+      root.document.addEventListener('visibilitychange', function () { if (root.document.visibilityState === 'visible') check(); });
+    }).catch(function () { /* z. B. kein sicherer Kontext: App läuft ohne Offline-Cache */ });
+  }
+
+  function crash(msg) { App.dbError = 'Unerwarteter Fehler: ' + msg; App.emit('banner'); }
+  root.addEventListener('error', function (e) { crash(e && e.message ? e.message : 'unbekannt'); });
+  root.addEventListener('unhandledrejection', function (e) { crash(e && e.reason && e.reason.message ? e.reason.message : 'unbekannt'); });
+  root.addEventListener('hashchange', function () { Views.render(); });
+  App.on('banner', function () { Views.renderBanners(); });
+
+  LF.ready = App.init().then(function () {
+    Views.render();
+    registerSW();
+  });
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+</script>
+</body>
+</html>
