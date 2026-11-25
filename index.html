@@ -2,14 +2,14 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-sv63RfTTVrQ2a3+frEnrC6Azhz3MDM1DHuGAjt/x3j8='; style-src 'unsafe-inline'; img-src data:; manifest-src data:; connect-src 'none'; media-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-7Gs+k2TdrZKicPjXMfZMwWkvzozadHaFK+3+Ye0TIAA='; style-src 'unsafe-inline'; img-src data:; manifest-src data:; connect-src 'none'; media-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#12355b">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="LingoForge">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="referrer" content="no-referrer">
 <title>LingoForge</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzEyMzU1YiIvPjxyZWN0IHg9IjE1My42IiB5PSIxMDIuNCIgd2lkdGg9IjYxLjQiIGhlaWdodD0iMjg2LjciIHJ4PSIxMiIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjE1My42IiB5PSIzMjcuNyIgd2lkdGg9IjIwNC44IiBoZWlnaHQ9IjYxLjQiIHJ4PSIxMiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjMyNy43IiBjeT0iMTYzLjgiIHI9IjQ2LjEiIGZpbGw9IiNmZjlmMWMiLz48L3N2Zz4=">
@@ -17,37 +17,52 @@
 <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiTGluZ29Gb3JnZSIsInNob3J0X25hbWUiOiJMaW5nb0ZvcmdlIiwibGFuZyI6ImRlIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzEyMzU1YiIsInRoZW1lX2NvbG9yIjoiIzEyMzU1YiIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUxRQUFBQzBDQUlBQUFDeXI1RmxBQUFDMGtsRVFWUjQydTNjUFU0Q1FSaUFZYzVnYlVkSGFDaE02SXpOVW0xSHNZblZKaDZBSG5vUFFFTExGZllBSHNCd0R3b0x6NENKSkJzMWl2enNNalB3a1BjQVJwOE1PenZmMkxtNWU1UityZU5YSURnRWgrQVFISUpEY0FnT3dTRTRCSWNFaCtBUUhJSkRjQWdPd1NFNEJJZmdrT0FRSElKRGNBZ093U0U0QklmZ0VCd1NISUpEY0FnT3dmSFo1clJQOWZMcXp3d0hISERBQVFjY2NNQUJ4M1hnR09WNVdXU0x5YkNhRGJhVlJWWVdHUnpYaTZQL01GNU1odXQ1ZDdPOC9hc3RGRGl1Q01lV3hRNFRQMXJQdXdrUmdlUDR5aUxibjhXUFZhVC9NSWJqWW5GVXM4RnhNdW9sSkg0ZmNBU1FrWW9QT0E1dStuUi91b3phQnh5WGcyT1U1MDNKMkxhWURPRzRFQnlyNTE2ek9EYkwyMUdldzVFOGpnYS9VTDYyZXU3QmtUeU9OcGFObUJjUE9JSTliY1QvNUFGSDRPK1VtTGN0Y0p6MTNjYU80RWdZeCs1enRkT0w4TXdGanIxL2pEWmx3QUVISEhEQUFRY2NjSnhwdHhMaENTMGMrM2JReEpldHJEZWtqVlhOQm5Da2ZiYlMzcXNPWnl0T1pSTWIrWUVqL09JUjdUdzZIR2VhT0U5dW1BT093SHZheUdlTTRRanBJOW9CUVRnQzMxdUovK29iSEFGZWl5Vnhvd21PQnQ2TUhicC9pZmt1QWh5dFhKcjlkL1o0UGU4dUpzTWtGZ3c0V3JseFh4WlovWjg1NnFaUDk1RS9lTUloT09DQUF3NDQ0SUFERGpqZ2dBTU9PT0NBQXc0NDRCQWNnZ01PT09DQUF3NDQ0SUFERGpqZ2dBTU9PT0NBQXc3QklUamdnQU1PT09DQUF3NDQ0SUFERGpqZ2dBTU9PT0FRSElKRGNNQUJCeHh3d0FFSEhIREFBUWNjY01BQkJ4eHd3S0VyeExGK2U2OWVYaU1NanZBNG92M0FBUWNjY01BQkJ4eHd3QUVISEhEQUFRY2NjTUFCQnh4d3dBRUhISERBQVFjY2NNQUJCeHh3d0FFSEhIREFBUWNjY01EeGQzR09CeHN3bHFzSkVoeUNRM0FJRHNFaE9BU0g0QkFjZ2tPQ1EzQUlEc0VoT0FTSDRCQWNna053U0hBSURzRWhPQVNINEJBY2drTndDQTdCSWNFaE9BU0g0QkFjZ2tOd0NBN0JJVGlrYjMwQWx6MldyRHJEaFQ4QUFBQUFTVVZPUks1Q1lJST0iLCJzaXplcyI6IjE4MHgxODAiLCJ0eXBlIjoiaW1hZ2UvcG5nIn0seyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQUlBQUFCN0drT3RBQUFMT0VsRVFWUjQydTNkTVc3YVlCaUE0WnloY3pkdmlNVkRKVGJFWW9iS0d3TlNKMWRlS3pGR3dsSkg5bGhpN1JWOGdCNmc0aDQrUnpwUVJWVkNReXJBc2YwOW41NFRrUGgvNGY5dHVQdnc2UXNBQWQxNUNRQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQUV3S3NBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBSUFCZUJRQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBRGV6L0xyOStibnJ5SHl0d01CNENMRi9jUGpNTWZmRGdRQUFRQUVBQUVBQkFBQkFBUUFBUUFFQUFFQUJBQUJBQVJBQUFRQUVBQUJFQUJBQUFSQUFBQUJFQUFCQUFSQUFBUUFCQUFCRUFBUUFBUkFBRUFBRUFBQkdOei93RHI3MjNTeDhwb2dBQUlnQUtNeVhheUtkYmJmekpvcVBld21qejgrdnE2dGs2WktteW90MXRreXo3MkFDSUFBQ01EdzN1QTNWZHJXeWRrVi82eW1TcmZsM0VjRUFmQXFDSUFBREdEZHYzelJQK213bXlpQkFDQUFBdEM3Zlo3OVpuYVY5L3R2L0V4Z2QwZ0FFQUFCNk1YUzM4MjYvL0lEZ1F3SUFBSWdBTEdXZmhrUUFBUkFBTjdOdHB4M3R1SHpGdnZOek5tQUFDQUFBbkR6Ti81dnVadXplMjJkRk92TUgwZ0FFQUFCdU5WTlBqMWMrcCtkRDd1K0JBQUJFSUFydTkzOW5WZi9LR0E3U0FBUUFBRVkrYmJQSzJ3SENRQUNJQUJYV1AxN2RkNnJBUUtBQUFpQTFmKzhiVGwzdVFrQUFpQUE0VmIvcHp0RVhYRUNnQUFJUUxqVjMxNlFBQ0FBQWhCMzlkY0FBVUFBQk9BL2pHejFQL0tORVFLQUFBakFTTzczOTN5QUFDQUFBaERyV2Q4THZ6bk8xU2NBQ0lBQW5ONzZIL0hxNzhaUUFVQUFCT0NmQnZlNHI4TUFBVUFBQk9BS3R1VTh3dXB2STBnQUVBQUJDTGY1WXlOSUFCQUFBVGloRDcvdDFmRWRRUzVEQVVBQUJDRGMyMzlmRVNFQUNJQUFqUHpHLzdNOEZpQUFDRURvQU1SOCsrOURnQUFnQUFJUWJ2ZmZTWUFBSUFBQzhFZlkxZC90UUFLQUFJUU9RSng3L3owVElBQUlnQUJFZlBUWFViQUFJQUFDNFBqWExwQUFJQUFDWVAvSExwQUFJQUJoQXhEMjluKzdRQUtBQUVRUGdIWGZEMFlLQUFJUU1RRExQTGZ1UDJtcTFGVXBBQWhBbEFBNEFIQU1JQUFJUU5BQU9BQjR4bFVwQUFoQWxBQjRBc0RQaEFrQUFoQTBBRlo4NThBQ2dBQUlBQUlnQUFoQW1BQzRCY2lOUUFLQUFBUU5RTEhPclBnQ0lBQUlnQUFnQUFLQUFBaUFBQ0FBQ0lBQUNBQUNnQUFJZ0FBZ0FBaUFBQWdBQW9BQUNJQUFJQUFJZ0FBSUFBS0FBQXlFSDROOGFiK1p1VEFGQUFId1ZSQytDZ0lCUUFBRVFBQVFBQVRBN3dINFdXQUVBQUVRQUQ4SWd3QWdBRzRFY2dzUUFvQUF1QkhJTFVBSUFBSXdERzJkV1BxZEFBc0FBaEF4QUk0QkhBQUlBQUlRTkFDT0FSd0FDQUFDRURRQW5nYXcveU1BQ0VEY0FOZ0ZzdjhqQUFoQTBBRDRkWGo3UHdLQUFBUU5nSHVCbG5udWVoUUFCQ0JvQUxibFBPenFmOWhOWEl3Q2dBREVEVURrbytCdE9YY3hDZ0FDRURvQSs4MHM0T3JmMW9rclVRQVFnT2dCbUM1V0FVOEN2UDBYQUFSQUFDS2VCTmo5RndBRVFBQ0MzZzdrNWg4QlFBQUVJT0l6QWI3N1V3QVFBQUdJZUJyYzFva2YveElBQkVBQUltNEUyZndSQUFSQUFDSnVCTm44RVFBRVFBQmUvZXVNOUd1aWZlMlBBQ0FBQW5EZStMNGwxTmEvQUNBQUFoQ3hBVlovQVVBQUJDQm9BNnorQW9BQUNFREVCdmpCTHdGQUFBUWdYQVBhT25IVHB3QWdBQUlRcmdIMi9RVUFBUkNBaUE4SkgzWVRxNzhBSUFBQ2NNM25Bd2J4bkxDbnZRUUFBUkNBNjVzdVZvZmRwTS9iUG81OEJRQUJFSUFiNnVlUEJ6UlZhdHRIQUJBQUFlamlvMEIvVG9iZDdTTUFDSUFBZEcyWjUrKzdJOVRXaVY5MkZBQUVRQUJpWmNEU0x3QUlnQUQwS0FQZDNDcDYyRTJjOUFvQUFpQUFQYjFiOUJiSEE0ZmRaRnZPSGZNS0FBSWdBTU1vd1g0enUyUjNxSzJUcGtxTGRXYmRSd0FFUUFBR3ZFRjA3RUZUcFVjbjEvcWpZcDNaNUVFQUJFQUFBQUVRQUFFQUFVQUFCQUFFQUFFUUFCQUFCRUFBUUFBUUFBRUFBVUFBQkFBRUFBRVFBQkFBQkVBQVFBQVFBQUVBQVVBQUJBQUVBQUVRQUJBQUJFQUFRQUFRQUFFQUFVQUFBQUZBQUFBQlFBQUFBVUFBQUFGQUFBQUJRQUFBQVJBQUFRQUVRQUFFQUJBQUFSQUFRQUFFUUFBQUFSQUFBUUFCOENvSWdBQ0FBQ0FBQWdBQ2dBQUlBQWdBQWlBQUlBQUlnQUNBQUNBQUFnQUNnQUFJQUFnQUFpQUFJQUFJZ0FDQUFDQUFBZ0FDZ0FBSUFBZ0FBaUFBSUFBSUFDQUFDQUFnQUFnQUlBQUlBQ0FBQ0FBZ0FBZ0FJQUFJQUNBQUFpQUFnQUFJZ0FBQUFpQUFBZ0FJZ0FBSUFDQUFBaUFBSUFBSWdBQ0FBQ0FBQWdBQ2dBQUlBQWdBQWlBQUlBQUlnQUNBQUNBQUFnQUNnQUFJQUFnQUFpQUFJQUFJZ0FDQUFDQUFBZ0FDZ0FBSUFBZ0FBaUFBSUFBSUFDQUFDQUFnQUFnQUlBQUlBQ0FBQ0FBZ0FBZ0FJQUFDSUFDQUFBaUFBQUFDSUFBQ0FBaUFBQWdBSUFBQ0lBQWdBRjRGQVJBQUVBQUVRQUJBQUJBQUFRQUJRQUFFQUFRQUFSQUFFQUFFUUFCQUFCQUFBUUFCUUFBRUFBUUFBUkFBRUFBRVFBQkFBQkFBQVFBQlFBQUVBQVFBQVFBRUFBRUFCQUFCQUFRQUFRQUVBQUVBQkFBQkFBUUFBUUFFUUFBRUFCQUFBUkFBUUFBRVFBQUFBUkFBQVFBRVFBQUVBQVFBQVJBQUVBQUVRQUJBQUJBQUFRQUJRQUFFQUFRQUFSQUFFQUFFUUFCQUFCQUFBUUFCUUFBRUFBUUFBUkFBRUFBRVFBQkFBQkFBQVFBQlFBRDg3VUFBRUFCQUFCQUFRQUFRQUVBQUVBQkFBQkFBUUFBUUFFQUFCRUFBQUFFUUFBRUFCRUFBQkFBUUFBSG80eFQzRHd6RjlQTTMxNW9BSUFBbTRoVDNENjQxQVVBQWpBQWdBQWlBRVFBRUFBRXdBb0FBSUFCR0FCQUFCTUFJQUFLQUFCZ0JRQUFRQUNNQUNBQUNZQVFBQVVBQWpBQWdBQWlBRVFBRUFBRXdBb0FBSUFCR0FCQUFCTUFJQUFLQUFCZ0JRQUFFd0JnQlFBQUV3QmdCUUFBRXdCZ0JRQUFFd0JnQlFBQUV3QmdCRUFBRXdCZ0JFQUFFd0JnQkVBQUV3QmdCRUFBRXdCZ0JFQUFFd0FnQUFvQUFHQUZBQUJBQUl3QUlBQUpnQkFBQlFBQ01BQ0FBQ0lBUkFBUUFBVEFDZ0FBZ0FFWUFFQUFFd0FnQUFvQUFHQUZBQUJBQUl3QUlBQUpnQkFBQlFBQ01BQ0FBQ0lBUkFBUkFBSXdSQUFSQUFJd1JBQVJBQUl3UkFBUkFBSXdSQUFSQUFJd1JBQUh3S2dpQU1RSWdBQWlBTVFJZ0FBaUFNUUlnQUFpQU1RSWdBQWlBRVFDWG13QWdBRVlBRUFBRXdBZ0FBb0FBR0FGQUFCQUFJd0FJQUFKZ0JBQUJRQUNNQUNBQUNJQVJBQVFBQVRBQ2dBQWdBRVlBRUFBRXdBZ0FBb0FBR0FGQUFCQUFJd0FJQUFKZ0JBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFnc3Q4SXNGK3hqampJZXdBQUFBQkpSVTVFcmtKZ2dnPT0iLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIiwicHVycG9zZSI6ImFueSJ9LHsic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhacFpYZENiM2c5SWpBZ01DQTFNVElnTlRFeUlqNDhjbVZqZENCM2FXUjBhRDBpTlRFeUlpQm9aV2xuYUhROUlqVXhNaUlnWm1sc2JEMGlJekV5TXpVMVlpSXZQanh5WldOMElIZzlJakUxTXk0MklpQjVQU0l4TURJdU5DSWdkMmxrZEdnOUlqWXhMalFpSUdobGFXZG9kRDBpTWpnMkxqY2lJSEo0UFNJeE1pSWdabWxzYkQwaUkyWm1aaUl2UGp4eVpXTjBJSGc5SWpFMU15NDJJaUI1UFNJek1qY3VOeUlnZDJsa2RHZzlJakl3TkM0NElpQm9aV2xuYUhROUlqWXhMalFpSUhKNFBTSXhNaUlnWm1sc2JEMGlJMlptWmlJdlBqeGphWEpqYkdVZ1kzZzlJak15Tnk0M0lpQmplVDBpTVRZekxqZ2lJSEk5SWpRMkxqRWlJR1pwYkd3OUlpTm1aamxtTVdNaUx6NDhMM04yWno0PSIsInNpemVzIjoiYW55IiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
 <style>:root {
   --bg: #f4f6fb; --fg: #182033; --card: #ffffff; --mut: #5b6478; --pri: #2457d6; --pri-fg: #ffffff;
-  --ok: #167a47; --okbg: #e3f6ec; --bad: #b3261e; --badbg: #fde8e6; --line: #dfe3ee; --warnbg: #fff3d1; --infobg: #e6efff;
+  --ok: #167a47; --okbg: #e3f6ec; --bad: #b3261e; --badbg: #fde8e6; --line: #dfe3ee; --warnbg: #fff3d1; --infobg: #e6efff; --bar: rgba(255,255,255,.78);
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0e1220; --fg: #e8ecf6; --card: #171c2e; --mut: #9aa4bd; --pri: #7aa2ff; --pri-fg: #0b1020;
-    --ok: #5fd694; --okbg: #12301f; --bad: #ff8a80; --badbg: #3a1714; --line: #2a3250; --warnbg: #3a3010; --infobg: #172547;
+    --ok: #5fd694; --okbg: #12301f; --bad: #ff8a80; --badbg: #3a1714; --line: #2a3250; --warnbg: #3a3010; --infobg: #172547; --bar: rgba(23,28,46,.78);
   }
 }
 :root[data-theme="dark"] {
   --bg: #0e1220; --fg: #e8ecf6; --card: #171c2e; --mut: #9aa4bd; --pri: #7aa2ff; --pri-fg: #0b1020;
-  --ok: #5fd694; --okbg: #12301f; --bad: #ff8a80; --badbg: #3a1714; --line: #2a3250; --warnbg: #3a3010; --infobg: #172547;
+  --ok: #5fd694; --okbg: #12301f; --bad: #ff8a80; --badbg: #3a1714; --line: #2a3250; --warnbg: #3a3010; --infobg: #172547; --bar: rgba(23,28,46,.78);
 }
 :root[data-theme="light"] { color-scheme: light; }
 :root[data-theme="dark"] { color-scheme: dark; }
 
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-  margin: 0; background: var(--bg); color: var(--fg);
-  font: 17px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+* {
+  box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  -webkit-touch-callout: none; -webkit-user-select: none; user-select: none;
 }
-#app { max-width: 640px; margin: 0 auto; padding: 12px 16px calc(84px + env(safe-area-inset-bottom)); }
-h1 { font-size: 26px; margin: 0; }
+input, textarea, .selectable, .selectable * { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
+html { -webkit-text-size-adjust: 100%; height: 100%; overflow: hidden; overscroll-behavior: none; }
+body {
+  margin: 0; height: 100%; overflow: hidden; overscroll-behavior: none; background: var(--bg); color: var(--fg);
+  font: 17px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+body::before {
+  content: ""; position: fixed; top: 0; left: 0; right: 0; height: env(safe-area-inset-top); z-index: 30;
+  background: var(--bar); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+}
+#app {
+  position: fixed; top: 0; right: 0; bottom: 0; left: 0; height: 100dvh; overflow-x: hidden; overflow-y: auto;
+  overscroll-behavior: none; -webkit-overflow-scrolling: touch;
+}
+#page {
+  max-width: 640px; margin: 0 auto;
+  padding: calc(12px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(92px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+}
+input, select, textarea { font-size: 16px; }
+h1 { font-size: 34px; letter-spacing: -.5px; line-height: 1.15; margin: 0; }
 h2 { font-size: 19px; margin: 20px 0 10px; }
 h3 { font-size: 16px; margin: 18px 0 6px; }
 p { margin: 6px 0; }
 .sub { color: var(--mut); font-size: 15px; }
 .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0 10px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin: 12px 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 14px 16px; margin: 12px 0; }
 .card h2:first-child { margin-top: 2px; }
 
 button, input, select { font: inherit; color: inherit; }
@@ -124,6 +139,8 @@ button:disabled { opacity: .5; cursor: default; }
 
 .sess-head { display: flex; align-items: center; gap: 12px; padding: 6px 0 14px; }
 .stage { min-height: 60vh; }
+.diag { margin: 10px 0; }
+.diag p { margin: 2px 0; word-break: break-word; }
 .ex { margin: 6px 0; }
 .lead { color: var(--mut); font-weight: 600; }
 .prompt { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
@@ -149,7 +166,7 @@ button:disabled { opacity: .5; cursor: default; }
 .key { min-width: 44px; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); font-size: 18px; }
 .hintline:empty { display: none; }
 
-.feedback { position: sticky; bottom: calc(8px + env(safe-area-inset-bottom)); margin-top: 18px; border-radius: 16px; padding: 12px 16px; border: 2px solid var(--line); background: var(--card); }
+.feedback { position: sticky; bottom: 8px; margin-top: 18px; border-radius: 16px; padding: 12px 16px; border: 2px solid var(--line); background: var(--card); }
 .feedback[hidden] { display: none; }
 .feedback.ok { background: var(--okbg); border-color: var(--ok); }
 .feedback.bad { background: var(--badbg); border-color: var(--bad); }
@@ -157,7 +174,8 @@ button:disabled { opacity: .5; cursor: default; }
 .xp { color: var(--ok); font-weight: 700; }
 
 #nav {
-  position: fixed; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; gap: 4px; background: var(--card);
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; justify-content: center; gap: 4px; background: var(--bar);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
   border-top: 1px solid var(--line); padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
 }
 #nav[hidden] { display: none; }
@@ -175,14 +193,40 @@ button:disabled { opacity: .5; cursor: default; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Press-Animationen */
+.btn, .opt, .tile, .unit, .icon-btn, .key, .navlink, .seg button { transition: transform .12s ease, background-color .12s ease; }
+.btn:active, .opt:active, .tile:active, .unit:active, .icon-btn:active, .key:active, .navlink:active, .seg button:active { transform: scale(.97); }
+
+/* Seitenübergänge */
+@keyframes slide-in { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.view-enter { animation: fade-up .22s ease-out; }
+.view-enter-session { animation: slide-in .22s ease-out; }
+.step-in { animation: slide-in .2s ease-out; }
+
+/* Feedback: haptisches Gefühl über kurze Animationen */
+@keyframes pop { 0% { transform: scale(.96); } 60% { transform: scale(1.03); } 100% { transform: scale(1); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-7px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+.feedback.ok, .opt.good, .slots.good { animation: pop .28s ease-out; }
+.feedback.bad, .opt.bad, .slots.bad { animation: shake .32s ease-out; }
+
+/* Toast */
+#toast { position: fixed; left: 0; right: 0; bottom: calc(76px + env(safe-area-inset-bottom)); z-index: 40; display: flex; justify-content: center; padding: 0 16px; pointer-events: none; }
+#toast:empty { display: none; }
+.toast-card { pointer-events: auto; max-width: 600px; background: var(--card); color: var(--fg); border: 2px solid var(--bad); border-radius: 18px; padding: 12px 14px; display: flex; gap: 12px; align-items: center; box-shadow: 0 8px 28px rgba(0,0,0,.25); animation: fade-up .2s ease-out; }
+.banner.install { border: 1px dashed var(--pri); }
 </style>
 </head>
 <body>
 <div id="app">
+<div id="page">
 <div id="banners"></div>
 <main id="view" tabindex="-1"></main>
-<nav id="nav" aria-label="Hauptnavigation"></nav>
 </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<nav id="nav" aria-label="Hauptnavigation"></nav>
 <noscript><p style="padding:16px">LingoForge benötigt JavaScript.</p></noscript>
 <script>var LF = {};
 /* Norm: Normalisierung, Toleranzprüfung und Tokenisierung (rein, ohne DOM). */
@@ -1124,12 +1168,14 @@ button:disabled { opacity: .5; cursor: default; }
   root.LF.DB = DB;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
-/* Speech: speechSynthesis mit Voice-Discovery. Keine Spracherkennung (iOS sendet Audio an Apple). */
+/* Speech: speechSynthesis mit Voice-Discovery, iOS-Härtung und Diagnose. Keine Spracherkennung
+   (iOS sendet dabei Audio an Apple). speak() muss synchron aus einer Nutzergeste aufgerufen werden. */
 (function (root) {
   'use strict';
 
   var supported = typeof root.speechSynthesis !== 'undefined' && typeof root.SpeechSynthesisUtterance !== 'undefined';
-  var Speech = { supported: supported, voices: [], listeners: [] };
+  var Speech = { supported: supported, voices: [], listeners: [], failed: false, unlocked: false, current: null,
+    last: { voice: '', lang: '', text: '', events: [], after: '', after300: '' }, onProblem: null, onEvent: null };
 
   function load() {
     var vs = [];
@@ -1151,7 +1197,9 @@ button:disabled { opacity: .5; cursor: default; }
     }, 250);
   };
 
-  function prefix(l) { return String(l || '').replace('_', '-').toLowerCase(); }
+  // es_ES -> es-ES
+  function norm(l) { return String(l || '').replace(/_/g, '-'); }
+  function prefix(l) { return norm(l).toLowerCase(); }
 
   Speech.voicesFor = function (lang) {
     return Speech.voices.filter(function (v) { return prefix(v.lang).indexOf(lang) === 0; });
@@ -1176,25 +1224,88 @@ button:disabled { opacity: .5; cursor: default; }
     })[0];
   };
 
-  Speech.has = function (lang) { return supported && Speech.voicesFor(lang).length > 0; };
+  // Sprechen wird immer versucht (auch ohne gelistete Stimme: Systemstandard der Sprache).
+  Speech.usable = function () { return supported && !Speech.failed; };
 
-  // Nur aus einer Nutzergeste aufrufen. o: {voiceURI, rate, slow, tts}
+  function ev(name, extra) {
+    Speech.last.events.push(name + (extra ? ' (' + extra + ')' : ''));
+    if (typeof Speech.onEvent === 'function') { try { Speech.onEvent(); } catch (e) { /* UI isoliert */ } }
+  }
+
+  function problem(msg) {
+    Speech.failed = true;
+    if (typeof Speech.onProblem === 'function') { try { Speech.onProblem(msg); } catch (e) { /* UI isoliert */ } }
+  }
+
+  function flags(ss) { return 'speaking=' + !!ss.speaking + ', pending=' + !!ss.pending; }
+
+  var HINT = 'Prüfe: Stumm-Schalter an der Seite des iPhones (iOS dämpft die Sprachausgabe, wenn er aktiv ist), Lautstärke und ob für diese Sprache eine Stimme geladen ist (Einstellungen > Bedienungshilfen > Gesprochene Inhalte > Stimmen).';
+  Speech.HINT = HINT;
+
+  // Erste Geste: stumme Äußerung "entsperrt" die Sprachausgabe auf iOS.
+  Speech.unlock = function () {
+    if (!supported || Speech.unlocked) return;
+    Speech.unlocked = true;
+    try {
+      var u = new root.SpeechSynthesisUtterance(' ');
+      u.volume = 0;
+      root.speechSynthesis.speak(u);
+    } catch (e) { /* ignorieren */ }
+  };
+
+  // o: {voiceURI, rate, slow, tts}. Liefert true, wenn eine Äußerung abgesetzt wurde.
   Speech.speak = function (text, lang, o) {
     o = o || {};
     if (!supported) return false;
-    var v = Speech.best(lang, o.voiceURI, o.tts);
-    if (!v) return false;
+    var ss = root.speechSynthesis, v = Speech.best(lang, o.voiceURI, o.tts), u;
     try {
-      root.speechSynthesis.cancel();
-      var u = new root.SpeechSynthesisUtterance(text);
-      u.voice = v; u.lang = v.lang;
+      u = new root.SpeechSynthesisUtterance(text);
+      if (v) u.voice = v;
+      u.lang = norm(v ? v.lang : (o.tts || lang));
       u.rate = Math.max(0.3, Math.min(1.5, (o.rate || 0.9) * (o.slow ? 0.6 : 1)));
-      root.speechSynthesis.speak(u);
-      return true;
-    } catch (e) { return false; }
+      u.pitch = 1; u.volume = 1;
+    } catch (e) { problem('Sprachausgabe nicht nutzbar.'); return false; }
+    var state = { started: false, ended: false };
+    Speech.current = u;
+    Speech.last = { voice: v ? v.name + ' (' + v.lang + ')' : 'Systemstandard', lang: u.lang, text: text, events: [], after: '', after300: '' };
+    u.onstart = function () { state.started = true; Speech.failed = false; ev('start'); };
+    u.onend = function () { state.ended = true; Speech.failed = false; ev('end'); };
+    u.onerror = function (e) {
+      var code = e && e.error ? String(e.error) : 'unbekannt';
+      if (code === 'canceled' || code === 'interrupted') { ev('abgebrochen'); return; }
+      ev('error', code);
+      problem('Sprachausgabe-Fehler (' + code + '). ' + HINT);
+    };
+    function go() {
+      try { ss.resume(); ss.speak(u); } catch (e) { problem('Sprachausgabe nicht nutzbar. ' + HINT); }
+      Speech.last.after = flags(ss);
+      setTimeout(function () { if (Speech.current === u) { Speech.last.after300 = flags(ss); ev('Status nach 300 ms'); } }, 300);
+    }
+    // cancel() nur bei laufender/wartender Ausgabe (direkt vor speak() verschluckt iOS sonst die Äußerung).
+    if (ss.speaking || ss.pending) {
+      try { ss.cancel(); } catch (e) { /* ignorieren */ }
+      setTimeout(go, 60);
+    } else go();
+    setTimeout(function () {
+      if (Speech.current === u && !state.started && !state.ended) {
+        ev('keine Rückmeldung');
+        problem('Es war keine Sprachausgabe zu hören. ' + HINT);
+      }
+    }, 1500);
+    return true;
   };
 
-  Speech.cancel = function () { if (supported) { try { root.speechSynthesis.cancel(); } catch (e) { /* ignorieren */ } } };
+  Speech.cancel = function () {
+    if (!supported) return;
+    try { if (root.speechSynthesis.speaking || root.speechSynthesis.pending) root.speechSynthesis.cancel(); } catch (e) { /* ignorieren */ }
+  };
+
+  Speech.diag = function (lang) {
+    var raw = 0, first = [];
+    if (supported) { try { var all = root.speechSynthesis.getVoices() || []; raw = all.length; first = Array.prototype.slice.call(all, 0, 5).map(function (v) { return v.name + ' [' + v.lang + ', ' + (v.localService ? 'lokal' : 'online') + ']'; }); } catch (e) { /* ignorieren */ } }
+    return { supported: supported, total: raw, forLang: Speech.voicesFor(lang).length, first: first,
+      voice: Speech.last.voice, lang: Speech.last.lang, after: Speech.last.after, after300: Speech.last.after300, events: Speech.last.events.slice() };
+  };
 
   root.LF.Speech = Speech;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
@@ -1334,6 +1445,7 @@ button:disabled { opacity: .5; cursor: default; }
       if (DB.mode !== 'idb' && DB.error) App.dbError = DB.error;
       App.applyTheme();
       Speech.init();
+      Speech.onProblem = function (msg) { App.emit('toast', msg); App.emit('banner'); };
       if (!st.settings || !st.meta) App.persist({ settings: App.S.settings, meta: App.S.meta });
     });
   };
@@ -1433,7 +1545,7 @@ button:disabled { opacity: .5; cursor: default; }
   App.streak = function () { return Game.streak(App.S.daily, App.today()); };
   App.totalXp = function () { var t = 0; for (var k in App.S.daily) t += App.S.daily[k].xp; return t; };
 
-  App.hasVoice = function (lang) { return Speech.has(lang); };
+  App.hasVoice = function () { return Speech.usable(); };
   App.speak = function (text, lang, slow) {
     var s = App.S.settings;
     return Speech.speak(text, lang, { voiceURI: s.voices[lang] || '', rate: s.rate, slow: !!slow, tts: App.content(lang).tts });
@@ -1753,12 +1865,13 @@ button:disabled { opacity: .5; cursor: default; }
     if (route.indexOf('#/session') !== 0 && !Views.voiceDismissed && !App.hasVoice(lang) && App.S.settings) {
       items.push(h('div', { class: 'banner warn', role: 'status' },
         h('p', null, Speech.supported
-          ? 'Keine ' + LANG_NAMES[lang] + '-Stimme gefunden. Hör- und Nachsprech-Übungen werden durch Lese- und Tippübungen ersetzt.'
+          ? 'Die Sprachausgabe hat zuletzt keinen Ton geliefert. Hör- und Nachsprech-Übungen werden vorerst durch Lese- und Tippübungen ersetzt.'
           : 'Dieser Browser hat keine Sprachausgabe. Hör- und Nachsprech-Übungen werden durch Lese- und Tippübungen ersetzt.'),
-        Speech.supported ? h('p', { class: 'sub' }, 'Bessere Stimmen laden: iPhone-Einstellungen > Bedienungshilfen > Gesprochene Inhalte > Stimmen > ' + LANG_NAMES[lang] + ' > Stimme mit "Erweitert" oder "Premium" laden. Danach die App neu öffnen.') : null,
+        Speech.supported ? h('p', { class: 'sub' }, Speech.HINT + ' Diagnose: Einstellungen > Sprachtest. Bessere Stimmen: Stimme für ' + LANG_NAMES[lang] + ' mit "Erweitert" oder "Premium" laden.') : null,
         h('button', { class: 'btn small ghost', type: 'button', onclick: function () { Views.voiceDismissed = true; Views.renderBanners(); } }, 'Ausblenden')));
     }
     if (route.indexOf('#/home') === 0 || route === '' || route === '#') {
+      if (Views.needsInstallHint()) items.push(installHint());
       if (Game.backupDue(App.S.meta, Date.now())) {
         items.push(h('div', { class: 'banner info', role: 'status' }, h('span', null, 'Backup fällig: Sichere deinen Fortschritt als Datei.'),
           h('button', { class: 'btn small', type: 'button', onclick: function () { go('#/settings'); } }, 'Zu den Einstellungen')));
@@ -1766,6 +1879,42 @@ button:disabled { opacity: .5; cursor: default; }
     }
     mount(host, items);
   };
+
+  // ---------- Hinweis: Zum Home-Bildschirm ----------
+  Views.needsInstallHint = function () {
+    var n = root.navigator || {}, ua = n.userAgent || '';
+    var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && n.maxTouchPoints > 1);
+    var standalone = n.standalone === true || !!(root.matchMedia && root.matchMedia('(display-mode: standalone)').matches);
+    return ios && !standalone && !App.S.meta.a2hsDismissed;
+  };
+
+  function installHint() {
+    var x0 = null;
+    function dismiss() { App.S.meta.a2hsDismissed = true; App.persist({ meta: App.S.meta }); Views.renderBanners(); }
+    var el = h('div', { class: 'banner info install', role: 'status' },
+      h('p', null, h('strong', null, 'Zum Home-Bildschirm hinzufügen')),
+      h('p', { class: 'sub' }, '1. Unten in Safari auf Teilen tippen. 2. "Zum Home-Bildschirm" wählen. 3. Hinzufügen. Dann startet LingoForge wie eine App, auch offline.'),
+      h('button', { class: 'btn small', type: 'button', onclick: dismiss }, 'Verstanden'));
+    el.addEventListener('touchstart', function (e) { x0 = e.touches && e.touches[0] ? e.touches[0].clientX : null; });
+    el.addEventListener('touchend', function (e) {
+      var t = e.changedTouches && e.changedTouches[0];
+      if (x0 !== null && t && Math.abs(t.clientX - x0) > 60) dismiss();
+      x0 = null;
+    });
+    return el;
+  }
+
+  // ---------- Toast ----------
+  var toastTimer = null;
+  Views.showToast = function (msg) {
+    var host = root.document.getElementById('toast');
+    if (!host) return;
+    mount(host, h('div', { class: 'toast-card' }, h('span', null, msg), h('button', { class: 'btn small', type: 'button', onclick: function () { mount(host); } }, 'OK')));
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { mount(host); }, 12000);
+  };
+
+  Views.top = function () { var a = root.document.getElementById('app'); if (a) a.scrollTop = 0; };
 
   // ---------- Home ----------
   function ring(xp, goal) {
@@ -1848,11 +1997,12 @@ button:disabled { opacity: .5; cursor: default; }
       bar.style.width = pct + '%';
       bar.parentNode.setAttribute('aria-valuenow', String(pct));
     }
-    function next() { S.i++; root.scrollTo(0, 0); show(); }
+    function next() { S.i++; Views.top(); show(); }
 
     function show() {
       if (S.i >= S.steps.length) { finish(); return; }
       progress();
+      stage.classList.remove('step-in'); void stage.offsetWidth; stage.classList.add('step-in');
       var st = S.steps[S.i], item = C.byId[st.id];
       if (st.type === 'intro') showIntro(st, item); else showEx(st, item);
     }
@@ -2035,6 +2185,20 @@ button:disabled { opacity: .5; cursor: default; }
     function say(t, bad) { status.textContent = t; status.className = 'note' + (bad ? ' bad' : ''); }
     function save() { App.saveSettings(); }
 
+    var diagBox = h('div', { class: 'diag selectable' });
+    function renderDiag() {
+      var d = Speech.diag(lang);
+      mount(diagBox, [
+        'Sprachausgabe: ' + (d.supported ? 'unterstützt' : 'nicht unterstützt'),
+        'getVoices(): ' + d.total + ' (davon ' + LANG_NAMES[lang] + ': ' + d.forLang + ')',
+        'Erste Stimmen: ' + (d.first.length ? d.first.join('; ') : 'keine'),
+        'Verwendet: ' + (d.voice || 'noch nicht getestet') + (d.lang ? ', Sprache ' + d.lang : ''),
+        'speaking/pending direkt nach dem Aufruf: ' + (d.after || '-') + '; nach 300 ms: ' + (d.after300 || '-'),
+        'Ereignisse: ' + (d.events.length ? d.events.join(', ') : 'keine')
+      ].map(function (l) { return h('p', { class: 'sub' }, l); }));
+    }
+    Speech.onEvent = renderDiag;
+    renderDiag();
     var voices = Speech.voicesFor(lang);
     var voiceSel = h('select', { 'aria-label': 'Stimme', disabled: !voices.length, value: s.voices[lang] || '' },
       h('option', { value: '' }, voices.length ? 'Automatisch (beste verfügbare)' : 'Keine Stimme gefunden'),
@@ -2119,8 +2283,12 @@ button:disabled { opacity: .5; cursor: default; }
       h('section', { class: 'card' }, h('h2', null, 'Sprachausgabe'),
         field('Stimme (' + LANG_NAMES[lang] + ')', voiceSel),
         field('Tempo', range('Tempo', 0.5, 1.2, 0.05, s.rate, function (v) { return v.toFixed(2) + 'x'; }, function (v) { s.rate = v; save(); })),
-        h('button', { class: 'btn ghost', type: 'button', disabled: !App.hasVoice(lang), onclick: function () { App.speak(C.units[0].items[3].audio, lang, false); } }, 'Stimme testen'),
-        App.hasVoice(lang) ? null : h('p', { class: 'sub' }, 'Ohne Stimme werden Hör- und Nachsprech-Übungen durch Lese- und Tippübungen ersetzt.')),
+        h('button', { class: 'btn primary', type: 'button', disabled: !Speech.supported, onclick: function () {
+          App.speak('Hola, ¿cómo estás?', lang, false); renderDiag();
+          setTimeout(renderDiag, 400); setTimeout(renderDiag, 1700);
+        } }, 'Sprachtest'),
+        diagBox,
+        App.hasVoice(lang) ? null : h('p', { class: 'sub' }, 'Ohne funktionierende Sprachausgabe werden Hör- und Nachsprech-Übungen durch Lese- und Tippübungen ersetzt.')),
       h('section', { class: 'card' }, h('h2', null, 'Darstellung'),
         field('Theme', seg('Theme', [{ v: 'auto', t: 'Automatisch' }, { v: 'light', t: 'Hell' }, { v: 'dark', t: 'Dunkel' }], s.theme, function (v) { s.theme = v; save(); App.applyTheme(); Views.render(); }))),
       h('section', { class: 'card' }, h('h2', null, 'Daten'),
@@ -2162,7 +2330,9 @@ button:disabled { opacity: .5; cursor: default; }
       return h('a', { href: n.h, class: 'navlink' + (on ? ' on' : ''), 'aria-current': on ? 'page' : 'false' }, icon(n.i), h('span', null, n.t));
     }));
     Views.renderBanners();
-    if (!inSession) root.scrollTo(0, 0);
+    if (!inSession) Views.top();
+    host.classList.remove('view-enter', 'view-enter-session'); void host.offsetWidth;
+    host.classList.add(inSession ? 'view-enter-session' : 'view-enter');
   };
 
   LF.Views = Views;
@@ -2202,6 +2372,9 @@ button:disabled { opacity: .5; cursor: default; }
   root.addEventListener('unhandledrejection', function (e) { crash(e && e.reason && e.reason.message ? e.reason.message : 'unbekannt'); });
   root.addEventListener('hashchange', function () { Views.render(); });
   App.on('banner', function () { Views.renderBanners(); });
+  App.on('toast', function (m) { Views.showToast(m); });
+  // Erste Geste entsperrt die Sprachausgabe auf iOS (stumme Äußerung).
+  ['pointerdown', 'touchend', 'click'].forEach(function (t) { root.document.addEventListener(t, LF.Speech.unlock, true); });
 
   LF.ready = App.init().then(function () {
     Views.render();
