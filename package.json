@@ -1,0 +1,13 @@
+{
+  "name": "lingo-forge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LingoForge: offline, private Sprachlern-PWA",
+  "license": "MIT",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "build": "node build/build.mjs",
+    "verify": "node build/verify.mjs",
+    "test": "node --test \"test/*.test.mjs\""
+  }
+}
