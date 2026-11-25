@@ -37,6 +37,7 @@
       if (DB.mode !== 'idb' && DB.error) App.dbError = DB.error;
       App.applyTheme();
       Speech.init();
+      Speech.onProblem = function (msg) { App.emit('toast', msg); App.emit('banner'); };
       if (!st.settings || !st.meta) App.persist({ settings: App.S.settings, meta: App.S.meta });
     });
   };
@@ -136,7 +137,7 @@
   App.streak = function () { return Game.streak(App.S.daily, App.today()); };
   App.totalXp = function () { var t = 0; for (var k in App.S.daily) t += App.S.daily[k].xp; return t; };
 
-  App.hasVoice = function (lang) { return Speech.has(lang); };
+  App.hasVoice = function () { return Speech.usable(); };
   App.speak = function (text, lang, slow) {
     var s = App.S.settings;
     return Speech.speak(text, lang, { voiceURI: s.voices[lang] || '', rate: s.rate, slow: !!slow, tts: App.content(lang).tts });

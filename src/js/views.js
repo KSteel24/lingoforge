@@ -34,12 +34,13 @@
     if (route.indexOf('#/session') !== 0 && !Views.voiceDismissed && !App.hasVoice(lang) && App.S.settings) {
       items.push(h('div', { class: 'banner warn', role: 'status' },
         h('p', null, Speech.supported
-          ? 'Keine ' + LANG_NAMES[lang] + '-Stimme gefunden. Hör- und Nachsprech-Übungen werden durch Lese- und Tippübungen ersetzt.'
+          ? 'Die Sprachausgabe hat zuletzt keinen Ton geliefert. Hör- und Nachsprech-Übungen werden vorerst durch Lese- und Tippübungen ersetzt.'
           : 'Dieser Browser hat keine Sprachausgabe. Hör- und Nachsprech-Übungen werden durch Lese- und Tippübungen ersetzt.'),
-        Speech.supported ? h('p', { class: 'sub' }, 'Bessere Stimmen laden: iPhone-Einstellungen > Bedienungshilfen > Gesprochene Inhalte > Stimmen > ' + LANG_NAMES[lang] + ' > Stimme mit "Erweitert" oder "Premium" laden. Danach die App neu öffnen.') : null,
+        Speech.supported ? h('p', { class: 'sub' }, Speech.HINT + ' Diagnose: Einstellungen > Sprachtest. Bessere Stimmen: Stimme für ' + LANG_NAMES[lang] + ' mit "Erweitert" oder "Premium" laden.') : null,
         h('button', { class: 'btn small ghost', type: 'button', onclick: function () { Views.voiceDismissed = true; Views.renderBanners(); } }, 'Ausblenden')));
     }
     if (route.indexOf('#/home') === 0 || route === '' || route === '#') {
+      if (Views.needsInstallHint()) items.push(installHint());
       if (Game.backupDue(App.S.meta, Date.now())) {
         items.push(h('div', { class: 'banner info', role: 'status' }, h('span', null, 'Backup fällig: Sichere deinen Fortschritt als Datei.'),
           h('button', { class: 'btn small', type: 'button', onclick: function () { go('#/settings'); } }, 'Zu den Einstellungen')));
@@ -47,6 +48,42 @@
     }
     mount(host, items);
   };
+
+  // ---------- Hinweis: Zum Home-Bildschirm ----------
+  Views.needsInstallHint = function () {
+    var n = root.navigator || {}, ua = n.userAgent || '';
+    var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && n.maxTouchPoints > 1);
+    var standalone = n.standalone === true || !!(root.matchMedia && root.matchMedia('(display-mode: standalone)').matches);
+    return ios && !standalone && !App.S.meta.a2hsDismissed;
+  };
+
+  function installHint() {
+    var x0 = null;
+    function dismiss() { App.S.meta.a2hsDismissed = true; App.persist({ meta: App.S.meta }); Views.renderBanners(); }
+    var el = h('div', { class: 'banner info install', role: 'status' },
+      h('p', null, h('strong', null, 'Zum Home-Bildschirm hinzufügen')),
+      h('p', { class: 'sub' }, '1. Unten in Safari auf Teilen tippen. 2. "Zum Home-Bildschirm" wählen. 3. Hinzufügen. Dann startet LingoForge wie eine App, auch offline.'),
+      h('button', { class: 'btn small', type: 'button', onclick: dismiss }, 'Verstanden'));
+    el.addEventListener('touchstart', function (e) { x0 = e.touches && e.touches[0] ? e.touches[0].clientX : null; });
+    el.addEventListener('touchend', function (e) {
+      var t = e.changedTouches && e.changedTouches[0];
+      if (x0 !== null && t && Math.abs(t.clientX - x0) > 60) dismiss();
+      x0 = null;
+    });
+    return el;
+  }
+
+  // ---------- Toast ----------
+  var toastTimer = null;
+  Views.showToast = function (msg) {
+    var host = root.document.getElementById('toast');
+    if (!host) return;
+    mount(host, h('div', { class: 'toast-card' }, h('span', null, msg), h('button', { class: 'btn small', type: 'button', onclick: function () { mount(host); } }, 'OK')));
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { mount(host); }, 12000);
+  };
+
+  Views.top = function () { var a = root.document.getElementById('app'); if (a) a.scrollTop = 0; };
 
   // ---------- Home ----------
   function ring(xp, goal) {
@@ -129,11 +166,12 @@
       bar.style.width = pct + '%';
       bar.parentNode.setAttribute('aria-valuenow', String(pct));
     }
-    function next() { S.i++; root.scrollTo(0, 0); show(); }
+    function next() { S.i++; Views.top(); show(); }
 
     function show() {
       if (S.i >= S.steps.length) { finish(); return; }
       progress();
+      stage.classList.remove('step-in'); void stage.offsetWidth; stage.classList.add('step-in');
       var st = S.steps[S.i], item = C.byId[st.id];
       if (st.type === 'intro') showIntro(st, item); else showEx(st, item);
     }
@@ -316,6 +354,20 @@
     function say(t, bad) { status.textContent = t; status.className = 'note' + (bad ? ' bad' : ''); }
     function save() { App.saveSettings(); }
 
+    var diagBox = h('div', { class: 'diag selectable' });
+    function renderDiag() {
+      var d = Speech.diag(lang);
+      mount(diagBox, [
+        'Sprachausgabe: ' + (d.supported ? 'unterstützt' : 'nicht unterstützt'),
+        'getVoices(): ' + d.total + ' (davon ' + LANG_NAMES[lang] + ': ' + d.forLang + ')',
+        'Erste Stimmen: ' + (d.first.length ? d.first.join('; ') : 'keine'),
+        'Verwendet: ' + (d.voice || 'noch nicht getestet') + (d.lang ? ', Sprache ' + d.lang : ''),
+        'speaking/pending direkt nach dem Aufruf: ' + (d.after || '-') + '; nach 300 ms: ' + (d.after300 || '-'),
+        'Ereignisse: ' + (d.events.length ? d.events.join(', ') : 'keine')
+      ].map(function (l) { return h('p', { class: 'sub' }, l); }));
+    }
+    Speech.onEvent = renderDiag;
+    renderDiag();
     var voices = Speech.voicesFor(lang);
     var voiceSel = h('select', { 'aria-label': 'Stimme', disabled: !voices.length, value: s.voices[lang] || '' },
       h('option', { value: '' }, voices.length ? 'Automatisch (beste verfügbare)' : 'Keine Stimme gefunden'),
@@ -400,8 +452,12 @@
       h('section', { class: 'card' }, h('h2', null, 'Sprachausgabe'),
         field('Stimme (' + LANG_NAMES[lang] + ')', voiceSel),
         field('Tempo', range('Tempo', 0.5, 1.2, 0.05, s.rate, function (v) { return v.toFixed(2) + 'x'; }, function (v) { s.rate = v; save(); })),
-        h('button', { class: 'btn ghost', type: 'button', disabled: !App.hasVoice(lang), onclick: function () { App.speak(C.units[0].items[3].audio, lang, false); } }, 'Stimme testen'),
-        App.hasVoice(lang) ? null : h('p', { class: 'sub' }, 'Ohne Stimme werden Hör- und Nachsprech-Übungen durch Lese- und Tippübungen ersetzt.')),
+        h('button', { class: 'btn primary', type: 'button', disabled: !Speech.supported, onclick: function () {
+          App.speak('Hola, ¿cómo estás?', lang, false); renderDiag();
+          setTimeout(renderDiag, 400); setTimeout(renderDiag, 1700);
+        } }, 'Sprachtest'),
+        diagBox,
+        App.hasVoice(lang) ? null : h('p', { class: 'sub' }, 'Ohne funktionierende Sprachausgabe werden Hör- und Nachsprech-Übungen durch Lese- und Tippübungen ersetzt.')),
       h('section', { class: 'card' }, h('h2', null, 'Darstellung'),
         field('Theme', seg('Theme', [{ v: 'auto', t: 'Automatisch' }, { v: 'light', t: 'Hell' }, { v: 'dark', t: 'Dunkel' }], s.theme, function (v) { s.theme = v; save(); App.applyTheme(); Views.render(); }))),
       h('section', { class: 'card' }, h('h2', null, 'Daten'),
@@ -443,7 +499,9 @@
       return h('a', { href: n.h, class: 'navlink' + (on ? ' on' : ''), 'aria-current': on ? 'page' : 'false' }, icon(n.i), h('span', null, n.t));
     }));
     Views.renderBanners();
-    if (!inSession) root.scrollTo(0, 0);
+    if (!inSession) Views.top();
+    host.classList.remove('view-enter', 'view-enter-session'); void host.offsetWidth;
+    host.classList.add(inSession ? 'view-enter-session' : 'view-enter');
   };
 
   LF.Views = Views;

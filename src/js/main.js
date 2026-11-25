@@ -32,6 +32,9 @@
   root.addEventListener('unhandledrejection', function (e) { crash(e && e.reason && e.reason.message ? e.reason.message : 'unbekannt'); });
   root.addEventListener('hashchange', function () { Views.render(); });
   App.on('banner', function () { Views.renderBanners(); });
+  App.on('toast', function (m) { Views.showToast(m); });
+  // Erste Geste entsperrt die Sprachausgabe auf iOS (stumme Äußerung).
+  ['pointerdown', 'touchend', 'click'].forEach(function (t) { root.document.addEventListener(t, LF.Speech.unlock, true); });
 
   LF.ready = App.init().then(function () {
     Views.render();

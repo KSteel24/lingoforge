@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="LingoForge">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="referrer" content="no-referrer">
 <title>LingoForge</title>
 <link rel="icon" type="image/svg+xml" href="{{ICON_SVG}}">
@@ -19,10 +19,13 @@
 </head>
 <body>
 <div id="app">
+<div id="page">
 <div id="banners"></div>
 <main id="view" tabindex="-1"></main>
-<nav id="nav" aria-label="Hauptnavigation"></nav>
 </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<nav id="nav" aria-label="Hauptnavigation"></nav>
 <noscript><p style="padding:16px">LingoForge benötigt JavaScript.</p></noscript>
 <script>{{SCRIPT}}</script>
 </body>

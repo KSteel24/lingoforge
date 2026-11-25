@@ -1,6 +1,6 @@
 /* LingoForge Service Worker: Cache-First nur für die Shell-Dateien, Cache-Name aus Build-Hash. */
 'use strict';
-var CACHE = 'lingoforge-f929728c92b4';
+var CACHE = 'lingoforge-0d56403f4c54';
 var SHELL = ['./', './index.html'];
 var SHELL_URLS = SHELL.map(function (u) { return new URL(u, self.registration.scope).href; });
 

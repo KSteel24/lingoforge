@@ -45,9 +45,9 @@ function walk(n, out = []) { out.push(n); if (n.children) n.children.forEach((c)
 const els = (n) => walk(n).filter((x) => x.nodeType === 1);
 const text = (n) => (n.textContent || '').replace(/\s+/g, ' ').trim();
 
-function boot({ voices = [], speechApi = false } = {}) {
+function boot({ voices = [], speechApi = false, synth = null, ua = '' } = {}) {
   const byId = {};
-  for (const id of ['app', 'banners', 'view', 'nav']) byId[id] = new El(id === 'nav' ? 'nav' : 'div');
+  for (const id of ['app', 'banners', 'view', 'nav', 'toast']) byId[id] = new El(id === 'nav' ? 'nav' : 'div');
   const listeners = {};
   const spoken = [];
   const loc = { _h: '', get hash() { return this._h; }, set hash(v) { this._h = v; (listeners.hashchange || []).forEach((f) => f({})); } };
@@ -55,13 +55,14 @@ function boot({ voices = [], speechApi = false } = {}) {
     console, setTimeout, clearTimeout, setInterval, clearInterval, Date, Math, JSON, Promise, Set, Map, Object, Array, String, Number,
     document: { createElement: (t) => new El(t), createElementNS: (ns, t) => new El(t), createTextNode: (t) => new TextNode(t),
       getElementById: (id) => byId[id], documentElement: new El('html'), body: new El('body'), visibilityState: 'visible', addEventListener() {} },
-    navigator: {}, location: loc, scrollTo() {},
+    navigator: { userAgent: ua }, location: loc, scrollTo() {},
     addEventListener(t, f) { (listeners[t] = listeners[t] || []).push(f); }
   };
   if (voices.length || speechApi) {
     ctx.speechSynthesis = { getVoices: () => voices, cancel() {}, speak(u) { spoken.push(u); }, onvoiceschanged: null };
     ctx.SpeechSynthesisUtterance = class { constructor(t) { this.text = t; } };
   }
+  if (synth) { ctx.speechSynthesis = synth; ctx.SpeechSynthesisUtterance = class { constructor(t) { this.text = t; } }; }
   vm.createContext(ctx);
   vm.runInContext(code, ctx);
   return { ctx, byId, view: byId.view, spoken, listeners };
@@ -83,8 +84,8 @@ test('Start: Home rendert, Speicher-Fallback und fehlende Stimme sichtbar gemeld
   assert.equal(app.ctx.LF.DB.mode, 'memory');
   const withApi = boot({ speechApi: true });
   await withApi.ctx.LF.ready;
-  assert.match(text(withApi.byId.banners), /Keine Spanisch-Stimme gefunden/);
-  assert.match(text(withApi.byId.banners), /Bedienungshilfen > Gesprochene Inhalte > Stimmen/);
+  assert.doesNotMatch(text(withApi.byId.banners), /Sprachausgabe/, 'ohne gelistete Stimme wird trotzdem gesprochen, kein Banner');
+  assert.ok(withApi.ctx.LF.App.hasVoice('es'));
 });
 
 test('Router: Statistik und Einstellungen rendern ohne Fehler, Navigation korrekt', async () => {
@@ -315,4 +316,108 @@ test('Löschen: Erfolg erst nach Prüfung, dass die DB weg ist', async () => {
   const app = await wipeWith(fakeIdb('ok', []));
   assert.match(text(app.view), /Lernsprache|LingoForge/);
   assert.equal(app.ctx.LF.App.S.settings.goal, 30);
+});
+
+function fakeSynth({ voices = [], events = true, speaking = false } = {}) {
+  const calls = [], spoken = [];
+  const synth = { speaking, pending: false, calls, spoken, getVoices: () => voices, onvoiceschanged: null,
+    cancel() { calls.push('cancel'); }, resume() { calls.push('resume'); },
+    speak(u) { calls.push('speak'); spoken.push(u); if (events) setTimeout(() => { u.onstart && u.onstart(); setTimeout(() => u.onend && u.onend(), 10); }, 5); } };
+  return synth;
+}
+const ES_VOICE = { lang: 'es_ES', name: 'Mónica', voiceURI: 'm', localService: true };
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+test('Sprache: kein cancel vor speak im Leerlauf, resume, Lang mit Bindestrich, Gestenaufruf synchron', async () => {
+  const synth = fakeSynth({ voices: [ES_VOICE] });
+  const app = boot({ synth });
+  await app.ctx.LF.ready; await sleep(300);
+  const ok = app.ctx.LF.App.speak('Hola', 'es', false);
+  assert.equal(ok, true);
+  assert.deepEqual(synth.calls, ['resume', 'speak'], 'synchron, ohne cancel');
+  assert.equal(synth.spoken[0].lang, 'es-ES');
+  assert.equal(synth.spoken[0].voice.name, 'Mónica');
+  await sleep(60);
+  assert.equal(app.ctx.LF.Speech.failed, false);
+  assert.ok(app.ctx.LF.Speech.last.events.includes('start') && app.ctx.LF.Speech.last.events.includes('end'));
+});
+
+test('Sprache: bei laufender Ausgabe cancel, dann ~60 ms Wartezeit, dann speak', async () => {
+  const synth = fakeSynth({ voices: [ES_VOICE], speaking: true });
+  const app = boot({ synth });
+  await app.ctx.LF.ready; await sleep(300);
+  app.ctx.LF.App.speak('Hola', 'es', false);
+  assert.deepEqual(synth.calls, ['cancel']);
+  await sleep(120);
+  assert.deepEqual(synth.calls, ['cancel', 'resume', 'speak']);
+});
+
+test('Sprache: ohne Stimme trotzdem sprechen (lang = es-ES), Entsperren mit stummer Äußerung', async () => {
+  const synth = fakeSynth({ voices: [] });
+  const app = boot({ synth });
+  await app.ctx.LF.ready;
+  app.ctx.LF.Speech.unlock();
+  assert.equal(synth.spoken[0].volume, 0);
+  assert.equal(synth.spoken[0].text, ' ');
+  assert.equal(app.ctx.LF.App.speak('Hola', 'es', false), true);
+  const u = synth.spoken[synth.spoken.length - 1];
+  assert.equal(u.lang, 'es-ES'); assert.equal(u.voice, undefined);
+});
+
+test('Sprache: keine Rückmeldung nach 1,5 s oder Fehler -> Toast und Banner mit Hinweis, Übungen ohne Audio', async () => {
+  const synth = fakeSynth({ voices: [ES_VOICE], events: false });
+  const app = boot({ synth });
+  await app.ctx.LF.ready;
+  app.ctx.LF.App.speak('Hola', 'es', false);
+  await sleep(1700);
+  assert.equal(app.ctx.LF.Speech.failed, true);
+  assert.match(text(app.byId.toast), /keine Sprachausgabe zu hören/);
+  assert.match(text(app.byId.toast), /Stumm-Schalter/);
+  assert.match(text(app.byId.banners), /keinen Ton geliefert/);
+  assert.equal(app.ctx.LF.App.hasVoice('es'), false);
+  const e = boot({ synth: fakeSynth({ voices: [ES_VOICE], events: false }) });
+  await e.ctx.LF.ready;
+  e.ctx.LF.App.speak('Hola', 'es', false);
+  e.ctx.LF.Speech.last.events.length = 0;
+  const u = e.ctx.speechSynthesis.spoken[0];
+  u.onerror({ error: 'not-allowed' });
+  assert.match(text(e.byId.toast), /not-allowed/);
+  u.onerror({ error: 'canceled' });
+});
+
+test('Sprachtest: Diagnose zeigt Stimmenzahl, erste 5 Stimmen, Status nach Aufruf und Ereignisse', async () => {
+  const voices = Array.from({ length: 7 }, (_, i) => ({ lang: i === 0 ? 'es_ES' : 'en-US', name: `V${i}`, voiceURI: `v${i}`, localService: i % 2 === 0 }));
+  const synth = fakeSynth({ voices });
+  const app = boot({ synth });
+  await app.ctx.LF.ready; await sleep(300);
+  app.ctx.location.hash = '#/settings';
+  btn(app.view, 'Sprachtest').click();
+  await sleep(450);
+  const v = text(app.view);
+  assert.match(v, /getVoices\(\): 7 \(davon Spanisch: 1\)/);
+  assert.match(v, /V0 \[es_ES, lokal\]/); assert.match(v, /V4 \[en-US, lokal\]/); assert.doesNotMatch(v, /V5 \[/);
+  assert.match(v, /Verwendet: V0 \(es_ES\), Sprache es-ES/);
+  assert.match(v, /direkt nach dem Aufruf: speaking=false, pending=false; nach 300 ms:/);
+  assert.match(v, /Ereignisse: .*start.*end/);
+  assert.equal(synth.spoken[synth.spoken.length - 1].text, 'Hola, ¿cómo estás?');
+});
+
+test('Hinweis "Zum Home-Bildschirm": nur auf iPhone im Safari-Tab, wegklickbar und gemerkt', async () => {
+  const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Safari/604.1';
+  assert.doesNotMatch(text((await (async () => { const a = boot(); await a.ctx.LF.ready; return a; })()).byId.banners), /Home-Bildschirm/);
+  const app = boot({ ua: UA });
+  await app.ctx.LF.ready;
+  assert.match(text(app.byId.banners), /Zum Home-Bildschirm hinzufügen/);
+  btn(app.byId.banners, 'Verstanden').click();
+  assert.doesNotMatch(text(app.byId.banners), /Home-Bildschirm/);
+  assert.equal(app.ctx.LF.App.S.meta.a2hsDismissed, true);
+  assert.equal((await app.ctx.LF.DB.loadState()).meta.a2hsDismissed, true);
+  const st = boot({ ua: UA }); st.ctx.navigator.standalone = true;
+  await st.ctx.LF.ready;
+  assert.doesNotMatch(text(st.byId.banners), /Home-Bildschirm/);
+});
+
+test('Native Anmutung: Meta und CSS-Grundlagen im Build', () => {
+  assert.match(html, /apple-mobile-web-app-status-bar-style" content="black-translucent"/);
+  for (const r of [/-webkit-touch-callout: none/, /overscroll-behavior: none/, /touch-action: manipulation/, /100dvh/, /backdrop-filter/, /scale\(\.97\)/, /prefers-reduced-motion/, /input, select, textarea \{ font-size: 16px/, /user-select: text/]) assert.match(html, r);
 });

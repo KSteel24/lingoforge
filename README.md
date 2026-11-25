@@ -63,6 +63,21 @@ connect-src 'none'; media-src 'none'; base-uri 'none'; form-action 'none'; worke
 - `style-src 'unsafe-inline'` wegen des Inline-`<style>`; Skripte bleiben hash-gebunden (kein `eval`, kein `innerHTML`, DOM nur über `h()` mit Attribut-Whitelist).
 - Manifest und Icons sind data-URIs und enthalten bewusst kein `start_url`/`scope` (relative URLs wären gegen eine `data:`-URL ungültig).
 
+## Sprachausgabe auf iOS
+
+- `speechSynthesis.speak()` wird synchron aus dem Tap aufgerufen. `cancel()` nur bei laufender oder wartender Ausgabe (danach ca. 60 ms Pause), sonst verschluckt iOS die Äußerung; vor jedem `speak()` folgt `resume()`.
+- `utterance.lang` wird auf Bindestrich normalisiert (`es_ES` wird `es-ES`). Ohne gelistete Stimme wird trotzdem mit der Systemstandard-Stimme der Sprache gesprochen.
+- Der erste Tap "entsperrt" die Ausgabe mit einer stummen Äußerung (Lautstärke 0). Es gibt kein Autoplay; Hör-Übungen haben einen sichtbaren "Anhören"-Button.
+- Kommt nach 1,5 s weder `start` noch `end`, oder gibt es einen Fehler, erscheint ein Toast samt Banner mit Hinweisen (Lautstärke, Stimmen-Download, Stumm-Schalter). Bis zur nächsten erfolgreichen Ausgabe werden Hör-Übungen durch Lese-/Tippvarianten ersetzt.
+- Einstellungen > "Sprachtest" spricht "Hola, ¿cómo estás?" und zeigt die Diagnose: Anzahl `getVoices()`, die ersten 5 Stimmen (Sprache, lokal/online), gewählte Stimme und Sprache, `speaking`/`pending` direkt nach dem Aufruf und nach 300 ms sowie die Ereignisse start/end/error.
+- Die CSP bleibt unverändert (`media-src 'none'`): Es wird kein Audio-Element und kein Audio-Trick verwendet, nur `speechSynthesis`.
+
+## Native Anmutung
+
+Eigener Scroller (kein Gummiband, kein Body-Scroll), `100dvh`, Safe-Areas, Statusleiste `black-translucent` mit Blur-Streifen, feste Tab-Leiste mit Blur, großer Titel, Press-Animationen (scale .97), Seitenübergänge und Richtig/Falsch-Animationen (alle aus bei `prefers-reduced-motion`),
+`user-select: none` außer in Eingabefeldern, 16 px in Eingabefeldern gegen Auto-Zoom, `touch-action: manipulation` gegen Doppeltipp-Zoom. Pinch-Zoom bleibt aus Gründen der Barrierefreiheit erlaubt.
+Im normalen Safari-Tab (nicht installiert) zeigt die Startseite einmalig den Hinweis "Zum Home-Bildschirm hinzufügen" (per Button oder Wischen schließbar, wird gemerkt).
+
 ## Lernlogik
 
 - FSRS-5 mit Standardgewichten, Ziel-Retention einstellbar (0.80 bis 0.97), Intervall mindestens 1 Tag, maximal 36500.
